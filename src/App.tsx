@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const AUTH_HEADER = 'Basic ' + btoa('user:neiltrade123');
+// Backend via ngrok
 const API_BASE = 'https://chariest-nancy-nonincidentally.ngrok-free.dev/api';
+const AUTH_HEADER = 'Basic ' + btoa('user:neiltrade123');
 
 interface Screener {
   id: number;
