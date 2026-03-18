@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 const AUTH_HEADER = 'Basic ' + btoa('user:neiltrade123');
-const API_BASE = '/api';
+const API_BASE = 'https://chariest-nancy-nonincidentally.ngrok-free.dev/api';
 
 interface Screener {
   id: number;
