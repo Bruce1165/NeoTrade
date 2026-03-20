@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""
+Bruce自定义筛选策略 - 放量突破
+"""
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+from datetime import datetime, timedelta
+from database import init_db, get_session, Stock, DailyPrice
+from sqlalchemy import func
+import pandas as pd
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+def get_trade_dates(session, end_date, count=10):
+    """获取最近的N个交易日（从数据库中查询）"""
+    # 查询数据库中所有不重复的交易日，按日期倒序
+    trade_dates = session.query(DailyPrice.trade_date).distinct().\
+        filter(DailyPrice.trade_date <= end_date).\
+        order_by(DailyPrice.trade_date.desc()).limit(count).all()
+    
+    return [d[0] for d in trade_dates]
+
+def screen_volume_breakout(trade_date=None):
+    """
+    筛选放量突破股票
+    
+    条件：
+    - 换手率 > 10%
+    - 涨幅 > 2%
+    - 近3天成交额 >= 前3-6天成交额的2倍
+    """
+    if trade_date is None:
+        trade_date = (datetime.now() - timedelta(days=1)).date()
+    else:
+        trade_date = pd.to_datetime(trade_date).date()
+    
+    logger.info(f"="*60)
+    logger.info(f"放量突破筛选: {trade_date}")
+    logger.info(f"="*60)
+    
+    engine = init_db()
+    session = get_session(engine)
+    
+    # 获取最近10个交易日
+    trade_dates = get_trade_dates(session, trade_date, 10)
+    
+    if len(trade_dates) < 7:
+        logger.warning(f"交易日数据不足，只有{len(trade_dates)}天")
+        session.close()
+        return pd.DataFrame()
+    
+    logger.info(f"使用交易日: {trade_dates[:7]}")
+    
+    # 获取所有股票
+    stocks = session.query(Stock).all()
+    
+    results = []
+    
+    for stock in stocks:
+        # 获取昨天数据（第0个交易日）
+        yesterday = session.query(DailyPrice).filter(
+            DailyPrice.code == stock.code,
+            DailyPrice.trade_date == trade_dates[0]
+        ).first()
+        
+        if not yesterday:
+            continue
+        
+        # 条件1：换手率 > 10%
+        if yesterday.turnover is None or yesterday.turnover <= 10:
+            continue
+        
+        # 条件2：涨幅 > 2%
+        if yesterday.pct_change is None or yesterday.pct_change <= 2:
+            continue
+        
+        # 获取近6个交易日数据
+        recent_data = session.query(DailyPrice).filter(
+            DailyPrice.code == stock.code,
+            DailyPrice.trade_date.in_(trade_dates[:6])
+        ).order_by(DailyPrice.trade_date.desc()).all()
+        
+        if len(recent_data) < 6:
+            continue
+        
+        # 近3天成交额（第0-2天）
+        vol_3d = sum([d.amount for d in recent_data[:3] if d.amount])
+        # 前3-6天成交额（第3-5天）
+        vol_4_6d = sum([d.amount for d in recent_data[3:6] if d.amount])
+        
+        if vol_4_6d == 0:
+            continue
+        
+        # 条件3：近3天成交额 >= 前3-6天的2倍
+        ratio = vol_3d / vol_4_6d if vol_4_6d > 0 else 0
+        if ratio < 2:
+            continue
+        
+        results.append({
+            'code': stock.code,
+            'name': stock.name,
+            'industry': stock.industry or '未知',
+            'area': stock.area or '未知',
+            'close': yesterday.close,
+            'pct_change': yesterday.pct_change,
+            'turnover': yesterday.turnover,
+            'amount_yesterday': yesterday.amount,
+            'vol_3d_sum': vol_3d,
+            'vol_4_6d_sum': vol_4_6d,
+            'volume_ratio': round(ratio, 2)
+        })
+    
+    session.close()
+    
+    if not results:
+        logger.warning("没有符合条件的股票")
+        return pd.DataFrame()
+    
+    df = pd.DataFrame(results)
+    
+    # 按板块分组，组内按倍数降序
+    df = df.sort_values(['industry', 'volume_ratio'], ascending=[True, False])
+    
+    logger.info(f"筛选出 {len(df)} 只股票")
+    
+    return df
+
+def save_results(df, trade_date):
+    """保存结果"""
+    from pathlib import Path
+    
+    date_str = pd.to_datetime(trade_date).strftime('%Y%m%d')
+    save_dir = Path(f'/Users/mac/.openclaw/workspace-neo/data/screening/{date_str}')
+    save_dir.mkdir(parents=True, exist_ok=True)
+    
+    filepath = save_dir / 'volume_breakout.xlsx'
+    
+    # 选择输出字段
+    output_df = df[['code', 'name', 'industry', 'volume_ratio', 'turnover', 'amount_yesterday', 'pct_change']].copy()
+    output_df.columns = ['代码', '名称', '板块', '倍数', '换手率(%)', '昨日成交额', '涨幅(%)']
+    
+    with pd.ExcelWriter(filepath, engine='openpyxl') as writer:
+        output_df.to_excel(writer, sheet_name='放量突破', index=False)
+    
+    logger.info(f"结果已保存: {filepath}")
+    return filepath
+
+def main():
+    """主函数"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='放量突破筛选')
+    parser.add_argument('--date', type=str, help='日期 (YYYY-MM-DD)')
+    args = parser.parse_args()
+    
+    trade_date = args.date or (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    
+    df = screen_volume_breakout(trade_date)
+    
+    if not df.empty:
+        save_results(df, trade_date)
+        
+        # 打印结果
+        print(f"\n共筛选出 {len(df)} 只股票\n")
+        
+        # 按板块分组显示
+        for industry in df['industry'].unique():
+            group = df[df['industry'] == industry]
+            print(f"\n【{industry}】({len(group)}只)")
+            display = group[['code', 'name', 'volume_ratio', 'turnover', 'amount_yesterday']].head(5)
+            display.columns = ['代码', '名称', '倍数', '换手率%', '昨日成交额']
+            print(display.to_string(index=False))
+
+if __name__ == '__main__':
+    main()

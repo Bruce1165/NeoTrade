@@ -1,0 +1,687 @@
+[
+  {
+    "timestamp": "2026-03-19T09:00:05",
+    "status": "healthy",
+    "checks": {
+      "data_freshness": {
+        "status": "pass",
+        "latest_date_in_db": "2026-03-18",
+        "expected_date": "2026-03-18",
+        "delay_days": 0,
+        "message": "数据最新日期: 2026-03-18, 期望日期: 2026-03-18, 延迟: 0天"
+      },
+      "stock_completeness": {
+        "status": "pass",
+        "actual_count": 4663,
+        "expected_count": 4663,
+        "total_stocks_in_db": 4663,
+        "missing_count": 0,
+        "message": "最新日期股票数量: 4663/4663, 缺失: 0"
+      },
+      "duplicate_data": {
+        "status": "pass",
+        "duplicate_groups": 0,
+        "total_duplicate_records": 0,
+        "message": "发现 0 组重复数据，共 0 条记录"
+      },
+      "data_quality": {
+        "status": "pass",
+        "issues": [],
+        "message": "数据质量正常"
+      }
+    },
+    "alerts": [],
+    "alert_file": null
+  },
+  {
+    "timestamp": "2026-03-19T09:39:13.644369",
+    "status": "fail",
+    "checks": {
+      "data_freshness": {
+        "status": "pass",
+        "latest_date_in_db": "2026-03-18",
+        "expected_date": "2026-03-18",
+        "delay_days": 0,
+        "message": "数据最新日期: 2026-03-18, 期望日期: 2026-03-18, 延迟: 0天"
+      },
+      "stock_completeness": {
+        "status": "fail",
+        "actual_count": 4626,
+        "expected_count": 4663,
+        "total_stocks_in_db": 4663,
+        "missing_count": 37,
+        "message": "最新日期股票数量: 4626/4663, 缺失: 37",
+        "missing_stocks_sample": [
+          {
+            "code": "600001",
+            "name": "邯郸钢铁"
+          },
+          {
+            "code": "600002",
+            "name": "齐鲁石化"
+          },
+          {
+            "code": "600005",
+            "name": "武钢股份"
+          },
+          {
+            "code": "600068",
+            "name": "葛洲坝"
+          },
+          {
+            "code": "600102",
+            "name": "莱钢股份"
+          },
+          {
+            "code": "600205",
+            "name": "S山东铝"
+          },
+          {
+            "code": "600253",
+            "name": "天方药业"
+          },
+          {
+            "code": "600263",
+            "name": "路桥建设"
+          },
+          {
+            "code": "600270",
+            "name": "外运发展"
+          },
+          {
+            "code": "600296",
+            "name": "S兰铝"
+          },
+          {
+            "code": "600297",
+            "name": "广汇汽车"
+          },
+          {
+            "code": "600317",
+            "name": "营口港"
+          },
+          {
+            "code": "600321",
+            "name": "正源股份"
+          },
+          {
+            "code": "600357",
+            "name": "承德钒钛"
+          },
+          {
+            "code": "600472",
+            "name": "包头铝业"
+          },
+          {
+            "code": "600553",
+            "name": "太行水泥"
+          },
+          {
+            "code": "600607",
+            "name": "上实医药"
+          },
+          {
+            "code": "600625",
+            "name": "PT水仙"
+          },
+          {
+            "code": "600627",
+            "name": "上电股份"
+          },
+          {
+            "code": "600631",
+            "name": "百联股份"
+          }
+        ]
+      },
+      "duplicate_data": {
+        "status": "pass",
+        "duplicate_groups": 0,
+        "total_duplicate_records": 0,
+        "message": "发现 0 组重复数据，共 0 条记录"
+      },
+      "data_quality": {
+        "status": "warning",
+        "issues": [
+          {
+            "type": "extreme_price_change",
+            "count": 1757,
+            "message": "发现 1757 条涨跌幅超过20%的记录"
+          },
+          {
+            "type": "zero_volume",
+            "count": 2919,
+            "message": "发现 2919 条零成交量记录"
+          }
+        ],
+        "message": "发现 2 类数据质量问题"
+      }
+    },
+    "alerts": [
+      {
+        "severity": "warning",
+        "type": "incomplete_data",
+        "message": "股票数据不完整，缺失 37 只",
+        "details": {
+          "missing_count": 37,
+          "sample": [
+            {
+              "code": "600001",
+              "name": "邯郸钢铁"
+            },
+            {
+              "code": "600002",
+              "name": "齐鲁石化"
+            },
+            {
+              "code": "600005",
+              "name": "武钢股份"
+            },
+            {
+              "code": "600068",
+              "name": "葛洲坝"
+            },
+            {
+              "code": "600102",
+              "name": "莱钢股份"
+            },
+            {
+              "code": "600205",
+              "name": "S山东铝"
+            },
+            {
+              "code": "600253",
+              "name": "天方药业"
+            },
+            {
+              "code": "600263",
+              "name": "路桥建设"
+            },
+            {
+              "code": "600270",
+              "name": "外运发展"
+            },
+            {
+              "code": "600296",
+              "name": "S兰铝"
+            },
+            {
+              "code": "600297",
+              "name": "广汇汽车"
+            },
+            {
+              "code": "600317",
+              "name": "营口港"
+            },
+            {
+              "code": "600321",
+              "name": "正源股份"
+            },
+            {
+              "code": "600357",
+              "name": "承德钒钛"
+            },
+            {
+              "code": "600472",
+              "name": "包头铝业"
+            },
+            {
+              "code": "600553",
+              "name": "太行水泥"
+            },
+            {
+              "code": "600607",
+              "name": "上实医药"
+            },
+            {
+              "code": "600625",
+              "name": "PT水仙"
+            },
+            {
+              "code": "600627",
+              "name": "上电股份"
+            },
+            {
+              "code": "600631",
+              "name": "百联股份"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-03-19T09:39:40.415886",
+    "status": "fail",
+    "checks": {
+      "data_freshness": {
+        "status": "pass",
+        "latest_date_in_db": "2026-03-18",
+        "expected_date": "2026-03-18",
+        "delay_days": 0,
+        "message": "数据最新日期: 2026-03-18, 期望日期: 2026-03-18, 延迟: 0天"
+      },
+      "stock_completeness": {
+        "status": "fail",
+        "actual_count": 4626,
+        "expected_count": 4663,
+        "total_stocks_in_db": 4663,
+        "missing_count": 37,
+        "message": "最新日期股票数量: 4626/4663, 缺失: 37",
+        "missing_stocks_sample": [
+          {
+            "code": "600001",
+            "name": "邯郸钢铁"
+          },
+          {
+            "code": "600002",
+            "name": "齐鲁石化"
+          },
+          {
+            "code": "600005",
+            "name": "武钢股份"
+          },
+          {
+            "code": "600068",
+            "name": "葛洲坝"
+          },
+          {
+            "code": "600102",
+            "name": "莱钢股份"
+          },
+          {
+            "code": "600205",
+            "name": "S山东铝"
+          },
+          {
+            "code": "600253",
+            "name": "天方药业"
+          },
+          {
+            "code": "600263",
+            "name": "路桥建设"
+          },
+          {
+            "code": "600270",
+            "name": "外运发展"
+          },
+          {
+            "code": "600296",
+            "name": "S兰铝"
+          },
+          {
+            "code": "600297",
+            "name": "广汇汽车"
+          },
+          {
+            "code": "600317",
+            "name": "营口港"
+          },
+          {
+            "code": "600321",
+            "name": "正源股份"
+          },
+          {
+            "code": "600357",
+            "name": "承德钒钛"
+          },
+          {
+            "code": "600472",
+            "name": "包头铝业"
+          },
+          {
+            "code": "600553",
+            "name": "太行水泥"
+          },
+          {
+            "code": "600607",
+            "name": "上实医药"
+          },
+          {
+            "code": "600625",
+            "name": "PT水仙"
+          },
+          {
+            "code": "600627",
+            "name": "上电股份"
+          },
+          {
+            "code": "600631",
+            "name": "百联股份"
+          }
+        ]
+      },
+      "duplicate_data": {
+        "status": "pass",
+        "duplicate_groups": 0,
+        "total_duplicate_records": 0,
+        "message": "发现 0 组重复数据，共 0 条记录"
+      },
+      "data_quality": {
+        "status": "warning",
+        "issues": [
+          {
+            "type": "extreme_price_change",
+            "count": 1757,
+            "message": "发现 1757 条涨跌幅超过20%的记录"
+          },
+          {
+            "type": "zero_volume",
+            "count": 2919,
+            "message": "发现 2919 条零成交量记录"
+          }
+        ],
+        "message": "发现 2 类数据质量问题"
+      }
+    },
+    "alerts": [
+      {
+        "severity": "warning",
+        "type": "incomplete_data",
+        "message": "股票数据不完整，缺失 37 只",
+        "details": {
+          "missing_count": 37,
+          "sample": [
+            {
+              "code": "600001",
+              "name": "邯郸钢铁"
+            },
+            {
+              "code": "600002",
+              "name": "齐鲁石化"
+            },
+            {
+              "code": "600005",
+              "name": "武钢股份"
+            },
+            {
+              "code": "600068",
+              "name": "葛洲坝"
+            },
+            {
+              "code": "600102",
+              "name": "莱钢股份"
+            },
+            {
+              "code": "600205",
+              "name": "S山东铝"
+            },
+            {
+              "code": "600253",
+              "name": "天方药业"
+            },
+            {
+              "code": "600263",
+              "name": "路桥建设"
+            },
+            {
+              "code": "600270",
+              "name": "外运发展"
+            },
+            {
+              "code": "600296",
+              "name": "S兰铝"
+            },
+            {
+              "code": "600297",
+              "name": "广汇汽车"
+            },
+            {
+              "code": "600317",
+              "name": "营口港"
+            },
+            {
+              "code": "600321",
+              "name": "正源股份"
+            },
+            {
+              "code": "600357",
+              "name": "承德钒钛"
+            },
+            {
+              "code": "600472",
+              "name": "包头铝业"
+            },
+            {
+              "code": "600553",
+              "name": "太行水泥"
+            },
+            {
+              "code": "600607",
+              "name": "上实医药"
+            },
+            {
+              "code": "600625",
+              "name": "PT水仙"
+            },
+            {
+              "code": "600627",
+              "name": "上电股份"
+            },
+            {
+              "code": "600631",
+              "name": "百联股份"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-03-19T09:40:29.354279",
+    "status": "fail",
+    "checks": {
+      "data_freshness": {
+        "status": "pass",
+        "latest_date_in_db": "2026-03-18",
+        "expected_date": "2026-03-18",
+        "delay_days": 0,
+        "message": "数据最新日期: 2026-03-18, 期望日期: 2026-03-18, 延迟: 0天"
+      },
+      "stock_completeness": {
+        "status": "fail",
+        "actual_count": 4626,
+        "expected_count": 4663,
+        "total_stocks_in_db": 4663,
+        "missing_count": 37,
+        "message": "最新日期股票数量: 4626/4663, 缺失: 37",
+        "missing_stocks_sample": [
+          {
+            "code": "600001",
+            "name": "邯郸钢铁"
+          },
+          {
+            "code": "600002",
+            "name": "齐鲁石化"
+          },
+          {
+            "code": "600005",
+            "name": "武钢股份"
+          },
+          {
+            "code": "600068",
+            "name": "葛洲坝"
+          },
+          {
+            "code": "600102",
+            "name": "莱钢股份"
+          },
+          {
+            "code": "600205",
+            "name": "S山东铝"
+          },
+          {
+            "code": "600253",
+            "name": "天方药业"
+          },
+          {
+            "code": "600263",
+            "name": "路桥建设"
+          },
+          {
+            "code": "600270",
+            "name": "外运发展"
+          },
+          {
+            "code": "600296",
+            "name": "S兰铝"
+          },
+          {
+            "code": "600297",
+            "name": "广汇汽车"
+          },
+          {
+            "code": "600317",
+            "name": "营口港"
+          },
+          {
+            "code": "600321",
+            "name": "正源股份"
+          },
+          {
+            "code": "600357",
+            "name": "承德钒钛"
+          },
+          {
+            "code": "600472",
+            "name": "包头铝业"
+          },
+          {
+            "code": "600553",
+            "name": "太行水泥"
+          },
+          {
+            "code": "600607",
+            "name": "上实医药"
+          },
+          {
+            "code": "600625",
+            "name": "PT水仙"
+          },
+          {
+            "code": "600627",
+            "name": "上电股份"
+          },
+          {
+            "code": "600631",
+            "name": "百联股份"
+          }
+        ]
+      },
+      "duplicate_data": {
+        "status": "pass",
+        "duplicate_groups": 0,
+        "total_duplicate_records": 0,
+        "message": "发现 0 组重复数据，共 0 条记录"
+      },
+      "data_quality": {
+        "status": "warning",
+        "issues": [
+          {
+            "type": "extreme_price_change",
+            "count": 1757,
+            "message": "发现 1757 条涨跌幅超过20%的记录"
+          },
+          {
+            "type": "zero_volume",
+            "count": 2919,
+            "message": "发现 2919 条零成交量记录"
+          }
+        ],
+        "message": "发现 2 类数据质量问题"
+      }
+    },
+    "alerts": [
+      {
+        "severity": "warning",
+        "type": "incomplete_data",
+        "message": "股票数据不完整，缺失 37 只",
+        "details": {
+          "missing_count": 37,
+          "sample": [
+            {
+              "code": "600001",
+              "name": "邯郸钢铁"
+            },
+            {
+              "code": "600002",
+              "name": "齐鲁石化"
+            },
+            {
+              "code": "600005",
+              "name": "武钢股份"
+            },
+            {
+              "code": "600068",
+              "name": "葛洲坝"
+            },
+            {
+              "code": "600102",
+              "name": "莱钢股份"
+            },
+            {
+              "code": "600205",
+              "name": "S山东铝"
+            },
+            {
+              "code": "600253",
+              "name": "天方药业"
+            },
+            {
+              "code": "600263",
+              "name": "路桥建设"
+            },
+            {
+              "code": "600270",
+              "name": "外运发展"
+            },
+            {
+              "code": "600296",
+              "name": "S兰铝"
+            },
+            {
+              "code": "600297",
+              "name": "广汇汽车"
+            },
+            {
+              "code": "600317",
+              "name": "营口港"
+            },
+            {
+              "code": "600321",
+              "name": "正源股份"
+            },
+            {
+              "code": "600357",
+              "name": "承德钒钛"
+            },
+            {
+              "code": "600472",
+              "name": "包头铝业"
+            },
+            {
+              "code": "600553",
+              "name": "太行水泥"
+            },
+            {
+              "code": "600607",
+              "name": "上实医药"
+            },
+            {
+              "code": "600625",
+              "name": "PT水仙"
+            },
+            {
+              "code": "600627",
+              "name": "上电股份"
+            },
+            {
+              "code": "600631",
+              "name": "百联股份"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,358 @@
+#!/usr/bin/env python3
+"""
+Tushare 数据抓取框架 - Neo量化研究体系
+负责从 Tushare Pro 获取股票数据
+"""
+
+import os
+import sys
+import logging
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import List, Dict, Optional
+import pandas as pd
+import tushare as ts
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('/Users/mac/.openclaw/workspace-neo/logs/tushare.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+
+class TushareDataFetcher:
+    """Tushare 数据获取器"""
+    
+    def __init__(self, token: Optional[str] = None):
+        """
+        初始化 Tushare 连接
+        
+        Args:
+            token: Tushare Pro API Token，如果不提供则从环境变量读取
+        """
+        if token is None:
+            token = os.getenv('TUSHARE_TOKEN')
+        
+        if not token or token == 'your_token_here':
+            raise ValueError(
+                "请设置 TUSHARE_TOKEN！\n"
+                "1. 访问 https://tushare.pro 注册账号\n"
+                "2. 获取 API Token\n"
+                "3. 修改 config/.env 文件中的 TUSHARE_TOKEN"
+            )
+        
+        self.token = token
+        
+        # 清除可能的代理设置
+        import os
+        for key in ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy']:
+            if key in os.environ:
+                del os.environ[key]
+        
+        # 设置Tushare超时和重试
+        ts.set_token(token)
+        
+        # 使用pro_api的替代方式
+        try:
+            self.pro = ts.pro_api(token)
+        except:
+            # 如果失败，尝试使用旧版接口
+            self.pro = ts.pro_api()
+        
+        self.data_dir = Path(os.getenv('DATA_DIR', '/Users/mac/.openclaw/workspace-neo/data'))
+        self.data_dir.mkdir(parents=True, exist_ok=True)
+        
+        logger.info("Tushare 数据获取器初始化完成")
+    
+    def _test_connection(self):
+        """测试API连接"""
+        try:
+            # 尝试获取一个简单数据测试连接
+            df = self.pro.trade_cal(exchange='SSE', limit=1)
+            logger.info(f"API连接测试成功")
+        except Exception as e:
+            logger.warning(f"API连接测试警告: {e}")
+    
+    def _safe_api_call(self, func, max_retries=3, **kwargs):
+        """
+        安全的API调用，带重试机制
+        
+        Args:
+            func: API函数
+            max_retries: 最大重试次数
+            **kwargs: 函数参数
+        """
+        import time
+        
+        for attempt in range(max_retries):
+            try:
+                return func(**kwargs)
+            except Exception as e:
+                logger.warning(f"API调用失败 (尝试 {attempt + 1}/{max_retries}): {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)  # 指数退避
+                else:
+                    raise
+    
+    def get_stock_basic(self) -> pd.DataFrame:
+        """
+        获取股票基础信息
+        
+        Returns:
+            DataFrame 包含股票代码、名称、行业、市场等信息
+        """
+        try:
+            df = self.pro.stock_basic(
+                exchange='',
+                list_status='L',
+                fields='ts_code,symbol,name,area,industry,market,list_date'
+            )
+            logger.info(f"获取股票基础信息: {len(df)} 只股票")
+            return df
+        except Exception as e:
+            logger.error(f"获取股票基础信息失败: {e}")
+            raise
+    
+    def get_daily_data(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取日线行情数据
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)，默认为最新交易日
+            
+        Returns:
+            DataFrame 包含开盘价、收盘价、涨跌幅、成交量等
+        """
+        if trade_date is None:
+            trade_date = self.get_latest_trade_date()
+        
+        try:
+            df = self.pro.daily(trade_date=trade_date)
+            logger.info(f"获取 {trade_date} 日线数据: {len(df)} 条")
+            return df
+        except Exception as e:
+            logger.error(f"获取日线数据失败: {e}")
+            raise
+    
+    def get_daily_basic(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取每日指标（包含换手率、市盈率等）
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含换手率、市盈率、总市值等
+        """
+        if trade_date is None:
+            trade_date = self.get_latest_trade_date()
+        
+        try:
+            df = self.pro.daily_basic(trade_date=trade_date)
+            logger.info(f"获取 {trade_date} 每日指标: {len(df)} 条")
+            return df
+        except Exception as e:
+            logger.error(f"获取每日指标失败: {e}")
+            raise
+    
+    def get_limit_list(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取涨跌停股票列表
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含涨停/跌停股票信息
+        """
+        if trade_date is None:
+            trade_date = self.get_latest_trade_date()
+        
+        try:
+            df = self.pro.limit_list(trade_date=trade_date)
+            logger.info(f"获取 {trade_date} 涨跌停数据: {len(df)} 条")
+            return df
+        except Exception as e:
+            logger.error(f"获取涨跌停数据失败: {e}")
+            raise
+    
+    def get_moneyflow(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取个股资金流向
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含主力资金净流入等
+        """
+        if trade_date is None:
+            trade_date = self.get_latest_trade_date()
+        
+        try:
+            df = self.pro.moneyflow(trade_date=trade_date)
+            logger.info(f"获取 {trade_date} 资金流向: {len(df)} 条")
+            return df
+        except Exception as e:
+            logger.error(f"获取资金流向失败: {e}")
+            raise
+    
+    def get_top_list(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取龙虎榜数据
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含龙虎榜交易明细
+        """
+        if trade_date is None:
+            trade_date = self.get_latest_trade_date()
+        
+        try:
+            df = self.pro.top_list(trade_date=trade_date)
+            logger.info(f"获取 {trade_date} 龙虎榜: {len(df)} 条")
+            return df
+        except Exception as e:
+            logger.error(f"获取龙虎榜失败: {e}")
+            raise
+    
+    def get_trade_cal(self, start_date: str, end_date: str) -> pd.DataFrame:
+        """
+        获取交易日历
+        
+        Args:
+            start_date: 开始日期 (YYYYMMDD)
+            end_date: 结束日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含交易日信息
+        """
+        try:
+            df = self.pro.trade_cal(
+                exchange='SSE',
+                start_date=start_date,
+                end_date=end_date
+            )
+            return df
+        except Exception as e:
+            logger.error(f"获取交易日历失败: {e}")
+            raise
+    
+    def get_latest_trade_date(self) -> str:
+        """
+        获取最新交易日
+        
+        Returns:
+            最新交易日 (YYYYMMDD)
+        """
+        today = datetime.now().strftime('%Y%m%d')
+        try:
+            df = self.pro.trade_cal(
+                exchange='SSE',
+                start_date=(datetime.now() - timedelta(days=10)).strftime('%Y%m%d'),
+                end_date=today
+            )
+            # 获取最近一个交易日
+            trade_dates = df[df['is_open'] == 1]['cal_date'].tolist()
+            if trade_dates:
+                return trade_dates[-1]
+            return today
+        except Exception as e:
+            logger.error(f"获取最新交易日失败: {e}")
+            return today
+    
+    def save_data(self, df: pd.DataFrame, filename: str, subdir: str = ""):
+        """
+        保存数据到本地
+        
+        Args:
+            df: DataFrame 数据
+            filename: 文件名
+            subdir: 子目录
+        """
+        save_dir = self.data_dir / subdir
+        save_dir.mkdir(parents=True, exist_ok=True)
+        
+        filepath = save_dir / filename
+        
+        # 根据文件扩展名选择保存格式
+        if filepath.suffix == '.csv':
+            df.to_csv(filepath, index=False, encoding='utf-8-sig')
+        elif filepath.suffix == '.parquet':
+            df.to_parquet(filepath, index=False)
+        elif filepath.suffix == '.json':
+            df.to_json(filepath, orient='records', force_ascii=False)
+        else:
+            # 默认 CSV
+            filepath = filepath.with_suffix('.csv')
+            df.to_csv(filepath, index=False, encoding='utf-8-sig')
+        
+        logger.info(f"数据已保存: {filepath}")
+    
+    def load_data(self, filename: str, subdir: str = "") -> Optional[pd.DataFrame]:
+        """
+        从本地加载数据
+        
+        Args:
+            filename: 文件名
+            subdir: 子目录
+            
+        Returns:
+            DataFrame 或 None
+        """
+        filepath = self.data_dir / subdir / filename
+        
+        if not filepath.exists():
+            logger.warning(f"文件不存在: {filepath}")
+            return None
+        
+        try:
+            if filepath.suffix == '.csv':
+                return pd.read_csv(filepath)
+            elif filepath.suffix == '.parquet':
+                return pd.read_parquet(filepath)
+            elif filepath.suffix == '.json':
+                return pd.read_json(filepath)
+            else:
+                return pd.read_csv(filepath)
+        except Exception as e:
+            logger.error(f"加载数据失败: {e}")
+            return None
+
+
+def test_connection():
+    """测试 Tushare 连接"""
+    try:
+        fetcher = TushareDataFetcher()
+        
+        # 测试获取股票基础信息
+        df = fetcher.get_stock_basic()
+        print(f"\n✅ 连接成功！")
+        print(f"获取到 {len(df)} 只股票的基础信息")
+        print(f"\n前5只股票:")
+        print(df.head())
+        
+        # 测试获取最新交易日
+        latest_date = fetcher.get_latest_trade_date()
+        print(f"\n最新交易日: {latest_date}")
+        
+        return True
+    except Exception as e:
+        print(f"\n❌ 连接失败: {e}")
+        return False
+
+
+if __name__ == '__main__':
+    # 加载环境变量
+    from dotenv import load_dotenv
+    load_dotenv('/Users/mac/.openclaw/workspace-neo/config/.env')
+    
+    # 测试连接
+    test_connection()

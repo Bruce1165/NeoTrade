@@ -1,0 +1,340 @@
+#!/usr/bin/env python3
+"""
+涨停试盘线筛选器 - Zhang Ting Shi Pan Xian Screener (Refactored)
+
+策略逻辑：
+1. 低位横盘阶段，出现高量阳线（近期最大量）— 主力吸筹
+2. 随后出现涨停，成交量低于高量阳线 — 快速脱离成本区
+3. 回调过程中，股价在涨停板区间内波动
+4. 成交量逐步缩量到高量柱的1/4以下 — 抛压很轻
+5. 再次出现放量 — 买入信号
+
+新增功能：
+- 交易日历集成
+- 新闻抓取 + LLM分析
+- 进度跟踪
+- 新目录结构输出
+"""
+
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+import pandas as pd
+from datetime import datetime
+from typing import Optional, Dict, List
+import logging
+import argparse
+
+from base_screener import BaseScreener
+
+logger = logging.getLogger(__name__)
+
+
+class ShiPanXianScreener(BaseScreener):
+    """涨停试盘线筛选器"""
+    
+    def __init__(self,
+                 consolidation_days: int = 20,
+                 high_volume_lookback: int = 30,
+                 max_consolidation_gain: float = 0.10,
+                 volume_shrink_threshold: float = 0.25,
+                 callback_max_days: int = 10,
+                 breakout_volume_ratio: float = 1.5,
+                 db_path: str = "data/stock_data.db",
+                 enable_news: bool = True,
+                 enable_llm: bool = True,
+                 enable_progress: bool = True):
+        """
+        初始化筛选器
+        
+        Args:
+            consolidation_days: 低位横盘判断天数
+            high_volume_lookback: 高量阳线回看周期
+            max_consolidation_gain: 横盘期最大涨幅
+            volume_shrink_threshold: 缩量阈值
+            callback_max_days: 最大回调天数
+            breakout_volume_ratio: 再次放量倍数
+        """
+        super().__init__(
+            screener_name='shi_pan_xian',
+            db_path=db_path,
+            enable_news=enable_news,
+            enable_llm=enable_llm,
+            enable_progress=enable_progress
+        )
+        
+        self.consolidation_days = consolidation_days
+        self.high_volume_lookback = high_volume_lookback
+        self.max_consolidation_gain = max_consolidation_gain
+        self.volume_shrink_threshold = volume_shrink_threshold
+        self.callback_max_days = callback_max_days
+        self.breakout_volume_ratio = breakout_volume_ratio
+    
+    def is_low_consolidation(self, df: pd.DataFrame, high_volume_idx: int) -> bool:
+        """判断是否为低位横盘阶段"""
+        if high_volume_idx < self.consolidation_days:
+            return False
+        
+        consolidation_period = df.iloc[high_volume_idx - self.consolidation_days:high_volume_idx]
+        
+        if len(consolidation_period) < self.consolidation_days:
+            return False
+        
+        price_start = consolidation_period.iloc[0]['close']
+        price_end = consolidation_period.iloc[-1]['close']
+        
+        gain = (price_end - price_start) / price_start
+        
+        return abs(gain) <= self.max_consolidation_gain
+    
+    def find_high_volume_yang_line(self, df: pd.DataFrame) -> Optional[int]:
+        """寻找低位横盘后的高量阳线"""
+        if len(df) < self.high_volume_lookback + 10:
+            return None
+        
+        for i in range(len(df) - 5, self.consolidation_days, -1):
+            row = df.iloc[i]
+            
+            if row['close'] <= row['open']:
+                continue
+            
+            lookback_period = df.iloc[max(0, i - self.high_volume_lookback):i]
+            if len(lookback_period) == 0:
+                continue
+            
+            max_volume_in_period = lookback_period['volume'].max()
+            
+            if row['volume'] < max_volume_in_period * 0.95:
+                continue
+            
+            if not self.is_low_consolidation(df, i):
+                continue
+            
+            return i
+        
+        return None
+    
+    def check_limit_up_and_callback(self, df: pd.DataFrame, high_volume_idx: int) -> Optional[Dict]:
+        """检查随后的涨停和回调阶段"""
+        if high_volume_idx >= len(df) - 3:
+            return None
+        
+        high_volume_row = df.iloc[high_volume_idx]
+        high_volume_price = high_volume_row['close']
+        high_volume = high_volume_row['volume']
+        
+        limit_up_idx = None
+        for i in range(high_volume_idx + 1, min(high_volume_idx + 6, len(df))):
+            row = df.iloc[i]
+            prev_close = df.iloc[i-1]['close']
+            
+            if self.is_limit_up(row, prev_close):
+                if row['volume'] < high_volume:
+                    limit_up_idx = i
+                    break
+        
+        if limit_up_idx is None:
+            return None
+        
+        limit_up_row = df.iloc[limit_up_idx]
+        limit_up_high = limit_up_row['high']
+        limit_up_low = limit_up_row['low']
+        
+        callback_start = limit_up_idx + 1
+        shrink_volume_found = False
+        shrink_volume_idx = None
+        min_volume_during_callback = float('inf')
+        
+        for i in range(callback_start, min(callback_start + self.callback_max_days, len(df))):
+            day_row = df.iloc[i]
+            
+            if day_row['low'] < limit_up_low or day_row['high'] > limit_up_high:
+                break
+            
+            if day_row['volume'] < min_volume_during_callback:
+                min_volume_during_callback = day_row['volume']
+            
+            if day_row['volume'] < high_volume * self.volume_shrink_threshold:
+                shrink_volume_found = True
+                shrink_volume_idx = i
+            
+            if shrink_volume_found and i > shrink_volume_idx:
+                shrink_period = df.iloc[shrink_volume_idx:i]
+                if len(shrink_period) > 0:
+                    avg_shrink_volume = shrink_period['volume'].mean()
+                    
+                    if day_row['volume'] > avg_shrink_volume * self.breakout_volume_ratio:
+                        return {
+                            'high_volume_date': high_volume_row['trade_date'].strftime('%Y-%m-%d'),
+                            'high_volume_price': high_volume_price,
+                            'high_volume': high_volume,
+                            'limit_up_date': limit_up_row['trade_date'].strftime('%Y-%m-%d'),
+                            'limit_up_price': limit_up_row['close'],
+                            'limit_up_high': limit_up_high,
+                            'limit_up_low': limit_up_low,
+                            'limit_up_volume': limit_up_row['volume'],
+                            'callback_days': i - limit_up_idx,
+                            'shrink_volume_found': True,
+                            'shrink_volume_idx': shrink_volume_idx,
+                            'min_volume_during_callback': min_volume_during_callback,
+                            'breakout_date': day_row['trade_date'].strftime('%Y-%m-%d'),
+                            'breakout_price': day_row['close'],
+                            'breakout_volume': day_row['volume'],
+                            'volume_shrink_ratio': min_volume_during_callback / high_volume
+                        }
+        
+        if shrink_volume_found:
+            return {
+                'high_volume_date': high_volume_row['trade_date'].strftime('%Y-%m-%d'),
+                'high_volume_price': high_volume_price,
+                'high_volume': high_volume,
+                'limit_up_date': limit_up_row['trade_date'].strftime('%Y-%m-%d'),
+                'limit_up_price': limit_up_row['close'],
+                'limit_up_high': limit_up_high,
+                'limit_up_low': limit_up_low,
+                'limit_up_volume': limit_up_row['volume'],
+                'callback_days': len(df) - limit_up_idx - 1,
+                'shrink_volume_found': True,
+                'shrink_volume_idx': shrink_volume_idx,
+                'min_volume_during_callback': min_volume_during_callback,
+                'breakout_date': None,
+                'breakout_price': None,
+                'breakout_volume': None,
+                'volume_shrink_ratio': min_volume_during_callback / high_volume
+            }
+        
+        return None
+    
+    def screen_stock(self, code: str, name: str) -> Optional[Dict]:
+        """筛选单只股票"""
+        df = self.get_stock_data(code, days=150)
+        if df is None or len(df) < 50:
+            return None
+        
+        df['code'] = code
+        
+        high_volume_idx = self.find_high_volume_yang_line(df)
+        if high_volume_idx is None:
+            return None
+        
+        result = self.check_limit_up_and_callback(df, high_volume_idx)
+        if result is None:
+            return None
+        
+        latest = df.iloc[-1]
+        
+        return {
+            'code': code,
+            'name': name,
+            'high_volume_date': result['high_volume_date'],
+            'high_volume_price': round(result['high_volume_price'], 2),
+            'high_volume': int(result['high_volume']),
+            'limit_up_date': result['limit_up_date'],
+            'limit_up_price': round(result['limit_up_price'], 2),
+            'limit_up_high': round(result['limit_up_high'], 2),
+            'limit_up_low': round(result['limit_up_low'], 2),
+            'limit_up_volume': int(result['limit_up_volume']),
+            'callback_days': result['callback_days'],
+            'shrink_volume_found': result['shrink_volume_found'],
+            'min_volume_during_callback': int(result['min_volume_during_callback']),
+            'volume_shrink_ratio': round(result['volume_shrink_ratio'], 4),
+            'breakout_date': result['breakout_date'],
+            'breakout_price': round(result['breakout_price'], 2) if result['breakout_price'] else None,
+            'breakout_volume': int(result['breakout_volume']) if result['breakout_volume'] else None,
+            'close': round(latest['close'], 2),
+            'current_price': round(latest['close'], 2),
+            'current_change': round(latest.get('pct_change', 0) or 0, 2),
+            'days_since_limit_up': len(df) - 1 - high_volume_idx
+        }
+    
+    def save_results(self, results: List[Dict], 
+                     analysis_data: Optional[Dict[str, Dict]] = None) -> str:
+        """保存结果"""
+        column_mapping = {
+            'code': '股票代码',
+            'name': '股票名称',
+            'current_price': '当前价格',
+            'current_change': '当前涨幅%',
+            'high_volume_date': '高量日期',
+            'high_volume_price': '高量收盘价',
+            'high_volume': '高量成交量',
+            'limit_up_date': '涨停日期',
+            'limit_up_price': '涨停收盘价',
+            'limit_up_high': '涨停最高价',
+            'limit_up_low': '涨停最低价',
+            'limit_up_volume': '涨停成交量',
+            'callback_days': '回调天数',
+            'shrink_volume_found': '是否缩量',
+            'min_volume_during_callback': '回调期最小量',
+            'volume_shrink_ratio': '缩量比例',
+            'breakout_date': '突破日期',
+            'breakout_price': '突破价格',
+            'breakout_volume': '突破成交量',
+            'days_since_limit_up': '距高量天数'
+        }
+        
+        return super().save_results(results, analysis_data, column_mapping=column_mapping)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='涨停试盘线筛选器')
+    parser.add_argument('--date', type=str, help='目标日期 (YYYY-MM-DD)')
+    parser.add_argument('--consolidation-days', type=int, default=20, help='低位横盘判断天数')
+    parser.add_argument('--high-volume-lookback', type=int, default=30, help='高量阳线回看周期')
+    parser.add_argument('--max-consolidation-gain', type=float, default=0.10, help='横盘期最大涨幅')
+    parser.add_argument('--shrink-threshold', type=float, default=0.25, help='缩量阈值')
+    parser.add_argument('--callback-max-days', type=int, default=10, help='最大回调天数')
+    parser.add_argument('--breakout-ratio', type=float, default=1.5, help='再次放量倍数')
+    parser.add_argument('--no-news', action='store_true', help='禁用新闻抓取')
+    parser.add_argument('--no-llm', action='store_true', help='禁用LLM分析')
+    parser.add_argument('--no-progress', action='store_true', help='禁用进度跟踪')
+    parser.add_argument('--restart', action='store_true', help='强制重新开始')
+    parser.add_argument('--db-path', type=str, default='data/stock_data.db', help='数据库路径')
+    
+    args = parser.parse_args()
+    
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+    
+    screener = ShiPanXianScreener(
+        consolidation_days=args.consolidation_days,
+        high_volume_lookback=args.high_volume_lookback,
+        max_consolidation_gain=args.max_consolidation_gain,
+        volume_shrink_threshold=args.shrink_threshold,
+        callback_max_days=args.callback_max_days,
+        breakout_volume_ratio=args.breakout_ratio,
+        db_path=args.db_path,
+        enable_news=not args.no_news,
+        enable_llm=not args.no_llm,
+        enable_progress=not args.no_progress
+    )
+    
+    results, analysis_data = screener.run_screening(
+        date_str=args.date,
+        force_restart=args.restart,
+        enable_analysis=not args.no_llm
+    )
+    
+    if results:
+        output_path = screener.save_results(results, analysis_data)
+        print(f"\n结果已保存至: {output_path}")
+        
+        print("\n" + "="*80)
+        print("筛选结果:")
+        print("="*80)
+        for r in results:
+            analysis = analysis_data.get(r['code'], {})
+            industry = analysis.get('行业分类', 'N/A')
+            shrink_status = f"缩量至{r['volume_shrink_ratio']:.1%}" if r['shrink_volume_found'] else "未缩量"
+            breakout_status = f"突破于{r['breakout_date']}@{r['breakout_price']:.2f}" if r['breakout_date'] else "未突破"
+            print(f"{r['code']} {r['name']} [{industry}]: 高量{r['high_volume_date']}, "
+                  f"涨停{r['limit_up_date']}, 回调{r['callback_days']}天, "
+                  f"{shrink_status}, {breakout_status}")
+    else:
+        print("\n没有找到符合条件的股票")
+
+
+if __name__ == '__main__':
+    main()

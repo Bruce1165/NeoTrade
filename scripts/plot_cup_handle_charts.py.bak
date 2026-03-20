@@ -1,0 +1,267 @@
+#!/usr/bin/env python3
+"""
+Cup Handle Pattern Chart Generator
+画出12month-cuphold筛选出的股票的杯柄形态K线图
+"""
+
+import sqlite3
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from datetime import datetime, timedelta
+import numpy as np
+from matplotlib.patches import Rectangle
+import os
+import matplotlib.font_manager as fm
+
+# 设置中文字体
+plt.rcParams['font.sans-serif'] = ['PingFang SC', 'SimHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+OUTPUT_DIR = "/Users/mac/.openclaw/workspace-neo/data/charts"
+
+# 10只筛选出的股票 (从Excel读取)
+def get_stocks_from_excel():
+    """从Excel文件读取筛选结果"""
+    excel_path = f"/Users/mac/.openclaw/workspace-neo/data/12month_cuphold_{TARGET_DATE}.xlsx"
+    if os.path.exists(excel_path):
+        df = pd.read_excel(excel_path)
+        stocks = []
+        for _, row in df.iterrows():
+            stocks.append({
+                'code': str(row['股票代码']),
+                'name': row['股票名称'],
+                'cup_handle_date': str(row['杯柄日期'])[:10],
+                'volume_multiple': row['放量倍数']
+            })
+        return stocks
+    else:
+        # 默认数据
+        return [
+            {'code': '603105', 'name': '芯能科技', 'cup_handle_date': '2025-11-20', 'volume_multiple': 1.93},
+            {'code': '601669', 'name': '中国电建', 'cup_handle_date': '2025-11-10', 'volume_multiple': 1.90},
+            {'code': '600509', 'name': '天富能源', 'cup_handle_date': '2025-12-15', 'volume_multiple': 1.78},
+            {'code': '603039', 'name': '泛微网络', 'cup_handle_date': '2025-12-26', 'volume_multiple': 1.75},
+            {'code': '603063', 'name': '禾望电气', 'cup_handle_date': '2025-12-26', 'volume_multiple': 1.71},
+            {'code': '603757', 'name': '大元泵业', 'cup_handle_date': '2025-12-26', 'volume_multiple': 1.66},
+            {'code': '603312', 'name': '西典新能', 'cup_handle_date': '2025-12-26', 'volume_multiple': 1.63},
+            {'code': '600328', 'name': '中盐化工', 'cup_handle_date': '2025-11-20', 'volume_multiple': 1.61},
+            {'code': '600844', 'name': '金煤科技', 'cup_handle_date': '2025-12-09', 'volume_multiple': 1.55},
+            {'code': '600163', 'name': '中闽能源', 'cup_handle_date': '2025-12-15', 'volume_multiple': 1.52},
+        ]
+
+def get_stock_data(conn, code, start_date, end_date):
+    """获取股票日线数据"""
+    query = """
+    SELECT trade_date, open, high, low, close, volume, amount
+    FROM daily_prices
+    WHERE code = ? AND trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(code, start_date, end_date))
+    df['trade_date'] = pd.to_datetime(df['trade_date'])
+    return df
+
+def plot_candlestick(ax, df, title, cup_handle_date, target_date):
+    """绘制K线图（去除节假日空档，添加杯柄形态参考线）"""
+    
+    # 转换日期
+    cup_handle_dt = pd.to_datetime(cup_handle_date)
+    target_dt = pd.to_datetime(target_date)
+    
+    # 找到两个高点
+    cup_handle_row = df[df['trade_date'] == cup_handle_dt]
+    target_row = df[df['trade_date'] == target_dt]
+    
+    if cup_handle_row.empty or target_row.empty:
+        ax.text(0.5, 0.5, '数据不足', ha='center', va='center', transform=ax.transAxes)
+        ax.set_title(title)
+        return
+    
+    cup_handle_high = cup_handle_row['high'].values[0]
+    target_high = target_row['high'].values[0]
+    
+    # 重置索引，用连续的数字作为X轴（去除节假日空档）
+    df = df.reset_index(drop=True)
+    df['x_pos'] = df.index  # 连续的X轴位置
+    
+    # 找到两个高点对应的X位置
+    cup_handle_idx = df[df['trade_date'] == cup_handle_dt]['x_pos'].values[0]
+    target_idx = df[df['trade_date'] == target_dt]['x_pos'].values[0]
+    
+    # 找到杯底（两个高点之间的最低点）
+    between_df = df[(df['x_pos'] >= min(cup_handle_idx, target_idx)) & 
+                    (df['x_pos'] <= max(cup_handle_idx, target_idx))]
+    if not between_df.empty:
+        cup_bottom_row = between_df.loc[between_df['low'].idxmin()]
+        cup_bottom_price = cup_bottom_row['low']
+        cup_bottom_idx = cup_bottom_row['x_pos']
+    else:
+        cup_bottom_price = df['low'].min()
+        cup_bottom_idx = df.loc[df['low'].idxmin(), 'x_pos']
+    
+    # 绘制K线
+    width = 0.6
+    
+    for idx, row in df.iterrows():
+        x = row['x_pos']
+        open_p = row['open']
+        high = row['high']
+        low = row['low']
+        close = row['close']
+        
+        color = 'red' if close >= open_p else 'green'
+        
+        # 实体
+        height = abs(close - open_p)
+        bottom = min(open_p, close)
+        rect = Rectangle((x - width/2, bottom), width, height, 
+                         facecolor=color, edgecolor=color, alpha=0.8)
+        ax.add_patch(rect)
+        
+        # 影线
+        ax.plot([x, x], [low, high], color=color, linewidth=0.8)
+    
+    # 标记两个高点
+    ax.scatter([cup_handle_idx], [cup_handle_high], 
+              color='blue', s=100, marker='^', zorder=5)
+    ax.scatter([target_idx], [target_high], 
+              color='orange', s=100, marker='^', zorder=5)
+    
+    # 画水平参考线 - 两个杯沿高点
+    avg_high = (cup_handle_high + target_high) / 2
+    ax.axhline(y=cup_handle_high, color='blue', linestyle='--', alpha=0.7, linewidth=1)
+    ax.axhline(y=target_high, color='orange', linestyle='--', alpha=0.7, linewidth=1)
+    ax.axhline(y=avg_high, color='purple', linestyle='-', alpha=0.5, linewidth=1.5, label=f'杯沿均价: {avg_high:.2f}')
+    
+    # 画杯底参考线
+    ax.axhline(y=cup_bottom_price, color='green', linestyle=':', alpha=0.7, linewidth=1.5)
+    ax.scatter([cup_bottom_idx], [cup_bottom_price], 
+              color='green', s=80, marker='v', zorder=5)
+    
+    # 计算并显示杯深
+    cup_depth = (avg_high - cup_bottom_price) / avg_high * 100
+    ax.text(0.02, 0.15, f'杯深: {cup_depth:.1f}%', transform=ax.transAxes, 
+           fontsize=8, color='green', fontweight='bold',
+           bbox=dict(boxstyle='round', facecolor='white', alpha=0.8))
+    
+    # 标记杯柄区域（两个高点之间）
+    ax.axvspan(min(cup_handle_idx, target_idx), max(cup_handle_idx, target_idx), 
+              alpha=0.05, color='gray', label='杯柄区间')
+    
+    # 设置X轴标签（显示部分日期的月份-日期）
+    tick_positions = []
+    tick_labels = []
+    for i in range(0, len(df), max(1, len(df)//6)):  # 大约显示6-8个标签
+        tick_positions.append(i)
+        tick_labels.append(df.iloc[i]['trade_date'].strftime('%m-%d'))
+    
+    ax.set_xticks(tick_positions)
+    ax.set_xticklabels(tick_labels, rotation=45, ha='right')
+    
+    # 设置标题和格式
+    ax.set_title(title, fontsize=10)
+    
+    # 设置Y轴范围
+    price_min = min(df['low'].min(), cup_bottom_price) * 0.97
+    price_max = max(df['high'].max(), cup_handle_high, target_high) * 1.03
+    ax.set_ylim(price_min, price_max)
+    ax.set_xlim(-1, len(df))
+    
+    # 简化图例
+    ax.legend(loc='upper left', fontsize=7)
+    ax.grid(True, alpha=0.3)
+
+def plot_volume(ax, df, cup_handle_date, target_date):
+    """绘制成交量图（去除节假日空档）"""
+    
+    cup_handle_dt = pd.to_datetime(cup_handle_date)
+    target_dt = pd.to_datetime(target_date)
+    
+    # 重置索引，用连续的数字作为X轴
+    df = df.reset_index(drop=True)
+    df['x_pos'] = df.index
+    
+    # 找到两个高点对应的X位置
+    cup_handle_idx = df[df['trade_date'] == cup_handle_dt]['x_pos'].values[0] if not df[df['trade_date'] == cup_handle_dt].empty else None
+    target_idx = df[df['trade_date'] == target_dt]['x_pos'].values[0] if not df[df['trade_date'] == target_dt].empty else None
+    
+    colors = ['red' if row['close'] >= row['open'] else 'green' for _, row in df.iterrows()]
+    
+    ax.bar(df['x_pos'], df['volume']/10000, color=colors, alpha=0.7, width=0.8)
+    
+    # 标记两个高点对应的成交量
+    if cup_handle_idx is not None:
+        ax.scatter([cup_handle_idx], [df.iloc[cup_handle_idx]['volume']/10000], 
+                  color='blue', s=50, marker='^', zorder=5)
+    if target_idx is not None:
+        ax.scatter([target_idx], [df.iloc[target_idx]['volume']/10000], 
+                  color='orange', s=50, marker='^', zorder=5)
+    
+    ax.set_ylabel('成交量(万股)', fontsize=8)
+    
+    # 设置X轴标签（与价格图一致）
+    tick_positions = []
+    tick_labels = []
+    for i in range(0, len(df), max(1, len(df)//6)):
+        tick_positions.append(i)
+        tick_labels.append(df.iloc[i]['trade_date'].strftime('%m-%d'))
+    
+    ax.set_xticks(tick_positions)
+    ax.set_xticklabels(tick_labels, rotation=45, ha='right')
+    ax.set_xlim(-1, len(df))
+    ax.grid(True, alpha=0.3)
+
+def create_charts():
+    """创建所有股票的图表"""
+    
+    conn = sqlite3.connect(DB_PATH)
+    
+    # 从Excel读取股票列表
+    STOCKS = get_stocks_from_excel()
+    
+    # 创建大图 (5行2列)
+    fig = plt.figure(figsize=(20, 24))
+    
+    for idx, stock in enumerate(STOCKS):
+        code = stock['code']
+        name = stock['name']
+        cup_handle_date = stock['cup_handle_date']
+        volume_multiple = stock['volume_multiple']
+        
+        # 获取数据（从杯柄日期到昨日）
+        df = get_stock_data(conn, code, cup_handle_date, TARGET_DATE)
+        
+        if df.empty:
+            continue
+        
+        # 创建子图位置 (价格图在上，成交量在下)
+        row = idx // 2
+        col = idx % 2
+        
+        # 价格图
+        ax_price = plt.subplot2grid((10, 2), (row*2, col))
+        title = f"{code} {name} 放量{volume_multiple}x"
+        plot_candlestick(ax_price, df, title, cup_handle_date, TARGET_DATE)
+        
+        # 成交量图
+        ax_vol = plt.subplot2grid((10, 2), (row*2+1, col), sharex=ax_price)
+        plot_volume(ax_vol, df, cup_handle_date, TARGET_DATE)
+    
+    conn.close()
+    
+    # 调整布局
+    plt.tight_layout()
+    plt.subplots_adjust(hspace=0.4)
+    
+    # 保存
+    output_path = os.path.join(OUTPUT_DIR, f"cup_handle_charts_{TARGET_DATE}.png")
+    plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
+    print(f"图表已保存至: {output_path}")
+    
+    plt.close()
+
+if __name__ == "__main__":
+    create_charts()

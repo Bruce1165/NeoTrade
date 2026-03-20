@@ -1,0 +1,191 @@
+{
+  "date": "2026-03-19",
+  "timestamp": "2026-03-19T10:46:30.654941",
+  "summary": {
+    "total": 11,
+    "passed": 10,
+    "failed": 0,
+    "warning": 1,
+    "not_run": 0,
+    "success_rate": 90.9,
+    "total_errors": 0
+  },
+  "screeners": [
+    {
+      "name": "咖啡杯形态",
+      "screener_id": "coffee_cup_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:45:01.084902",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "涨停金凤凰",
+      "screener_id": "jin_feng_huang_screener",
+      "status": "warning",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": false,
+      "errors": [],
+      "warnings": [
+        "输出目录存在但无近期文件: /Users/mac/.openclaw/workspace-neo/data/screeners/jin_feng_huang"
+      ],
+      "last_run_time": null,
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "涨停银凤凰",
+      "screener_id": "yin_feng_huang_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:42:21.175712",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "涨停试盘线",
+      "screener_id": "shi_pan_xian_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:27:33.539204",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "二板回调",
+      "screener_id": "er_ban_hui_tiao_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:24:14.307884",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "涨停倍量阴",
+      "screener_id": "zhang_ting_bei_liang_yin_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:25:05.755605",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "20日突破",
+      "screener_id": "breakout_20day_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:24:21.874568",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "主升突破",
+      "screener_id": "breakout_main_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:24:55.516667",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "每日热冷股",
+      "screener_id": "daily_hot_cold_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:42:48.306470",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "双收板",
+      "screener_id": "shuang_shou_ban_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:27:50.935850",
+      "execution_time": null,
+      "matches_count": null
+    },
+    {
+      "name": "A股21选股",
+      "screener_id": "ashare_21_screener",
+      "status": "passed",
+      "script_exists": true,
+      "script_executable": true,
+      "output_exists": true,
+      "output_valid": true,
+      "errors": [],
+      "warnings": [],
+      "last_run_time": "2026-03-19T10:42:50.116434",
+      "execution_time": null,
+      "matches_count": null
+    }
+  ],
+  "alerts": [
+    {
+      "severity": "warning",
+      "type": "screener_warnings",
+      "message": "1个筛选器有警告",
+      "timestamp": "2026-03-19T10:46:30.654939",
+      "details": {
+        "count": 1,
+        "screeners": [
+          {
+            "id": "jin_feng_huang_screener",
+            "name": "涨停金凤凰",
+            "warnings": [
+              "输出目录存在但无近期文件: /Users/mac/.openclaw/workspace-neo/data/screeners/jin_feng_huang"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

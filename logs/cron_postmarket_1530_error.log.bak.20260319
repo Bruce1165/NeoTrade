@@ -1,0 +1,163 @@
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-11 15:30:04,867 - akshare_fetcher - INFO - AKShare 数据获取器初始化完成
+2026-03-11 15:30:04,867 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-11 15:30:04,867 - __main__ - INFO - ============================================================
+2026-03-11 15:30:04,867 - __main__ - INFO - 开始执行盘后深度复盘: 20260311
+2026-03-11 15:30:04,867 - __main__ - INFO - ============================================================
+2026-03-11 15:30:04,867 - __main__ - INFO - [1/5] 情绪周期分析...
+2026-03-11 15:30:04,867 - emotion_analyzer - INFO - 计算 20260311 情绪四要素...
+2026-03-11 15:30:05,098 - akshare_fetcher - INFO - 获取涨停数据: 53 只涨停股
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:00<00:50,  1.13it/s]  3%|▎         | 2/58 [00:02<01:09,  1.24s/it]  5%|▌         | 3/58 [00:03<01:08,  1.25s/it]  7%|▋         | 4/58 [00:05<01:10,  1.31s/it]  9%|▊         | 5/58 [00:06<01:08,  1.29s/it] 10%|█         | 6/58 [00:07<01:09,  1.34s/it] 12%|█▏        | 7/58 [00:08<01:01,  1.20s/it] 14%|█▍        | 8/58 [00:09<00:56,  1.12s/it] 16%|█▌        | 9/58 [00:11<01:02,  1.27s/it] 17%|█▋        | 10/58 [00:12<01:03,  1.33s/it] 19%|█▉        | 11/58 [00:13<01:00,  1.28s/it] 21%|██        | 12/58 [00:15<01:02,  1.36s/it] 22%|██▏       | 13/58 [00:16<00:58,  1.29s/it] 24%|██▍       | 14/58 [00:17<00:57,  1.30s/it] 26%|██▌       | 15/58 [00:19<00:55,  1.30s/it] 28%|██▊       | 16/58 [00:20<00:53,  1.28s/it] 29%|██▉       | 17/58 [00:21<00:46,  1.13s/it] 31%|███       | 18/58 [00:22<00:47,  1.19s/it] 33%|███▎      | 19/58 [00:23<00:40,  1.05s/it] 34%|███▍      | 20/58 [00:24<00:40,  1.06s/it] 36%|███▌      | 21/58 [00:25<00:37,  1.01s/it] 38%|███▊      | 22/58 [00:26<00:41,  1.15s/it] 40%|███▉      | 23/58 [00:27<00:36,  1.05s/it] 41%|████▏     | 24/58 [00:28<00:33,  1.02it/s] 43%|████▎     | 25/58 [00:29<00:33,  1.01s/it] 45%|████▍     | 26/58 [00:30<00:29,  1.08it/s] 47%|████▋     | 27/58 [00:31<00:30,  1.02it/s] 48%|████▊     | 28/58 [00:32<00:29,  1.00it/s] 50%|█████     | 29/58 [00:33<00:32,  1.13s/it] 52%|█████▏    | 30/58 [00:34<00:31,  1.12s/it] 53%|█████▎    | 31/58 [00:35<00:27,  1.01s/it] 55%|█████▌    | 32/58 [00:36<00:24,  1.06it/s] 57%|█████▋    | 33/58 [00:37<00:28,  1.13s/it] 59%|█████▊    | 34/58 [00:39<00:27,  1.16s/it] 60%|██████    | 35/58 [00:40<00:29,  1.27s/it] 62%|██████▏   | 36/58 [00:42<00:29,  1.32s/it] 64%|██████▍   | 37/58 [00:43<00:26,  1.24s/it] 66%|██████▌   | 38/58 [00:44<00:25,  1.30s/it] 67%|██████▋   | 39/58 [00:45<00:24,  1.28s/it] 69%|██████▉   | 40/58 [00:47<00:24,  1.34s/it] 71%|███████   | 41/58 [00:48<00:19,  1.16s/it] 72%|███████▏  | 42/58 [00:48<00:17,  1.10s/it] 74%|███████▍  | 43/58 [00:50<00:16,  1.09s/it] 76%|███████▌  | 44/58 [00:50<00:14,  1.02s/it] 78%|███████▊  | 45/58 [00:52<00:14,  1.15s/it] 79%|███████▉  | 46/58 [00:53<00:14,  1.18s/it] 81%|████████  | 47/58 [00:54<00:12,  1.10s/it] 83%|████████▎ | 48/58 [00:55<00:11,  1.17s/it] 84%|████████▍ | 49/58 [00:56<00:10,  1.14s/it] 86%|████████▌ | 50/58 [00:58<00:09,  1.23s/it] 88%|████████▊ | 51/58 [00:59<00:07,  1.09s/it] 90%|████████▉ | 52/58 [01:00<00:07,  1.21s/it] 91%|█████████▏| 53/58 [01:02<00:06,  1.36s/it] 93%|█████████▎| 54/58 [01:03<00:05,  1.36s/it] 95%|█████████▍| 55/58 [01:05<00:04,  1.37s/it] 97%|█████████▋| 56/58 [01:06<00:02,  1.43s/it] 98%|█████████▊| 57/58 [01:07<00:01,  1.39s/it]100%|██████████| 58/58 [01:09<00:00,  1.35s/it]                                               2026-03-11 15:31:14,627 - akshare_fetcher - INFO - 获取日线数据: 5816 只股票
+2026-03-11 15:31:14,628 - emotion_analyzer - INFO - 情绪四要素: 涨停=53, 溢价=11.12%, 连板=10, 高度=4
+2026-03-11 15:31:14,628 - __main__ - INFO - [2/5] 涨幅分布分析...
+2026-03-11 15:31:14,628 - sector_analyzer - INFO - 分析 20260311 领涨板块...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:01<01:12,  1.28s/it]  3%|▎         | 2/58 [00:02<01:01,  1.09s/it]  5%|▌         | 3/58 [00:03<01:08,  1.25s/it]  7%|▋         | 4/58 [00:04<01:02,  1.15s/it]  9%|▊         | 5/58 [00:06<01:06,  1.26s/it] 10%|█         | 6/58 [00:06<00:57,  1.11s/it] 12%|█▏        | 7/58 [00:07<00:54,  1.07s/it] 14%|█▍        | 8/58 [00:08<00:52,  1.06s/it] 16%|█▌        | 9/58 [00:10<00:59,  1.22s/it] 17%|█▋        | 10/58 [00:11<01:00,  1.27s/it] 19%|█▉        | 11/58 [00:13<00:58,  1.25s/it] 21%|██        | 12/58 [00:14<01:00,  1.33s/it] 22%|██▏       | 13/58 [00:16<01:02,  1.38s/it] 24%|██▍       | 14/58 [00:17<00:59,  1.35s/it] 26%|██▌       | 15/58 [00:18<00:54,  1.28s/it] 28%|██▊       | 16/58 [00:19<00:51,  1.23s/it] 29%|██▉       | 17/58 [00:21<00:53,  1.32s/it] 31%|███       | 18/58 [00:22<00:47,  1.18s/it] 33%|███▎      | 19/58 [00:22<00:43,  1.12s/it] 34%|███▍      | 20/58 [00:24<00:48,  1.28s/it] 36%|███▌      | 21/58 [00:26<00:52,  1.41s/it] 38%|███▊      | 22/58 [00:27<00:52,  1.45s/it] 40%|███▉      | 23/58 [00:29<00:50,  1.45s/it] 41%|████▏     | 24/58 [00:30<00:48,  1.42s/it] 43%|████▎     | 25/58 [00:32<00:45,  1.38s/it] 45%|████▍     | 26/58 [00:33<00:44,  1.40s/it] 47%|████▋     | 27/58 [00:34<00:43,  1.40s/it] 48%|████▊     | 28/58 [00:35<00:38,  1.28s/it] 50%|█████     | 29/58 [00:37<00:36,  1.27s/it] 52%|█████▏    | 30/58 [00:38<00:35,  1.27s/it] 53%|█████▎    | 31/58 [00:39<00:33,  1.22s/it] 55%|█████▌    | 32/58 [00:41<00:34,  1.34s/it] 57%|█████▋    | 33/58 [00:42<00:35,  1.41s/it] 59%|█████▊    | 34/58 [00:44<00:35,  1.47s/it] 60%|██████    | 35/58 [00:45<00:30,  1.34s/it] 62%|██████▏   | 36/58 [00:46<00:26,  1.20s/it] 64%|██████▍   | 37/58 [00:47<00:26,  1.25s/it] 66%|██████▌   | 38/58 [00:48<00:22,  1.11s/it] 67%|██████▋   | 39/58 [00:50<00:24,  1.28s/it] 69%|██████▉   | 40/58 [00:51<00:23,  1.32s/it] 71%|███████   | 41/58 [00:53<00:24,  1.43s/it] 72%|███████▏  | 42/58 [00:54<00:20,  1.31s/it] 74%|███████▍  | 43/58 [00:55<00:20,  1.38s/it] 76%|███████▌  | 44/58 [00:56<00:18,  1.29s/it] 78%|███████▊  | 45/58 [00:57<00:15,  1.17s/it] 79%|███████▉  | 46/58 [00:59<00:15,  1.30s/it] 81%|████████  | 47/58 [01:00<00:15,  1.41s/it] 83%|████████▎ | 48/58 [01:02<00:13,  1.35s/it] 84%|████████▍ | 49/58 [01:03<00:12,  1.40s/it] 86%|████████▌ | 50/58 [01:04<00:10,  1.36s/it] 88%|████████▊ | 51/58 [01:06<00:09,  1.35s/it] 90%|████████▉ | 52/58 [01:07<00:07,  1.32s/it] 91%|█████████▏| 53/58 [01:08<00:06,  1.22s/it] 93%|█████████▎| 54/58 [01:09<00:04,  1.15s/it] 95%|█████████▍| 55/58 [01:10<00:03,  1.13s/it] 97%|█████████▋| 56/58 [01:11<00:02,  1.17s/it] 98%|█████████▊| 57/58 [01:12<00:01,  1.05s/it]100%|██████████| 58/58 [01:13<00:00,  1.00it/s]                                               2026-03-11 15:32:28,295 - akshare_fetcher - INFO - 获取日线数据: 5816 只股票
+2026-03-11 15:32:28,299 - __main__ - INFO - [3/5] 成交额集中度分析...
+2026-03-11 15:32:28,299 - sector_analyzer - INFO - 分析 20260311 成交额集中度...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:01<01:03,  1.11s/it]  3%|▎         | 2/58 [00:02<01:05,  1.17s/it]  5%|▌         | 3/58 [00:03<01:15,  1.38s/it]  7%|▋         | 4/58 [00:04<01:02,  1.16s/it]  9%|▊         | 5/58 [00:06<01:04,  1.22s/it] 10%|█         | 6/58 [00:06<00:53,  1.02s/it] 12%|█▏        | 7/58 [00:08<01:02,  1.22s/it] 14%|█▍        | 8/58 [00:09<01:06,  1.33s/it] 16%|█▌        | 9/58 [00:11<01:06,  1.35s/it] 17%|█▋        | 10/58 [00:12<01:06,  1.38s/it] 19%|█▉        | 11/58 [00:13<01:00,  1.28s/it] 21%|██        | 12/58 [00:15<00:59,  1.29s/it] 22%|██▏       | 13/58 [00:16<01:00,  1.34s/it] 24%|██▍       | 14/58 [00:17<00:53,  1.21s/it] 26%|██▌       | 15/58 [00:18<00:46,  1.08s/it] 28%|██▊       | 16/58 [00:19<00:51,  1.22s/it] 29%|██▉       | 17/58 [00:20<00:46,  1.13s/it] 31%|███       | 18/58 [00:22<00:48,  1.22s/it] 33%|███▎      | 19/58 [00:23<00:52,  1.34s/it] 34%|███▍      | 20/58 [00:25<00:52,  1.38s/it] 36%|███▌      | 21/58 [00:26<00:53,  1.45s/it] 38%|███▊      | 22/58 [00:28<00:50,  1.41s/it] 40%|███▉      | 23/58 [00:29<00:49,  1.40s/it] 41%|████▏     | 24/58 [00:30<00:47,  1.41s/it] 43%|████▎     | 25/58 [00:32<00:49,  1.49s/it] 45%|████▍     | 26/58 [00:33<00:43,  1.35s/it] 47%|████▋     | 27/58 [00:35<00:41,  1.35s/it] 48%|████▊     | 28/58 [00:36<00:37,  1.26s/it] 50%|█████     | 29/58 [00:37<00:34,  1.18s/it] 52%|█████▏    | 30/58 [00:38<00:39,  1.40s/it] 53%|█████▎    | 31/58 [00:39<00:34,  1.27s/it] 55%|█████▌    | 32/58 [00:41<00:38,  1.47s/it] 57%|█████▋    | 33/58 [00:43<00:37,  1.49s/it] 59%|█████▊    | 34/58 [00:44<00:34,  1.42s/it] 60%|██████    | 35/58 [00:45<00:28,  1.24s/it] 62%|██████▏   | 36/58 [00:46<00:25,  1.14s/it] 64%|██████▍   | 37/58 [00:47<00:25,  1.22s/it] 66%|██████▌   | 38/58 [00:49<00:24,  1.23s/it] 67%|██████▋   | 39/58 [00:50<00:24,  1.27s/it] 69%|██████▉   | 40/58 [00:51<00:20,  1.15s/it] 71%|███████   | 41/58 [00:52<00:18,  1.08s/it] 72%|███████▏  | 42/58 [00:53<00:19,  1.21s/it] 74%|███████▍  | 43/58 [00:55<00:19,  1.30s/it] 76%|███████▌  | 44/58 [00:57<00:20,  1.43s/it] 78%|███████▊  | 45/58 [00:58<00:18,  1.43s/it] 79%|███████▉  | 46/58 [00:59<00:15,  1.30s/it] 81%|████████  | 47/58 [01:01<00:16,  1.46s/it] 83%|████████▎ | 48/58 [01:02<00:14,  1.44s/it] 84%|████████▍ | 49/58 [01:04<00:13,  1.51s/it] 86%|████████▌ | 50/58 [01:05<00:11,  1.44s/it] 88%|████████▊ | 51/58 [01:06<00:08,  1.24s/it] 90%|████████▉ | 52/58 [01:07<00:06,  1.11s/it] 91%|█████████▏| 53/58 [01:07<00:05,  1.01s/it] 93%|█████████▎| 54/58 [01:09<00:04,  1.16s/it] 95%|█████████▍| 55/58 [01:11<00:03,  1.31s/it] 97%|█████████▋| 56/58 [01:12<00:02,  1.35s/it] 98%|█████████▊| 57/58 [01:13<00:01,  1.22s/it]100%|██████████| 58/58 [01:14<00:00,  1.16s/it]                                               2026-03-11 15:33:42,987 - akshare_fetcher - INFO - 获取日线数据: 5816 只股票
+2026-03-11 15:33:42,995 - __main__ - INFO - [4/5] 放量个股分析...
+2026-03-11 15:33:42,995 - sector_analyzer - INFO - 分析 20260311 放量个股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:00<00:50,  1.12it/s]  3%|▎         | 2/58 [00:02<01:16,  1.36s/it]  5%|▌         | 3/58 [00:04<01:24,  1.53s/it]  7%|▋         | 4/58 [00:05<01:20,  1.49s/it]  9%|▊         | 5/58 [00:06<01:08,  1.30s/it] 10%|█         | 6/58 [00:08<01:09,  1.34s/it] 12%|█▏        | 7/58 [00:09<01:06,  1.31s/it] 14%|█▍        | 8/58 [00:11<01:10,  1.41s/it] 16%|█▌        | 9/58 [00:12<01:05,  1.34s/it] 17%|█▋        | 10/58 [00:13<01:02,  1.31s/it] 19%|█▉        | 11/58 [00:14<01:03,  1.35s/it] 21%|██        | 12/58 [00:16<01:03,  1.37s/it] 22%|██▏       | 13/58 [00:17<00:58,  1.29s/it] 24%|██▍       | 14/58 [00:18<00:58,  1.32s/it] 26%|██▌       | 15/58 [00:19<00:50,  1.17s/it] 28%|██▊       | 16/58 [00:20<00:50,  1.19s/it] 29%|██▉       | 17/58 [00:21<00:44,  1.08s/it] 31%|███       | 18/58 [00:22<00:45,  1.13s/it] 33%|███▎      | 19/58 [00:24<00:48,  1.24s/it] 34%|███▍      | 20/58 [00:25<00:46,  1.22s/it] 36%|███▌      | 21/58 [00:27<00:49,  1.35s/it] 38%|███▊      | 22/58 [00:28<00:43,  1.20s/it] 40%|███▉      | 23/58 [00:29<00:42,  1.21s/it] 41%|████▏     | 24/58 [00:29<00:35,  1.04s/it] 43%|████▎     | 25/58 [00:31<00:35,  1.08s/it] 45%|████▍     | 26/58 [00:31<00:30,  1.03it/s] 47%|████▋     | 27/58 [00:32<00:29,  1.06it/s] 48%|████▊     | 28/58 [00:34<00:33,  1.11s/it] 50%|█████     | 29/58 [00:34<00:28,  1.01it/s] 52%|█████▏    | 30/58 [00:36<00:29,  1.04s/it] 53%|█████▎    | 31/58 [00:36<00:26,  1.04it/s] 55%|█████▌    | 32/58 [00:37<00:24,  1.04it/s] 57%|█████▋    | 33/58 [00:39<00:27,  1.08s/it] 59%|█████▊    | 34/58 [00:39<00:22,  1.05it/s] 60%|██████    | 35/58 [00:40<00:21,  1.09it/s] 62%|██████▏   | 36/58 [00:42<00:23,  1.09s/it] 64%|██████▍   | 37/58 [00:43<00:21,  1.03s/it] 66%|██████▌   | 38/58 [00:43<00:18,  1.06it/s] 67%|██████▋   | 39/58 [00:44<00:17,  1.07it/s] 69%|██████▉   | 40/58 [00:45<00:18,  1.03s/it] 71%|███████   | 41/58 [00:47<00:19,  1.13s/it] 72%|███████▏  | 42/58 [00:48<00:17,  1.11s/it] 74%|███████▍  | 43/58 [00:49<00:16,  1.11s/it] 76%|███████▌  | 44/58 [00:51<00:17,  1.24s/it] 78%|███████▊  | 45/58 [00:51<00:13,  1.07s/it] 79%|███████▉  | 46/58 [00:53<00:14,  1.18s/it] 81%|████████  | 47/58 [00:54<00:13,  1.20s/it] 83%|████████▎ | 48/58 [00:55<00:13,  1.31s/it] 84%|████████▍ | 49/58 [00:56<00:10,  1.17s/it] 86%|████████▌ | 50/58 [00:58<00:10,  1.25s/it] 88%|████████▊ | 51/58 [00:59<00:08,  1.27s/it] 90%|████████▉ | 52/58 [01:01<00:08,  1.37s/it] 91%|█████████▏| 53/58 [01:02<00:06,  1.22s/it] 93%|█████████▎| 54/58 [01:02<00:04,  1.11s/it] 95%|█████████▍| 55/58 [01:04<00:03,  1.12s/it] 97%|█████████▋| 56/58 [01:05<00:02,  1.20s/it] 98%|█████████▊| 57/58 [01:06<00:01,  1.04s/it]100%|██████████| 58/58 [01:07<00:00,  1.20s/it]                                               2026-03-11 15:34:50,887 - akshare_fetcher - INFO - 获取日线数据: 5816 只股票
+2026-03-11 15:34:50,890 - __main__ - INFO - [5/5] 涨停关键词分析...
+2026-03-11 15:34:51,170 - keyword_library - INFO - 关键词库已保存: /Users/mac/.openclaw/workspace-neo/data/keyword_library.json
+2026-03-11 15:34:51,171 - keyword_library - INFO - 更新关键词统计完成: 20260311, 53只股票
+2026-03-11 15:34:51,182 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/postmarket/2026-03-11/daily_review.md
+2026-03-11 15:34:51,304 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/postmarket/2026-03-11/daily_review.xlsx
+2026-03-11 15:34:51,304 - __main__ - INFO - ============================================================
+2026-03-11 15:34:51,304 - __main__ - INFO - 盘后复盘完成: 20260311
+2026-03-11 15:34:51,304 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-12 15:30:04,551 - akshare_fetcher - INFO - AKShare 数据获取器初始化完成
+2026-03-12 15:30:04,552 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-12 15:30:04,552 - __main__ - INFO - ============================================================
+2026-03-12 15:30:04,552 - __main__ - INFO - 开始执行盘后深度复盘: 20260312
+2026-03-12 15:30:04,552 - __main__ - INFO - ============================================================
+2026-03-12 15:30:04,552 - __main__ - INFO - [1/5] 情绪周期分析...
+2026-03-12 15:30:04,552 - emotion_analyzer - INFO - 计算 20260312 情绪四要素...
+2026-03-12 15:30:04,802 - akshare_fetcher - INFO - 获取涨停数据: 52 只涨停股
+2026-03-12 15:30:11,012 - akshare_fetcher - ERROR - 获取日线数据失败: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 15:30:11,012 - emotion_analyzer - ERROR - 计算溢价率失败: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 15:30:11,014 - emotion_analyzer - INFO - 情绪四要素: 涨停=52, 溢价=0.00%, 连板=8, 高度=4
+2026-03-12 15:30:11,015 - __main__ - INFO - [2/5] 涨幅分布分析...
+2026-03-12 15:30:11,016 - sector_analyzer - INFO - 分析 20260312 领涨板块...
+2026-03-12 15:30:17,085 - akshare_fetcher - ERROR - 获取日线数据失败: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 15:30:17,085 - __main__ - ERROR - 盘后复盘失败: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 15:30:17,119 - __main__ - ERROR - Traceback (most recent call last):
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 285, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mac/.openclaw/workspace-neo/scripts/cron/postmarket_task.py", line 109, in run
+    top_sectors = self.sector_analyzer.analyze_top_sectors(today)
+  File "/Users/mac/.openclaw/workspace-neo/scripts/sector_analyzer.py", line 57, in analyze_top_sectors
+    daily_df = self.fetcher.get_daily_data(trade_date)
+  File "/Users/mac/.openclaw/workspace-neo/scripts/akshare_fetcher.py", line 124, in get_daily_data
+    df = ak.stock_zh_a_spot_em()
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/akshare/stock_feature/stock_hist_em.py", line 36, in stock_zh_a_spot_em
+    temp_df = fetch_paginated_data(url, params)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/akshare/utils/func.py", line 34, in fetch_paginated_data
+    r = request_with_retry(url, params=params, timeout=timeout)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/akshare/utils/request.py", line 64, in request_with_retry
+    raise last_exception
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/akshare/utils/request.py", line 52, in request_with_retry
+    response = session.get(url, params=params, timeout=timeout)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-13 15:30:01,755 - sina_fetcher - INFO - 新浪数据获取器初始化完成
+2026-03-13 15:30:01,756 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-13 15:30:01,756 - __main__ - INFO - ============================================================
+2026-03-13 15:30:01,756 - __main__ - INFO - 开始执行盘后深度复盘: 20260313
+2026-03-13 15:30:01,756 - __main__ - INFO - ============================================================
+2026-03-13 15:30:01,756 - __main__ - INFO - [1/5] 情绪周期分析...
+2026-03-13 15:30:01,756 - emotion_analyzer - INFO - 计算 20260313 情绪四要素...
+2026-03-13 15:30:02,033 - sina_fetcher - INFO - 获取涨停数据: 59 只涨停股
+  0%|          | 0/15 [00:00<?, ?it/s]  7%|▋         | 1/15 [00:00<00:04,  3.45it/s] 13%|█▎        | 2/15 [00:00<00:04,  2.81it/s] 20%|██        | 3/15 [00:01<00:04,  2.91it/s] 27%|██▋       | 4/15 [00:01<00:03,  3.32it/s] 33%|███▎      | 5/15 [00:01<00:02,  3.71it/s] 40%|████      | 6/15 [00:01<00:02,  3.06it/s] 47%|████▋     | 7/15 [00:02<00:02,  3.49it/s] 53%|█████▎    | 8/15 [00:02<00:01,  3.94it/s] 60%|██████    | 9/15 [00:02<00:01,  4.29it/s] 67%|██████▋   | 10/15 [00:02<00:01,  4.35it/s] 73%|███████▎  | 11/15 [00:02<00:00,  4.27it/s] 80%|████████  | 12/15 [00:03<00:00,  4.42it/s] 87%|████████▋ | 13/15 [00:03<00:00,  4.76it/s] 93%|█████████▎| 14/15 [00:03<00:00,  4.95it/s]100%|██████████| 15/15 [00:03<00:00,  5.06it/s]                                               2026-03-13 15:30:18,688 - sina_fetcher - INFO - 获取 5489 只股票的实时行情...
+2026-03-13 15:30:19,785 - sina_fetcher - INFO - 获取日线数据: 5191 只股票
+2026-03-13 15:30:19,788 - emotion_analyzer - INFO - 情绪四要素: 涨停=59, 溢价=10.71%, 连板=8, 高度=5
+2026-03-13 15:30:19,789 - __main__ - INFO - [2/5] 涨幅分布分析...
+2026-03-13 15:30:19,789 - sector_analyzer - INFO - 分析 20260313 领涨板块...
+2026-03-13 15:30:19,790 - sina_fetcher - INFO - 获取 5489 只股票的实时行情...
+2026-03-13 15:30:20,487 - sina_fetcher - INFO - 获取日线数据: 5191 只股票
+2026-03-13 15:30:20,495 - __main__ - INFO - [3/5] 成交额集中度分析...
+2026-03-13 15:30:20,495 - sector_analyzer - INFO - 分析 20260313 成交额集中度...
+2026-03-13 15:30:20,497 - sina_fetcher - INFO - 获取 5489 只股票的实时行情...
+2026-03-13 15:30:21,311 - sina_fetcher - INFO - 获取日线数据: 5191 只股票
+2026-03-13 15:30:21,316 - __main__ - ERROR - 盘后复盘失败: '>=' not supported between instances of 'NoneType' and 'int'
+2026-03-13 15:30:21,333 - __main__ - ERROR - Traceback (most recent call last):
+  File "/Users/mac/.openclaw/workspace-neo/scripts/cron/postmarket_task.py", line 118, in run
+    concentration = self.sector_analyzer.analyze_sector_concentration(today)
+  File "/Users/mac/.openclaw/workspace-neo/scripts/sector_analyzer.py", line 239, in analyze_sector_concentration
+    top100['市值区间'] = top100['total_mv'].apply(categorize_mv)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/pandas/core/series.py", line 4936, in apply
+    return SeriesApply(
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/pandas/core/apply.py", line 1422, in apply
+    return self.apply_standard()
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/pandas/core/apply.py", line 1502, in apply_standard
+    mapped = obj._map_values(
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/pandas/core/base.py", line 925, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "/Users/mac/Library/Python/3.9/lib/python/site-packages/pandas/core/algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "pandas/_libs/lib.pyx", line 2999, in pandas._libs.lib.map_infer
+  File "/Users/mac/.openclaw/workspace-neo/scripts/sector_analyzer.py", line 228, in categorize_mv
+    if mv >= 1000:  # 1000亿以上
+TypeError: '>=' not supported between instances of 'NoneType' and 'int'
+
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/mac/.openclaw/workspace-neo/scripts/cron/postmarket_task.py", line 23, in <module>
+    from sina_fetcher import SinaDataFetcher
+ModuleNotFoundError: No module named 'sina_fetcher'
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/mac/.openclaw/workspace-neo/scripts/cron/postmarket_task.py", line 23, in <module>
+    from sina_fetcher import SinaDataFetcher
+ModuleNotFoundError: No module named 'sina_fetcher'
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/mac/.openclaw/workspace-neo/scripts/cron/postmarket_task.py", line 23, in <module>
+    from sina_fetcher import SinaDataFetcher
+ModuleNotFoundError: No module named 'sina_fetcher'

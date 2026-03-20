@@ -1,0 +1,502 @@
+[
+  {
+    "timestamp": "2026-03-19T10:03:43.341909",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 进程未运行",
+    "service": "both",
+    "action_taken": "重启所有服务",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:04:59.850483",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 进程未运行",
+    "service": "both",
+    "action_taken": "重启所有服务",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:06:10.345945",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:09:56.870574",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 进程未运行",
+    "service": "both",
+    "action_taken": "重启所有服务",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:11:07.109544",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:12:16.226134",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:12:22.394966",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:13:25.272432",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:13:51.156261",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:15:00.505161",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 进程未运行; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "both",
+    "action_taken": "重启所有服务",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:16:10.368025",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:16:16.544746",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:17:18.875255",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:18:27.713778",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:19:36.488512",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:19:42.518294",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:20:45.209362",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:21:54.282513",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:23:03.234414",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:23:09.312139",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:24:12.031518",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:25:21.078986",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:26:30.428103",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:26:36.606771",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:27:39.426416",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:28:48.494859",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:29:57.870309",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:30:04.003974",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:31:00.079030",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:32:00.970122",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:33:10.132403",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:34:19.291012",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:34:25.467940",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:35:28.276726",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:36:37.413924",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:37:46.591610",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:37:52.712414",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:38:55.648149",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:40:04.739048",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:41:14.015186",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:41:20.117195",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:42:23.168286",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:43:32.268553",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:44:41.613296",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:44:47.788941",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:45:51.084576",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:46:59.999205",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:48:09.457980",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:48:15.585272",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "连续 3 次自动恢复失败",
+    "service": "both",
+    "action_taken": "等待手动干预",
+    "resolved": false,
+    "resolved_at": null
+  },
+  {
+    "timestamp": "2026-03-19T10:49:18.452670",
+    "level": "ERROR",
+    "error_code": null,
+    "message": "Flask 端口 5004 未开放",
+    "service": "flask",
+    "action_taken": "重启 Flask",
+    "resolved": false,
+    "resolved_at": null
+  }
+]

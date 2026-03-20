@@ -1,0 +1,4 @@
+2026-03-11 13:28:50,566 - __main__ - INFO - Tushare 数据获取器初始化完成
+2026-03-11 13:29:20,577 - __main__ - ERROR - 获取股票基础信息失败: HTTPConnectionPool(host='127.0.0.1', port=17890): Read timed out. (read timeout=30)
+2026-03-11 13:31:14,262 - __main__ - WARNING - API连接测试警告: HTTPConnectionPool(host='127.0.0.1', port=17890): Read timed out. (read timeout=60)
+2026-03-11 13:31:14,264 - __main__ - INFO - Tushare 数据获取器初始化完成

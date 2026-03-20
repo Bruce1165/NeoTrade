@@ -1,0 +1,219 @@
+#!/usr/bin/env python3
+"""
+分析特定股票落选原因
+"""
+
+import sqlite3
+from datetime import datetime, timedelta
+import pandas as pd
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+
+# 要分析的股票
+STOCKS_TO_CHECK = [
+    {'code': '002298', 'name': '中电鑫龙'},
+    {'code': '600396', 'name': '华电辽能'},
+]
+
+def get_trading_days(conn, start_date, end_date):
+    query = """
+    SELECT DISTINCT trade_date 
+    FROM daily_prices 
+    WHERE trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(start_date, end_date))
+    return df['trade_date'].tolist()
+
+def analyze_stock(conn, trading_days, target_idx, stock):
+    code = stock['code']
+    name = stock['name']
+    
+    print(f"\n{'='*80}")
+    print(f"分析: {code} {name}")
+    print(f"{'='*80}")
+    
+    # 获取昨日数据
+    query = """
+    SELECT high as target_high, close as target_close, turnover, pct_change, volume, amount
+    FROM daily_prices
+    WHERE code = ? AND trade_date = ?
+    """
+    df = pd.read_sql(query, conn, params=(code, TARGET_DATE))
+    
+    if df.empty:
+        print(f"❌ 昨日数据不存在")
+        return
+    
+    target_high = df['target_high'].values[0]
+    target_close = df['target_close'].values[0]
+    turnover = df['turnover'].values[0]
+    pct_change = df['pct_change'].values[0]
+    volume = df['volume'].values[0]
+    amount = df['amount'].values[0]
+    
+    print(f"昨日数据:")
+    print(f"  最高价: {target_high:.2f}")
+    print(f"  收盘价: {target_close:.2f}")
+    print(f"  换手率: {turnover:.2f}%")
+    print(f"  涨幅: {pct_change:.2f}%")
+    print(f"  成交量: {volume/10000:.2f}万股")
+    print(f"  成交额: {amount/10000:.2f}万元")
+    
+    # 条件1: 换手率 > 5%, 涨幅 > 2%
+    print(f"\n条件1: 换手率 > 5%, 涨幅 > 2%")
+    if turnover <= 5:
+        print(f"  ❌ 换手率 {turnover:.2f}% <= 5%")
+    else:
+        print(f"  ✅ 换手率 {turnover:.2f}% > 5%")
+        
+    if pct_change <= 2:
+        print(f"  ❌ 涨幅 {pct_change:.2f}% <= 2%")
+    else:
+        print(f"  ✅ 涨幅 {pct_change:.2f}% > 2%")
+    
+    if turnover <= 5 or pct_change <= 2:
+        return
+    
+    # 条件4: 放量倍数 >= 1.5
+    recent_days = trading_days[target_idx-2:target_idx+1]
+    prev_days = trading_days[target_idx-5:target_idx-2]
+    
+    vol_query = """
+    SELECT trade_date, amount FROM daily_prices
+    WHERE code = ? AND trade_date IN (?, ?, ?)
+    """
+    recent_df = pd.read_sql(vol_query, conn, params=(code, *recent_days))
+    prev_df = pd.read_sql(vol_query, conn, params=(code, *prev_days))
+    
+    print(f"\n条件4: 放量倍数 >= 1.5")
+    print(f"  最近3天: {recent_days}")
+    print(f"  前3天: {prev_days}")
+    
+    if len(recent_df) < 3:
+        print(f"  ❌ 最近3天数据不足: {len(recent_df)}天")
+        return
+    if len(prev_df) < 3:
+        print(f"  ❌ 前3天数据不足: {len(prev_df)}天")
+        return
+    
+    recent_amount = recent_df['amount'].sum()
+    prev_amount = prev_df['amount'].sum()
+    volume_multiple = recent_amount / prev_amount if prev_amount > 0 else 0
+    
+    print(f"  最近3天成交额: {recent_amount/10000:.2f}万元")
+    print(f"  前3天成交额: {prev_amount/10000:.2f}万元")
+    print(f"  放量倍数: {volume_multiple:.2f}x")
+    
+    if volume_multiple < 1.5:
+        print(f"  ❌ 放量倍数 {volume_multiple:.2f}x < 1.5x")
+        return
+    else:
+        print(f"  ✅ 放量倍数 {volume_multiple:.2f}x >= 1.5x")
+    
+    # 条件5: 杯柄日期在45-250个交易日前
+    cup_handle_start = trading_days[target_idx - 45]
+    cup_handle_end = trading_days[target_idx - 250]
+    
+    print(f"\n条件5: 杯柄日期在45-250个交易日前")
+    print(f"  搜索区间: {cup_handle_end} 到 {cup_handle_start}")
+    print(f"  目标价格范围: {target_high*0.9:.2f} - {target_high*1.1:.2f}")
+    
+    cup_handle_query = """
+    SELECT trade_date, high
+    FROM daily_prices
+    WHERE code = ? 
+        AND trade_date <= ?
+        AND trade_date >= ?
+        AND high BETWEEN ? AND ?
+    ORDER BY trade_date DESC
+    LIMIT 1
+    """
+    
+    cup_df = pd.read_sql(cup_handle_query, conn,
+                         params=(code, cup_handle_start, cup_handle_end, target_high*0.9, target_high*1.1))
+    
+    if cup_df.empty:
+        print(f"  ❌ 未找到符合条件的杯柄日期")
+        # 检查该区间内的价格范围
+        check_query = """
+        SELECT MIN(high) as min_high, MAX(high) as max_high, COUNT(*) as cnt
+        FROM daily_prices
+        WHERE code = ? AND trade_date <= ? AND trade_date >= ?
+        """
+        check_df = pd.read_sql(check_query, conn, params=(code, cup_handle_start, cup_handle_end))
+        if not check_df.empty:
+            print(f"  该区间最高价范围: {check_df['min_high'].values[0]:.2f} - {check_df['max_high'].values[0]:.2f}")
+            print(f"  数据条数: {check_df['cnt'].values[0]}")
+        return
+    
+    cup_handle_date = cup_df.iloc[0]['trade_date']
+    cup_handle_high = cup_df.iloc[0]['high']
+    print(f"  ✅ 杯柄日期: {cup_handle_date}, 最高价: {cup_handle_high:.2f}")
+    
+    # 条件6: 过去20-45个交易日股价 <= 昨日收盘价 * 1.2
+    constraint_start = trading_days[target_idx - 20]
+    constraint_end = trading_days[target_idx - 45]
+    price_limit = target_close * 1.2
+    
+    print(f"\n条件6: 过去20-45个交易日股价 <= 昨日收盘价*1.2")
+    print(f"  约束区间: {constraint_end} 到 {constraint_start}")
+    print(f"  价格上限: {price_limit:.2f} (昨日收盘价 {target_close:.2f} * 1.2)")
+    
+    constraint_query = """
+    SELECT MAX(high) as max_high
+    FROM daily_prices
+    WHERE code = ? 
+        AND trade_date <= ?
+        AND trade_date >= ?
+    """
+    constraint_df = pd.read_sql(constraint_query, conn,
+                               params=(code, constraint_start, constraint_end))
+    
+    if constraint_df.empty or constraint_df['max_high'].isna().values[0]:
+        print(f"  ❌ 约束区间数据不足")
+        return
+    
+    max_high_in_constraint = constraint_df['max_high'].values[0]
+    print(f"  约束区间最高价: {max_high_in_constraint:.2f}")
+    
+    if max_high_in_constraint > price_limit:
+        print(f"  ❌ 约束区间最高价 {max_high_in_constraint:.2f} > 价格上限 {price_limit:.2f}")
+        # 显示超出限制的日期
+        detail_query = """
+        SELECT trade_date, high
+        FROM daily_prices
+        WHERE code = ? AND trade_date <= ? AND trade_date >= ? AND high > ?
+        ORDER BY high DESC
+        LIMIT 5
+        """
+        detail_df = pd.read_sql(detail_query, conn, params=(code, constraint_start, constraint_end, price_limit))
+        if not detail_df.empty:
+            print(f"  超出价格上限的日期:")
+            for _, row in detail_df.iterrows():
+                print(f"    {row['trade_date']}: {row['high']:.2f}")
+        return
+    else:
+        print(f"  ✅ 约束区间最高价 {max_high_in_constraint:.2f} <= 价格上限 {price_limit:.2f}")
+    
+    print(f"\n✅✅✅ 全部条件通过！")
+
+def main():
+    conn = sqlite3.connect(DB_PATH)
+    
+    # 获取交易日列表
+    start_history = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=400)).strftime("%Y-%m-%d")
+    trading_days = get_trading_days(conn, start_history, TARGET_DATE)
+    target_idx = trading_days.index(TARGET_DATE)
+    
+    print(f"目标日期: {TARGET_DATE}")
+    print(f"交易日总数: {len(trading_days)}")
+    
+    for stock in STOCKS_TO_CHECK:
+        analyze_stock(conn, trading_days, target_idx, stock)
+    
+    conn.close()
+
+if __name__ == "__main__":
+    main()

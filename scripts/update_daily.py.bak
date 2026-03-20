@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""
+数据更新脚本 - 每日增量更新全A股数据
+"""
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+from datetime import datetime, timedelta
+from database import init_db, get_session, Stock, DailyPrice
+from fetcher_baostock import BaostockFetcher
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class DataUpdater:
+    """数据更新器"""
+    
+    def __init__(self):
+        self.engine = init_db()
+        self.session = get_session(self.engine)
+        self.fetcher = BaostockFetcher()
+    
+    def update_stock_list(self):
+        """更新股票基础信息"""
+        logger.info("更新股票基础信息...")
+        
+        if not self.fetcher.login():
+            return False
+        
+        try:
+            stocks = self.fetcher.get_stock_list()
+            
+            for stock_info in stocks:
+                code = stock_info['code'].replace('sh.', '').replace('sz.', '')
+                name = stock_info['name']
+                
+                # 检查是否已存在
+                existing = self.session.query(Stock).filter_by(code=code).first()
+                if existing:
+                    existing.name = name
+                else:
+                    new_stock = Stock(
+                        code=code,
+                        name=name,
+                        industry='',
+                        area='',
+                        list_date=None
+                    )
+                    self.session.add(new_stock)
+            
+            self.session.commit()
+            logger.info(f"股票基础信息更新完成，共 {len(stocks)} 只")
+            return True
+            
+        finally:
+            self.fetcher.logout()
+    
+    def update_daily_prices(self, days=180):
+        """更新日线数据"""
+        logger.info(f"更新最近{days}天日线数据...")
+        
+        if not self.fetcher.login():
+            return False
+        
+        try:
+            end_date = datetime.now().strftime('%Y-%m-%d')
+            start_date = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+            
+            # 获取所有股票代码
+            stocks = self.session.query(Stock).all()
+            total = len(stocks)
+            
+            updated = 0
+            for i, stock in enumerate(stocks):
+                code = f"sh.{stock.code}" if stock.code.startswith('6') else f"sz.{stock.code}"
+                
+                logger.info(f"[{i+1}/{total}] 更新 {stock.code} {stock.name}...")
+                
+                df = self.fetcher.get_daily_data(code, start_date, end_date)
+                
+                if not df.empty:
+                    for _, row in df.iterrows():
+                        trade_date = datetime.strptime(row['date'], '%Y-%m-%d').date()
+                        
+                        # 检查是否已存在
+                        existing = self.session.query(DailyPrice).filter_by(
+                            code=stock.code,
+                            trade_date=trade_date
+                        ).first()
+                        
+                        if existing:
+                            # 更新
+                            existing.open = row.get('open')
+                            existing.high = row.get('high')
+                            existing.low = row.get('low')
+                            existing.close = row.get('close')
+                            existing.volume = row.get('volume')
+                            existing.amount = row.get('amount')
+                            existing.turnover = row.get('turn')
+                            existing.preclose = row.get('preclose')
+                            existing.pct_change = row.get('pctChg')
+                        else:
+                            # 新增
+                            new_price = DailyPrice(
+                                code=stock.code,
+                                trade_date=trade_date,
+                                open=row.get('open'),
+                                high=row.get('high'),
+                                low=row.get('low'),
+                                close=row.get('close'),
+                                volume=row.get('volume'),
+                                amount=row.get('amount'),
+                                turnover=row.get('turn'),
+                                preclose=row.get('preclose'),
+                                pct_change=row.get('pctChg')
+                            )
+                            self.session.add(new_price)
+                    
+                    updated += 1
+                    
+                    # 每50只提交一次
+                    if updated % 50 == 0:
+                        self.session.commit()
+                        logger.info(f"已提交 {updated} 只股票数据")
+                
+                # 每100只暂停
+                if (i + 1) % 100 == 0:
+                    import time
+                    time.sleep(1)
+            
+            self.session.commit()
+            logger.info(f"日线数据更新完成，共更新 {updated} 只股票")
+            return True
+            
+        finally:
+            self.fetcher.logout()
+    
+    def full_update(self):
+        """全量更新"""
+        logger.info("="*60)
+        logger.info("开始全量数据更新")
+        logger.info("="*60)
+        
+        # 1. 更新股票列表
+        self.update_stock_list()
+        
+        # 2. 更新日线数据（6个月）
+        self.update_daily_prices(days=180)
+        
+        logger.info("="*60)
+        logger.info("全量更新完成")
+        logger.info("="*60)
+    
+    def daily_update(self):
+        """每日增量更新"""
+        logger.info("="*60)
+        logger.info("开始每日增量更新")
+        logger.info("="*60)
+        
+        # 只更新最近5天（包含今天）
+        self.update_daily_prices(days=5)
+        
+        logger.info("="*60)
+        logger.info("每日更新完成")
+        logger.info("="*60)
+
+def main():
+    """主函数"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='股票数据更新')
+    parser.add_argument('--full', action='store_true', help='全量更新（6个月历史）')
+    parser.add_argument('--daily', action='store_true', help='每日增量更新')
+    args = parser.parse_args()
+    
+    updater = DataUpdater()
+    
+    if args.full:
+        updater.full_update()
+    elif args.daily:
+        updater.daily_update()
+    else:
+        # 默认全量更新
+        updater.full_update()
+
+if __name__ == '__main__':
+    main()

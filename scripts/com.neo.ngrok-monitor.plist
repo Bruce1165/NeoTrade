@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.neo.ngrok-monitor</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/python3</string>
+        <string>/Users/mac/.openclaw/workspace-neo/scripts/ngrok_monitor.py</string>
+    </array>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/.openclaw/workspace-neo</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>FLASK_PORT</key>
+        <string>5003</string>
+        <key>NGROK_DOMAIN</key>
+        <string>chariest-nancy-nonincidentally.ngrok-free.dev</string>
+        <key>DASHBOARD_PASSWORD</key>
+        <string>neiltrade123</string>
+        <key>CHECK_INTERVAL</key>
+        <string>60</string>
+    </dict>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+        <key>Crashed</key>
+        <true/>
+    </dict>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor_launchd.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor_launchd_error.log</string>
+    
+    <key>ThrottleInterval</key>
+    <integer>60</integer>
+</dict>
+</plist>

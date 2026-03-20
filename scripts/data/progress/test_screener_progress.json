@@ -1,0 +1,33 @@
+{
+  "screener_name": "test_screener",
+  "status": "completed",
+  "start_time": "2026-03-14T12:12:25.797431",
+  "end_time": "2026-03-14T12:12:25.798750",
+  "last_updated": "2026-03-14T12:12:25.798751",
+  "total_stocks": 1000,
+  "processed_stocks": 10,
+  "matched_stocks": 2,
+  "current_batch": 0,
+  "total_batches": 1,
+  "processed_codes": [
+    "600000",
+    "600001",
+    "600002",
+    "600003",
+    "600004",
+    "600005",
+    "600006",
+    "600007",
+    "600008",
+    "600009"
+  ],
+  "matched_codes": [
+    "600001",
+    "600002"
+  ],
+  "last_processed_code": "600009",
+  "error_message": null,
+  "metadata": {
+    "date": "2026-03-14"
+  }
+}

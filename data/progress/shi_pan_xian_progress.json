@@ -1,0 +1,17 @@
+{
+  "screener_name": "shi_pan_xian",
+  "status": "completed",
+  "start_time": "2026-03-19T10:27:27.645694",
+  "end_time": "2026-03-19T10:27:33.497770",
+  "last_updated": "2026-03-19T10:27:33.497771",
+  "total_stocks": 4663,
+  "processed_stocks": 4601,
+  "matched_stocks": 2,
+  "current_batch": 0,
+  "total_batches": 1,
+  "processed_codes": [],
+  "matched_codes": [],
+  "last_processed_code": null,
+  "error_message": null,
+  "metadata": {}
+}

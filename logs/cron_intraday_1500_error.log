@@ -1,0 +1,105 @@
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-12 15:00:06,249 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-12 15:00:06,249 - __main__ - INFO - ============================================================
+2026-03-12 15:00:06,249 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-12 15:00:06,249 - __main__ - INFO - ============================================================
+2026-03-12 15:00:06,249 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-12 15:00:06,577 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-12/1500_limit_up.md
+2026-03-12 15:00:06,708 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-12/1500_limit_up.xlsx
+2026-03-12 15:00:06,708 - __main__ - INFO - [1500] 涨停股分析完成: 52只
+2026-03-12 15:00:06,708 - __main__ - INFO - [1500] 开始分析弱势股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:01<00:57,  1.01s/it]                                              2026-03-12 15:00:15,359 - __main__ - ERROR - 分析弱势股失败: HTTPSConnectionPool(host='82.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=3&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f12&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80%2Cm%3A1+t%3A2%2Cm%3A1+t%3A23%2Cm%3A0+t%3A81+s%3A2048&fields=f1%2Cf2%2Cf3%2Cf4%2Cf5%2Cf6%2Cf7%2Cf8%2Cf9%2Cf10%2Cf12%2Cf13%2Cf14%2Cf15%2Cf16%2Cf17%2Cf18%2Cf20%2Cf21%2Cf23%2Cf24%2Cf25%2Cf22%2Cf11%2Cf62%2Cf128%2Cf136%2Cf115%2Cf152 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 15:00:15,360 - __main__ - INFO - ============================================================
+2026-03-12 15:00:15,360 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-12 15:00:15,360 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-13 15:00:03,613 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-13 15:00:03,613 - __main__ - INFO - ============================================================
+2026-03-13 15:00:03,613 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-13 15:00:03,613 - __main__ - INFO - ============================================================
+2026-03-13 15:00:03,613 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-13 15:00:03,976 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-13/1500_limit_up.md
+2026-03-13 15:00:04,123 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-13/1500_limit_up.xlsx
+2026-03-13 15:00:04,123 - __main__ - INFO - [1500] 涨停股分析完成: 59只
+2026-03-13 15:00:04,123 - __main__ - INFO - [1500] 开始分析弱势股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:01<01:09,  1.23s/it]  3%|▎         | 2/58 [00:02<00:54,  1.02it/s]  5%|▌         | 3/58 [00:02<00:52,  1.04it/s]  7%|▋         | 4/58 [00:03<00:51,  1.06it/s]  9%|▊         | 5/58 [00:05<00:55,  1.04s/it] 10%|█         | 6/58 [00:06<01:05,  1.25s/it] 12%|█▏        | 7/58 [00:07<00:59,  1.16s/it]                                              2026-03-13 15:00:19,031 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-13 15:00:19,032 - __main__ - INFO - ============================================================
+2026-03-13 15:00:19,032 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-13 15:00:19,032 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-16 15:00:04,712 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-16 15:00:04,712 - __main__ - INFO - ============================================================
+2026-03-16 15:00:04,712 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-16 15:00:04,712 - __main__ - INFO - ============================================================
+2026-03-16 15:00:04,712 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-16 15:00:04,825 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-16/1500_limit_up.md
+2026-03-16 15:00:04,922 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-16/1500_limit_up.xlsx
+2026-03-16 15:00:04,922 - __main__ - INFO - [1500] 涨停股分析完成: 44只
+2026-03-16 15:00:04,922 - __main__ - INFO - [1500] 开始分析弱势股...
+2026-03-16 15:00:10,522 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 15:00:10,522 - __main__ - INFO - ============================================================
+2026-03-16 15:00:10,523 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-16 15:00:10,523 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-17 15:14:46,046 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-17 15:14:46,046 - __main__ - INFO - ============================================================
+2026-03-17 15:14:46,046 - __main__ - INFO - 开始执行盘中任务: 1514
+2026-03-17 15:14:46,046 - __main__ - INFO - ============================================================
+2026-03-17 15:14:46,046 - __main__ - INFO - [1514] 开始分析涨停股...
+2026-03-17 15:14:46,402 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-17/1514_limit_up.md
+2026-03-17 15:14:46,559 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-17/1514_limit_up.xlsx
+2026-03-17 15:14:46,560 - __main__ - INFO - [1514] 涨停股分析完成: 39只
+2026-03-17 15:14:46,560 - __main__ - INFO - [1514] 开始分析弱势股...
+2026-03-17 15:14:52,114 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-17 15:14:52,114 - __main__ - INFO - ============================================================
+2026-03-17 15:14:52,114 - __main__ - INFO - 盘中任务完成: 1514
+2026-03-17 15:14:52,114 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-18 15:00:03,251 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-18 15:00:03,251 - __main__ - INFO - ============================================================
+2026-03-18 15:00:03,252 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-18 15:00:03,252 - __main__ - INFO - ============================================================
+2026-03-18 15:00:03,252 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-18 15:00:03,368 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-18/1500_limit_up.md
+2026-03-18 15:00:03,474 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-18/1500_limit_up.xlsx
+2026-03-18 15:00:03,474 - __main__ - INFO - [1500] 涨停股分析完成: 57只
+2026-03-18 15:00:03,474 - __main__ - INFO - [1500] 开始分析弱势股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:01<01:12,  1.27s/it]  3%|▎         | 2/58 [00:03<01:31,  1.64s/it]  5%|▌         | 3/58 [00:04<01:15,  1.38s/it]  7%|▋         | 4/58 [00:05<01:14,  1.38s/it]  9%|▊         | 5/58 [00:06<01:00,  1.14s/it] 10%|█         | 6/58 [00:07<01:03,  1.22s/it]                                              2026-03-18 15:00:18,954 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 15:00:18,955 - __main__ - INFO - ============================================================
+2026-03-18 15:00:18,955 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-18 15:00:18,955 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-19 15:00:02,963 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-19 15:00:02,963 - __main__ - INFO - ============================================================
+2026-03-19 15:00:02,963 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-19 15:00:02,963 - __main__ - INFO - ============================================================
+2026-03-19 15:00:02,963 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-19 15:00:03,103 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-19/1500_limit_up.md
+2026-03-19 15:00:03,189 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-19/1500_limit_up.xlsx
+2026-03-19 15:00:03,190 - __main__ - INFO - [1500] 涨停股分析完成: 28只
+2026-03-19 15:00:03,190 - __main__ - INFO - [1500] 开始分析弱势股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:00<00:56,  1.01it/s]  3%|▎         | 2/58 [00:02<01:06,  1.19s/it]  5%|▌         | 3/58 [00:03<01:10,  1.27s/it]  7%|▋         | 4/58 [00:05<01:16,  1.41s/it]  9%|▊         | 5/58 [00:06<01:05,  1.23s/it] 10%|█         | 6/58 [00:07<00:57,  1.11s/it] 12%|█▏        | 7/58 [00:09<01:10,  1.38s/it] 14%|█▍        | 8/58 [00:10<01:03,  1.27s/it] 16%|█▌        | 9/58 [00:11<01:05,  1.35s/it] 17%|█▋        | 10/58 [00:13<01:10,  1.47s/it]                                               2026-03-19 15:00:23,007 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-19 15:00:23,007 - __main__ - INFO - ============================================================
+2026-03-19 15:00:23,007 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-19 15:00:23,007 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-20 15:00:02,931 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-20 15:00:02,931 - __main__ - INFO - ============================================================
+2026-03-20 15:00:02,931 - __main__ - INFO - 开始执行盘中任务: 1500
+2026-03-20 15:00:02,931 - __main__ - INFO - ============================================================
+2026-03-20 15:00:02,931 - __main__ - INFO - [1500] 开始分析涨停股...
+2026-03-20 15:00:03,183 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-20/1500_limit_up.md
+2026-03-20 15:00:03,310 - __main__ - INFO - Excel文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-20/1500_limit_up.xlsx
+2026-03-20 15:00:03,310 - __main__ - INFO - [1500] 涨停股分析完成: 27只
+2026-03-20 15:00:03,311 - __main__ - INFO - [1500] 开始分析弱势股...
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:00<00:56,  1.00it/s]  3%|▎         | 2/58 [00:02<01:05,  1.17s/it]  5%|▌         | 3/58 [00:03<01:02,  1.14s/it]  7%|▋         | 4/58 [00:04<01:03,  1.17s/it]  9%|▊         | 5/58 [00:05<00:58,  1.10s/it] 10%|█         | 6/58 [00:07<01:06,  1.28s/it] 12%|█▏        | 7/58 [00:08<01:08,  1.34s/it] 14%|█▍        | 8/58 [00:09<01:00,  1.22s/it] 16%|█▌        | 9/58 [00:10<00:56,  1.15s/it] 17%|█▋        | 10/58 [00:11<00:57,  1.19s/it] 19%|█▉        | 11/58 [00:12<00:54,  1.16s/it] 21%|██        | 12/58 [00:14<00:51,  1.13s/it] 22%|██▏       | 13/58 [00:14<00:47,  1.05s/it] 24%|██▍       | 14/58 [00:16<00:50,  1.15s/it] 26%|██▌       | 15/58 [00:17<00:48,  1.14s/it] 28%|██▊       | 16/58 [00:18<00:44,  1.06s/it] 29%|██▉       | 17/58 [00:19<00:46,  1.14s/it] 31%|███       | 18/58 [00:20<00:48,  1.20s/it] 33%|███▎      | 19/58 [00:22<00:52,  1.34s/it] 34%|███▍      | 20/58 [00:24<00:53,  1.42s/it] 36%|███▌      | 21/58 [00:25<00:54,  1.46s/it]                                               2026-03-20 15:00:35,543 - __main__ - ERROR - 分析弱势股失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-20 15:00:35,543 - __main__ - INFO - ============================================================
+2026-03-20 15:00:35,543 - __main__ - INFO - 盘中任务完成: 1500
+2026-03-20 15:00:35,543 - __main__ - INFO - ============================================================

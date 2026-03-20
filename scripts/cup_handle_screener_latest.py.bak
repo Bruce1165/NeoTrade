@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""
+Stock Screener - Cup Handle Pattern (New Criteria)
+Target date: 2026-03-11
+Updated criteria:
+- 换手率 > 5%
+- 放量倍数 >= 2.0x
+- 杯柄最高价匹配: 0.95-1.05倍
+- 约束区间最高价 <= 昨日收盘价 * 0.9
+"""
+
+import sqlite3
+from datetime import datetime, timedelta
+import pandas as pd
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+
+def get_trading_days(conn, start_date, end_date):
+    query = """
+    SELECT DISTINCT trade_date 
+    FROM daily_prices 
+    WHERE trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(start_date, end_date))
+    return df['trade_date'].tolist()
+
+def screen_stocks():
+    conn = sqlite3.connect(DB_PATH)
+    
+    # Get target date's data (只检查换手率)
+    base_query = """
+    SELECT 
+        dp.code,
+        s.name,
+        dp.trade_date,
+        dp.high as target_high,
+        dp.close as target_close,
+        dp.turnover,
+        dp.volume,
+        dp.amount
+    FROM daily_prices dp
+    JOIN stocks s ON dp.code = s.code
+    WHERE dp.trade_date = ?
+        AND dp.turnover > 5
+    """
+    
+    base_df = pd.read_sql(base_query, conn, params=(TARGET_DATE,))
+    
+    if base_df.empty:
+        print("没有股票符合基本条件（换手率 > 5%）")
+        return
+    
+    print(f"基础候选股票: {len(base_df)} 只")
+    
+    # Get trading days
+    start_history = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=400)).strftime("%Y-%m-%d")
+    trading_days = get_trading_days(conn, start_history, TARGET_DATE)
+    
+    if len(trading_days) < 260:
+        print("交易历史数据不足")
+        return
+    
+    target_idx = trading_days.index(TARGET_DATE)
+    
+    if target_idx < 6:
+        print("目标日期前没有足够的交易日")
+        return
+    
+    # Volume calculation windows
+    recent_days = trading_days[target_idx-2:target_idx+1]
+    prev_days = trading_days[target_idx-5:target_idx-2]
+    
+    print(f"最近3个交易日: {recent_days}")
+    print(f"前3个交易日: {prev_days}")
+    
+    # Cup handle date range (45-250 trading days)
+    cup_handle_start = trading_days[target_idx - 45]
+    cup_handle_end = trading_days[target_idx - 250]
+    
+    # Constraint range (20-45 trading days)
+    constraint_start = trading_days[target_idx - 20]
+    constraint_end = trading_days[target_idx - 45]
+    
+    print(f"杯柄日期范围: {cup_handle_end} 到 {cup_handle_start}")
+    print(f"约束区间: {constraint_end} 到 {constraint_start}")
+    
+    results = []
+    
+    for _, row in base_df.iterrows():
+        code = row['code']
+        target_high = row['target_high']
+        target_close = row['target_close']
+        name = row['name']
+        
+        # Condition 4: Volume multiple >= 2.0
+        vol_query = """
+        SELECT trade_date, volume, amount, high
+        FROM daily_prices
+        WHERE code = ? AND trade_date IN (?, ?, ?)
+        """
+        recent_df = pd.read_sql(vol_query, conn, params=(code, *recent_days))
+        prev_df = pd.read_sql(vol_query, conn, params=(code, *prev_days))
+        
+        if len(recent_df) < 3 or len(prev_df) < 3:
+            continue
+        
+        recent_amount = recent_df['amount'].sum()
+        prev_amount = prev_df['amount'].sum()
+        
+        if prev_amount == 0:
+            continue
+        
+        volume_multiple = recent_amount / prev_amount
+        
+        if volume_multiple < 2.0:
+            continue
+        
+        # Condition 5: Cup handle date with high price match 0.95-1.05x
+        cup_handle_query = """
+        SELECT trade_date, high
+        FROM daily_prices
+        WHERE code = ? 
+            AND trade_date <= ?
+            AND trade_date >= ?
+            AND high BETWEEN ? AND ?
+        ORDER BY trade_date DESC
+        LIMIT 1
+        """
+        
+        high_low = target_high * 0.95
+        high_high = target_high * 1.05
+        
+        cup_df = pd.read_sql(cup_handle_query, conn,
+                             params=(code, cup_handle_start, cup_handle_end, high_low, high_high))
+        
+        if cup_df.empty:
+            continue
+        
+        cup_handle_date = cup_df.iloc[0]['trade_date']
+        
+        # Condition 6: Constraint range max high <= target_close * 0.9
+        constraint_query = """
+        SELECT MAX(high) as max_high
+        FROM daily_prices
+        WHERE code = ? 
+            AND trade_date <= ?
+            AND trade_date >= ?
+        """
+        constraint_df = pd.read_sql(constraint_query, conn,
+                                   params=(code, constraint_start, constraint_end))
+        
+        if constraint_df.empty or constraint_df['max_high'].isna().values[0]:
+            continue
+        
+        max_high_in_constraint = constraint_df['max_high'].values[0]
+        price_limit = target_close * 0.9
+        
+        if max_high_in_constraint > price_limit:
+            continue
+        
+        results.append({
+            '股票代码': code,
+            '股票名称': name,
+            '放量倍数': round(volume_multiple, 2),
+            '换手率': round(row['turnover'], 2),
+            '昨日成交总额': round(row['amount'] / 10000, 2),
+            '杯柄日期': cup_handle_date
+        })
+    
+    conn.close()
+    
+    if not results:
+        print("没有股票符合所有条件")
+        return
+    
+    results_df = pd.DataFrame(results)
+    results_df = results_df.sort_values('放量倍数', ascending=False)
+    
+    print(f"\n{'='*100}")
+    print(f"筛选结果: {len(results)} 只股票")
+    print(f"{'='*100}")
+    print(results_df.to_string(index=False))
+    
+    output_path = f"/Users/mac/.openclaw/workspace-neo/data/12month_cuphold_{TARGET_DATE}.xlsx"
+    results_df.to_excel(output_path, index=False, engine='openpyxl')
+    print(f"\n结果已保存至: {output_path}")
+    
+    return results_df
+
+if __name__ == "__main__":
+    screen_stocks()

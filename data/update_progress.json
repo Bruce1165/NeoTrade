@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "message": "每日数据更新完成",
+  "latest_trade_date": "2026-03-15",
+  "stocks_updated": 4626,
+  "total_stocks": 4626,
+  "completion_pct": 100,
+  "note": "37只股票因停牌/退市无数据，实际活跃股票4626只已全部更新",
+  "checked_at": "2026-03-16T14:03:00+08:00"
+}

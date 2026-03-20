@@ -1,0 +1,25 @@
+{
+  "date": "2026-03-19",
+  "timestamp": "2026-03-19T10:46:30.655175",
+  "alert_count": 1,
+  "alerts": [
+    {
+      "severity": "warning",
+      "type": "screener_warnings",
+      "message": "1个筛选器有警告",
+      "timestamp": "2026-03-19T10:46:30.654939",
+      "details": {
+        "count": 1,
+        "screeners": [
+          {
+            "id": "jin_feng_huang_screener",
+            "name": "涨停金凤凰",
+            "warnings": [
+              "输出目录存在但无近期文件: /Users/mac/.openclaw/workspace-neo/data/screeners/jin_feng_huang"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "screener_name": "shuang_shou_ban",
+  "status": "completed",
+  "start_time": "2026-03-20T16:53:16.709778",
+  "end_time": "2026-03-20T16:53:22.922832",
+  "last_updated": "2026-03-20T16:53:22.922836",
+  "total_stocks": 4663,
+  "processed_stocks": 4601,
+  "matched_stocks": 3,
+  "current_batch": 0,
+  "total_batches": 1,
+  "processed_codes": [],
+  "matched_codes": [],
+  "last_processed_code": null,
+  "error_message": null,
+  "metadata": {}
+}

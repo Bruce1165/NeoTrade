@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""
+Stock Screener - Cup Handle Pattern with Volume Surge
+Target date: 2026-03-11 (yesterday)
+"""
+
+import sqlite3
+from datetime import datetime, timedelta
+import pandas as pd
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+
+def get_trading_days(conn, start_date, end_date):
+    """Get all trading days in range, sorted."""
+    query = """
+    SELECT DISTINCT trade_date 
+    FROM daily_prices 
+    WHERE trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(start_date, end_date))
+    return df['trade_date'].tolist()
+
+def screen_stocks():
+    conn = sqlite3.connect(DB_PATH)
+    
+    # Get target date's data with basic filters
+    base_query = """
+    SELECT 
+        dp.code,
+        s.name,
+        dp.trade_date,
+        dp.high as target_high,
+        dp.close,
+        dp.pct_change,
+        dp.turnover,
+        dp.volume,
+        dp.amount
+    FROM daily_prices dp
+    JOIN stocks s ON dp.code = s.code
+    WHERE dp.trade_date = ?
+        AND dp.turnover > 10
+        AND dp.pct_change > 2
+    """
+    
+    base_df = pd.read_sql(base_query, conn, params=(TARGET_DATE,))
+    
+    if base_df.empty:
+        print("No stocks match basic criteria (turnover > 10%, gain > 2%)")
+        return
+    
+    print(f"Base candidates: {len(base_df)} stocks")
+    
+    # Get all trading days up to target date (need at least 9 months of history)
+    start_history = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=280)).strftime("%Y-%m-%d")
+    trading_days = get_trading_days(conn, start_history, TARGET_DATE)
+    
+    if len(trading_days) < 10:
+        print("Not enough trading history")
+        return
+    
+    # Find target date index
+    try:
+        target_idx = trading_days.index(TARGET_DATE)
+    except ValueError:
+        print(f"{TARGET_DATE} is not a trading day")
+        return
+    
+    # Need at least 6 days before target for volume calculation
+    if target_idx < 6:
+        print("Not enough trading days before target")
+        return
+    
+    # Volume calculation windows
+    # Recent 3 days: target_idx-2, target_idx-1, target_idx
+    # Previous 3 days: target_idx-5, target_idx-4, target_idx-3
+    recent_days = trading_days[target_idx-2:target_idx+1]  # -2, -1, 0
+    prev_days = trading_days[target_idx-5:target_idx-2]     # -5, -4, -3
+    
+    print(f"Recent 3 days: {recent_days}")
+    print(f"Prev 3 days: {prev_days}")
+    
+    results = []
+    
+    for _, row in base_df.iterrows():
+        code = row['code']
+        target_high = row['target_high']
+        name = row['name']
+        
+        # Get volume data for recent 3 days
+        vol_query = """
+        SELECT trade_date, volume, amount, high
+        FROM daily_prices
+        WHERE code = ? AND trade_date IN (?, ?, ?)
+        """
+        recent_df = pd.read_sql(vol_query, conn, params=(code, *recent_days))
+        
+        if len(recent_df) < 3:
+            continue
+        
+        recent_volume = recent_df['volume'].sum()
+        recent_amount = recent_df['amount'].sum()
+        
+        # Get volume data for previous 3 days
+        prev_df = pd.read_sql(vol_query, conn, params=(code, *prev_days))
+        
+        if len(prev_df) < 3:
+            continue
+        
+        prev_volume = prev_df['volume'].sum()
+        prev_amount = prev_df['amount'].sum()
+        
+        # Calculate volume surge multiple
+        if prev_amount == 0:
+            continue
+        
+        volume_multiple = recent_amount / prev_amount
+        
+        # Filter: volume multiple between 1.7 and 2.0
+        if not (1.7 <= volume_multiple <= 2.0):
+            continue
+        
+        # Find cup handle date (past 9 months)
+        nine_months_ago = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=270)).strftime("%Y-%m-%d")
+        
+        cup_handle_query = """
+        SELECT trade_date, high
+        FROM daily_prices
+        WHERE code = ? 
+            AND trade_date < ?
+            AND trade_date >= ?
+            AND high BETWEEN ? AND ?
+        ORDER BY trade_date DESC
+        LIMIT 1
+        """
+        
+        high_low = target_high * 0.9
+        high_high = target_high * 1.1
+        
+        cup_df = pd.read_sql(cup_handle_query, conn, 
+                             params=(code, TARGET_DATE, nine_months_ago, high_low, high_high))
+        
+        if cup_df.empty:
+            continue
+        
+        cup_handle_date = cup_df.iloc[0]['trade_date']
+        
+        results.append({
+            '股票代码': code,
+            '股票名称': name,
+            '放量倍数': round(volume_multiple, 2),
+            '换手率': round(row['turnover'], 2),
+            '昨日成交总额': round(row['amount'] / 10000, 2),  # in 万元
+            '杯柄日期': cup_handle_date
+        })
+    
+    conn.close()
+    
+    if not results:
+        print("No stocks match all criteria")
+        return
+    
+    # Sort by volume multiple descending
+    results_df = pd.DataFrame(results)
+    results_df = results_df.sort_values('放量倍数', ascending=False)
+    
+    print(f"\n{'='*100}")
+    print(f"筛选结果: {len(results)} 只股票")
+    print(f"{'='*100}")
+    print(results_df.to_string(index=False))
+    
+    # Save to CSV
+    output_path = "/Users/mac/.openclaw/workspace-neo/data/screening_results_20260311.csv"
+    results_df.to_csv(output_path, index=False, encoding='utf-8-sig')
+    print(f"\n结果已保存至: {output_path}")
+    
+    return results_df
+
+if __name__ == "__main__":
+    screen_stocks()

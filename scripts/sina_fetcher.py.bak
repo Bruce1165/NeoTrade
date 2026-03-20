@@ -1,0 +1,325 @@
+#!/usr/bin/env python3
+"""
+新浪财经数据抓取框架 - Neo量化研究体系
+使用新浪 API 获取实时行情数据（替代东方财富被拦截的接口）
+"""
+
+import os
+import sys
+
+# 必须在导入requests之前清除代理环境变量
+for key in ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']:
+    os.environ.pop(key, None)
+
+import logging
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import List, Dict, Optional
+import pandas as pd
+import requests
+import akshare as ak
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('/Users/mac/.openclaw/workspace-neo/logs/sina_fetcher.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+
+class SinaDataFetcher:
+    """新浪财经数据获取器"""
+    
+    def __init__(self):
+        """初始化"""
+        self.data_dir = Path('/Users/mac/.openclaw/workspace-neo/data')
+        self.data_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Referer': 'https://finance.sina.com.cn',
+        })
+        
+        # 缓存股票基础信息
+        self._stock_basic_cache = None
+        self._cache_time = None
+        
+        logger.info("新浪数据获取器初始化完成")
+    
+    def _get_sina_code(self, ts_code: str) -> str:
+        """将 tushare 格式代码转换为新浪格式"""
+        if ts_code.startswith('6'):
+            return f"sh{ts_code}"
+        else:
+            return f"sz{ts_code}"
+    
+    def _get_ts_code(self, sina_code: str) -> str:
+        """将新浪格式代码转换为 tushare 格式"""
+        return sina_code[2:]
+    
+    def get_all_stock_codes(self) -> List[str]:
+        """获取所有 A 股代码列表"""
+        try:
+            # 使用 AKShare 获取代码列表（这个接口通常可用）
+            df = ak.stock_info_a_code_name()
+            codes = df['code'].tolist()
+            # 过滤掉非标准代码（如指数代码 z000001 等）
+            codes = [c for c in codes if c.isdigit() and len(c) == 6]
+            return codes
+        except Exception as e:
+            logger.error(f"获取股票代码列表失败: {e}")
+            # 返回一些主要指数作为备选
+            return []
+    
+    def get_daily_data(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取当日全部A股行情数据（使用新浪 API）
+        
+        Args:
+            trade_date: 交易日期 (YYYYMMDD)
+            
+        Returns:
+            DataFrame 包含开盘价、收盘价、涨跌幅、成交量等
+        """
+        try:
+            # 获取所有股票代码
+            codes = self.get_all_stock_codes()
+            if not codes:
+                logger.error("无法获取股票代码列表")
+                return pd.DataFrame()
+            
+            logger.info(f"获取 {len(codes)} 只股票的实时行情...")
+            
+            # 分批获取（每批 800 只，避免 URL 过长）
+            batch_size = 800
+            all_data = []
+            
+            for i in range(0, len(codes), batch_size):
+                batch_codes = codes[i:i+batch_size]
+                sina_codes = [self._get_sina_code(c) for c in batch_codes]
+                
+                url = f"https://hq.sinajs.cn/list={','.join(sina_codes)}"
+                
+                try:
+                    r = self.session.get(url, timeout=30)
+                    r.encoding = 'gb2312'
+                    
+                    # 解析返回数据
+                    lines = r.text.strip().split(';')
+                    for line in lines:
+                        if not line.strip() or 'hq_str_' not in line:
+                            continue
+                        
+                        # 提取代码和数据
+                        parts = line.split('="')
+                        if len(parts) != 2:
+                            continue
+                        
+                        sina_code = parts[0].replace('var hq_str_', '')
+                        data_str = parts[1].rstrip('"')
+                        
+                        if not data_str:
+                            continue
+                        
+                        fields = data_str.split(',')
+                        if len(fields) < 33:
+                            continue
+                        
+                        ts_code = self._get_ts_code(sina_code)
+                        
+                        # 解析字段（根据新浪 API 格式）
+                        # 格式: 股票名称,今日开盘价,昨日收盘价,当前价,今日最高价,今日最低价,
+                        #       竞买价,竞卖价,成交股数,成交金额,
+                        #       买一量,买一价,买二量,买二价...卖五量,卖五价,日期,时间
+                        try:
+                            all_data.append({
+                                'ts_code': ts_code,
+                                'name': fields[0],
+                                'open': float(fields[1]),
+                                'pre_close': float(fields[2]),
+                                'close': float(fields[3]),
+                                'high': float(fields[4]),
+                                'low': float(fields[5]),
+                                'volume': int(fields[8]),
+                                'amount': float(fields[9]),
+                                'trade_date': fields[30].replace('-', ''),
+                            })
+                        except (ValueError, IndexError) as e:
+                            continue
+                    
+                except Exception as e:
+                    logger.warning(f"获取批次 {i//batch_size + 1} 失败: {e}")
+                    continue
+            
+            if not all_data:
+                return pd.DataFrame()
+            
+            df = pd.DataFrame(all_data)
+            
+            # 计算涨跌幅
+            df['pct_chg'] = ((df['close'] - df['pre_close']) / df['pre_close'] * 100).round(2)
+            df['change'] = (df['close'] - df['pre_close']).round(2)
+            
+            # 添加默认列（兼容原有接口）
+            df['turnover'] = None
+            df['pe'] = None
+            df['pb'] = None
+            df['total_mv'] = None
+            df['circ_mv'] = None
+            df['volume_ratio'] = None
+            
+            logger.info(f"获取日线数据: {len(df)} 只股票")
+            return df
+            
+        except Exception as e:
+            logger.error(f"获取日线数据失败: {e}")
+            return pd.DataFrame()
+    
+    def get_limit_up_data(self, trade_date: Optional[str] = None) -> pd.DataFrame:
+        """
+        获取涨停股票数据
+        
+        新浪 API 不提供涨停连板信息，使用 AKShare 的涨停池接口
+        如果失败，则从当日行情中筛选涨幅 >= 9.9% 的股票
+        """
+        try:
+            # 尝试使用 AKShare 涨停池接口
+            df = ak.stock_zt_pool_em(date=trade_date)
+            
+            df = df.rename(columns={
+                '代码': 'ts_code',
+                '名称': 'name',
+                '涨跌幅': 'pct_chg',
+                '最新价': 'close',
+                '成交额': 'amount',
+                '流通市值': 'circ_mv',
+                '总市值': 'total_mv',
+                '换手率': 'turnover',
+                '封板资金': 'seal_amount',
+                '首次封板时间': 'first_seal_time',
+                '最后封板时间': 'last_seal_time',
+                '炸板次数': 'open_count',
+                '涨停统计': 'limit_stats',
+                '连板数': 'limit_days',
+            })
+            
+            df['trade_date'] = trade_date if trade_date else datetime.now().strftime('%Y%m%d')
+            
+            logger.info(f"获取涨停数据: {len(df)} 只涨停股")
+            return df
+            
+        except Exception as e:
+            logger.warning(f"AKShare 涨停池接口失败，从行情数据筛选: {e}")
+            # 从当日行情中筛选
+            daily_df = self.get_daily_data(trade_date)
+            if daily_df.empty:
+                return pd.DataFrame()
+            
+            limit_df = daily_df[daily_df['pct_chg'] >= 9.9].copy()
+            limit_df['limit_days'] = 0  # 无法获取连板数
+            limit_df['first_seal_time'] = ''
+            
+            return limit_df
+    
+    def get_stock_hist(self, symbol: str, period: str = "daily", 
+                       start_date: str = None, end_date: str = None) -> pd.DataFrame:
+        """
+        获取个股历史行情
+        
+        使用 AKShare 的历史数据接口（通常可用）
+        """
+        try:
+            df = ak.stock_zh_a_hist(
+                symbol=symbol,
+                period=period,
+                start_date=start_date,
+                end_date=end_date,
+                adjust="qfq"
+            )
+            
+            df = df.rename(columns={
+                '日期': 'trade_date',
+                '开盘': 'open',
+                '收盘': 'close',
+                '最高': 'high',
+                '最低': 'low',
+                '成交量': 'volume',
+                '成交额': 'amount',
+                '振幅': 'amplitude',
+                '涨跌幅': 'pct_chg',
+                '涨跌额': 'change',
+                '换手率': 'turnover',
+            })
+            
+            logger.info(f"获取 {symbol} 历史数据: {len(df)} 条")
+            return df
+            
+        except Exception as e:
+            logger.error(f"获取 {symbol} 历史数据失败: {e}")
+            return pd.DataFrame()
+    
+    def get_latest_trade_date(self) -> str:
+        """获取最新交易日"""
+        today = datetime.now()
+        if today.weekday() == 5:  # 周六
+            latest = today - timedelta(days=1)
+        elif today.weekday() == 6:  # 周日
+            latest = today - timedelta(days=2)
+        else:
+            latest = today
+        return latest.strftime('%Y%m%d')
+    
+    def save_data(self, df: pd.DataFrame, filename: str, subdir: str = ""):
+        """保存数据到本地"""
+        save_dir = self.data_dir / subdir
+        save_dir.mkdir(parents=True, exist_ok=True)
+        
+        filepath = save_dir / filename
+        
+        if filepath.suffix == '.csv':
+            df.to_csv(filepath, index=False, encoding='utf-8-sig')
+        elif filepath.suffix == '.parquet':
+            df.to_parquet(filepath, index=False)
+        elif filepath.suffix == '.json':
+            df.to_json(filepath, orient='records', force_ascii=False)
+        else:
+            filepath = filepath.with_suffix('.csv')
+            df.to_csv(filepath, index=False, encoding='utf-8-sig')
+        
+        logger.info(f"数据已保存: {filepath}")
+
+
+def test_connection():
+    """测试连接"""
+    try:
+        fetcher = SinaDataFetcher()
+        
+        # 测试获取当日行情
+        df = fetcher.get_daily_data()
+        print(f"\n✅ 连接成功！")
+        print(f"获取到 {len(df)} 只股票的当日行情")
+        print(f"\n前5只股票:")
+        print(df[['ts_code', 'name', 'close', 'pct_chg']].head())
+        
+        # 测试获取涨停数据
+        print(f"\n测试获取涨停数据...")
+        limit_df = fetcher.get_limit_up_data()
+        if not limit_df.empty:
+            print(f"获取到 {len(limit_df)} 只涨停股")
+        
+        return True
+        
+    except Exception as e:
+        print(f"\n❌ 连接失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+if __name__ == '__main__':
+    test_connection()

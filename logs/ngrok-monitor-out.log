@@ -1,0 +1,2155 @@
+2026-03-19 10:08:54 [INFO] ============================================================
+2026-03-19 10:08:54 [INFO] 🚀 Ngrok & Flask 监控服务启动
+2026-03-19 10:08:54 [INFO] ============================================================
+2026-03-19 10:08:54 [INFO] 配置: Flask端口=5004, 检查间隔=60s
+2026-03-19 10:08:54 [INFO] 日志: /Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor.log
+2026-03-19 10:08:54 [INFO] 告警: /Users/mac/.openclaw/workspace-neo/alerts/ngrok_YYYY-MM-DD.json
+2026-03-19 10:08:54 [INFO] ============================================================
+2026-03-19 10:09:56 [WARNING] 检测到问题: Flask 进程未运行
+2026-03-19 10:09:56 [ERROR] [ERROR] [both] Flask 进程未运行 - Action: 重启所有服务
+2026-03-19 10:09:56 [INFO] 🔄 重启所有服务...
+2026-03-19 10:09:56 [INFO] 终止 ngrok 进程 (PID: 49968)
+2026-03-19 10:09:58 [INFO] 终止 Flask 进程 (PID: 49810)
+2026-03-19 10:09:59 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:10:04 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:10:04 [ERROR] ❌ 重启所有服务 失败
+2026-03-19 10:11:07 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:11:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:11:07 [INFO] 终止 Flask 进程 (PID: 50180)
+2026-03-19 10:11:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:11:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:11:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:12:16 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:12:16 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:12:16 [INFO] 终止 Flask 进程 (PID: 50298)
+2026-03-19 10:12:17 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:12:22 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:12:22 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:12:22 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:12:22 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:13:25 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:13:25 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:13:25 [INFO] 终止 Flask 进程 (PID: 50434)
+2026-03-19 10:13:26 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:13:31 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:13:31 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:13:51 [INFO] ============================================================
+2026-03-19 10:13:51 [INFO] 🚀 Ngrok & Flask 监控服务启动
+2026-03-19 10:13:51 [INFO] ============================================================
+2026-03-19 10:13:51 [INFO] 配置: Flask端口=5004, 检查间隔=60s
+2026-03-19 10:13:51 [INFO] 日志: /Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor.log
+2026-03-19 10:13:51 [INFO] 告警: /Users/mac/.openclaw/workspace-neo/alerts/ngrok_YYYY-MM-DD.json
+2026-03-19 10:13:51 [INFO] ============================================================
+2026-03-19 10:13:51 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:13:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:13:51 [INFO] 终止 Flask 进程 (PID: 50583)
+2026-03-19 10:13:52 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:13:57 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:13:57 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:15:00 [WARNING] 检测到问题: Flask 进程未运行; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:15:00 [ERROR] [ERROR] [both] Flask 进程未运行; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启所有服务
+2026-03-19 10:15:00 [INFO] 🔄 重启所有服务...
+2026-03-19 10:15:01 [INFO] 终止 Flask 进程 (PID: 50625)
+2026-03-19 10:15:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:15:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:15:07 [ERROR] ❌ 重启所有服务 失败
+2026-03-19 10:16:10 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:16:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:16:10 [INFO] 终止 Flask 进程 (PID: 50720)
+2026-03-19 10:16:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:16:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:16:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:16:16 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:16:16 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:17:18 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:17:18 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:17:18 [INFO] 终止 Flask 进程 (PID: 50838)
+2026-03-19 10:17:19 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:17:24 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:17:24 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:18:27 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:18:27 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:18:27 [INFO] 终止 Flask 进程 (PID: 50956)
+2026-03-19 10:18:28 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:18:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:18:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:19:36 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:19:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:19:36 [INFO] 终止 Flask 进程 (PID: 51083)
+2026-03-19 10:19:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:19:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:19:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:19:42 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:19:42 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:20:45 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:20:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:20:45 [INFO] 终止 Flask 进程 (PID: 51211)
+2026-03-19 10:20:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:20:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:20:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:21:54 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:21:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:21:54 [INFO] 终止 Flask 进程 (PID: 51390)
+2026-03-19 10:21:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:22:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:22:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:23:03 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:23:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:23:03 [INFO] 终止 Flask 进程 (PID: 51541)
+2026-03-19 10:23:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:23:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:23:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:23:09 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:23:09 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:24:12 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:24:12 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:24:12 [INFO] 终止 Flask 进程 (PID: 51696)
+2026-03-19 10:24:13 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:24:18 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:24:18 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:25:21 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-19 10:25:21 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:25:21 [INFO] 终止 Flask 进程 (PID: 51885)
+2026-03-19 10:25:22 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:25:27 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:25:27 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:26:30 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:26:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:26:30 [INFO] 终止 Flask 进程 (PID: 52030)
+2026-03-19 10:26:31 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:26:36 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:26:36 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:26:36 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:26:36 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:27:39 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:27:39 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:27:39 [INFO] 终止 Flask 进程 (PID: 52161)
+2026-03-19 10:27:40 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:27:45 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:27:45 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:28:48 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:28:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:28:48 [INFO] 终止 Flask 进程 (PID: 52280)
+2026-03-19 10:28:49 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:28:54 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:28:54 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:29:57 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:29:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:29:57 [INFO] 终止 Flask 进程 (PID: 52411)
+2026-03-19 10:29:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:30:04 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:30:04 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:30:04 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:30:04 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:31:00 [INFO] ============================================================
+2026-03-19 10:31:00 [INFO] 🚀 Ngrok & Flask 监控服务启动
+2026-03-19 10:31:00 [INFO] ============================================================
+2026-03-19 10:31:00 [INFO] 配置: Flask端口=5004, 检查间隔=60s
+2026-03-19 10:31:00 [INFO] 日志: /Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor.log
+2026-03-19 10:31:00 [INFO] 告警: /Users/mac/.openclaw/workspace-neo/alerts/ngrok_YYYY-MM-DD.json
+2026-03-19 10:31:00 [INFO] ============================================================
+2026-03-19 10:31:00 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活
+2026-03-19 10:31:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 错误: ngrok: UNKNOWN: Expecting value: line 1 column 1 (char 0); ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-19 10:31:00 [INFO] 终止 Flask 进程 (PID: 52640)
+2026-03-19 10:31:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:31:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:31:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:32:00 [INFO] ============================================================
+2026-03-19 10:32:00 [INFO] 🚀 Ngrok & Flask 监控服务启动
+2026-03-19 10:32:00 [INFO] ============================================================
+2026-03-19 10:32:00 [INFO] 配置: Flask端口=5004, 检查间隔=60s
+2026-03-19 10:32:00 [INFO] 日志: /Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor.log
+2026-03-19 10:32:00 [INFO] 告警: /Users/mac/.openclaw/workspace-neo/alerts/ngrok_YYYY-MM-DD.json
+2026-03-19 10:32:00 [INFO] ============================================================
+2026-03-19 10:32:00 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:32:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:32:00 [INFO] 终止 Flask 进程 (PID: 52689)
+2026-03-19 10:32:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:32:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:32:07 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:33:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:33:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:33:10 [INFO] 终止 Flask 进程 (PID: 52775)
+2026-03-19 10:33:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:33:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:33:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:34:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:34:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:34:19 [INFO] 终止 Flask 进程 (PID: 52888)
+2026-03-19 10:34:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:34:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:34:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:34:25 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:34:25 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:35:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:35:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:35:28 [INFO] 终止 Flask 进程 (PID: 53013)
+2026-03-19 10:35:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:35:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:35:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:36:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:36:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:36:37 [INFO] 终止 Flask 进程 (PID: 53148)
+2026-03-19 10:36:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:36:43 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:36:43 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:37:46 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:37:46 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:37:46 [INFO] 终止 Flask 进程 (PID: 53315)
+2026-03-19 10:37:47 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:37:52 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:37:52 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:37:52 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:37:52 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:38:55 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:38:55 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:38:55 [INFO] 终止 Flask 进程 (PID: 53358)
+2026-03-19 10:38:56 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:39:01 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:39:01 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:40:04 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:40:04 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:40:04 [INFO] 终止 Flask 进程 (PID: 53473)
+2026-03-19 10:40:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:40:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:40:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:41:14 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:41:14 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:41:14 [INFO] 终止 Flask 进程 (PID: 53595)
+2026-03-19 10:41:15 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:41:20 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:41:20 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:41:20 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:41:20 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:42:23 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:42:23 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:42:23 [INFO] 终止 Flask 进程 (PID: 53742)
+2026-03-19 10:42:24 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:42:29 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:42:29 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:43:32 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:43:32 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:43:32 [INFO] 终止 Flask 进程 (PID: 53878)
+2026-03-19 10:43:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:43:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:43:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:44:41 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:44:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:44:41 [INFO] 终止 Flask 进程 (PID: 54017)
+2026-03-19 10:44:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:44:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:44:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:44:47 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:44:47 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:45:51 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:45:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:45:51 [INFO] 终止 Flask 进程 (PID: 54147)
+2026-03-19 10:45:52 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:45:57 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:45:57 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:46:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:46:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:47:00 [INFO] 终止 Flask 进程 (PID: 54330)
+2026-03-19 10:47:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:47:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:47:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:48:09 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:48:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:48:09 [INFO] 终止 Flask 进程 (PID: 54488)
+2026-03-19 10:48:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:48:15 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:48:15 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:48:15 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-19 10:48:15 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-19 10:49:18 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-19 10:49:18 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-19 10:49:18 [INFO] 终止 Flask 进程 (PID: 54656)
+2026-03-19 10:49:19 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-19 10:49:24 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-19 10:49:24 [ERROR] ❌ 重启 Flask 失败
+2026-03-19 10:50:22 [INFO] 收到信号 15, 正在停止监控...
+2026-03-19 10:50:23 [INFO] 👋 监控服务已停止
+2026-03-20 09:50:35 [INFO] ============================================================
+2026-03-20 09:50:35 [INFO] 🚀 Ngrok & Flask 监控服务启动
+2026-03-20 09:50:35 [INFO] ============================================================
+2026-03-20 09:50:35 [INFO] 配置: Flask端口=5004, 检查间隔=60s
+2026-03-20 09:50:35 [INFO] 日志: /Users/mac/.openclaw/workspace-neo/logs/ngrok_monitor.log
+2026-03-20 09:50:35 [INFO] 告警: /Users/mac/.openclaw/workspace-neo/alerts/ngrok_YYYY-MM-DD.json
+2026-03-20 09:50:35 [INFO] ============================================================
+2026-03-20 09:50:36 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:50:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:50:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:50:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:50:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:51:45 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:51:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:51:45 [INFO] 终止 Flask 进程 (PID: 986)
+2026-03-20 09:51:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:51:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:51:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:52:54 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:52:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:52:54 [INFO] 终止 Flask 进程 (PID: 1368)
+2026-03-20 09:52:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:53:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:53:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:53:00 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 09:53:00 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 09:54:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 09:54:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 09:54:03 [INFO] 终止 Flask 进程 (PID: 1488)
+2026-03-20 09:54:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:54:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:54:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:55:12 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 09:55:12 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 09:55:12 [INFO] 终止 Flask 进程 (PID: 1650)
+2026-03-20 09:55:13 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:55:18 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:55:18 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:56:21 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:56:21 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:56:21 [INFO] 终止 Flask 进程 (PID: 1789)
+2026-03-20 09:56:22 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:56:27 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:56:27 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:56:27 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 09:56:27 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 09:57:30 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:57:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:57:30 [INFO] 终止 Flask 进程 (PID: 1909)
+2026-03-20 09:57:32 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:57:37 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:57:37 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:58:40 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:58:40 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:58:40 [INFO] 终止 Flask 进程 (PID: 2013)
+2026-03-20 09:58:41 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:58:46 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:58:46 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:59:49 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 09:59:49 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 09:59:49 [INFO] 终止 Flask 进程 (PID: 2133)
+2026-03-20 09:59:50 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 09:59:55 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 09:59:55 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 09:59:55 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 09:59:55 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:00:59 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:00:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:00:59 [INFO] 终止 Flask 进程 (PID: 2242)
+2026-03-20 10:01:00 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:01:05 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:01:05 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:02:08 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:02:08 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:02:08 [INFO] 终止 Flask 进程 (PID: 2373)
+2026-03-20 10:02:09 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:02:14 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:02:14 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:03:17 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:03:17 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:03:17 [INFO] 终止 Flask 进程 (PID: 2485)
+2026-03-20 10:03:18 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:03:23 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:03:23 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:03:23 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:03:23 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:04:26 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:04:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:04:26 [INFO] 终止 Flask 进程 (PID: 2618)
+2026-03-20 10:04:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:04:32 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:04:32 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:05:35 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:05:35 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:05:35 [INFO] 终止 Flask 进程 (PID: 2723)
+2026-03-20 10:05:36 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:05:41 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:05:41 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:06:44 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:06:44 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:06:44 [INFO] 终止 Flask 进程 (PID: 2839)
+2026-03-20 10:06:45 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:06:50 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:06:50 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:06:50 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:06:50 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:07:53 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:07:53 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:07:53 [INFO] 终止 Flask 进程 (PID: 2952)
+2026-03-20 10:07:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:08:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:08:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:09:03 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-20 10:09:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-20 10:09:03 [INFO] 终止 Flask 进程 (PID: 3058)
+2026-03-20 10:09:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:09:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:09:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:10:11 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:10:11 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:10:11 [INFO] 终止 Flask 进程 (PID: 3168)
+2026-03-20 10:10:12 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:10:17 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:10:17 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:10:17 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:10:17 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:11:20 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:11:20 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:11:20 [INFO] 终止 Flask 进程 (PID: 3281)
+2026-03-20 10:11:21 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:11:26 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:11:26 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:12:29 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:12:29 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:12:29 [INFO] 终止 Flask 进程 (PID: 3391)
+2026-03-20 10:12:30 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:12:35 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:12:35 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:13:38 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-20 10:13:38 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-20 10:13:38 [INFO] 终止 Flask 进程 (PID: 3500)
+2026-03-20 10:13:39 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:13:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:13:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:13:44 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:13:44 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:14:47 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:14:47 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:14:47 [INFO] 终止 Flask 进程 (PID: 3616)
+2026-03-20 10:14:48 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:14:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:14:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:15:57 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:15:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:15:57 [INFO] 终止 Flask 进程 (PID: 3757)
+2026-03-20 10:15:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:16:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:16:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:17:06 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:17:06 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:17:06 [INFO] 终止 Flask 进程 (PID: 3878)
+2026-03-20 10:17:07 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:17:12 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:17:12 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:17:12 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:17:12 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:18:15 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:18:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:18:15 [INFO] 终止 Flask 进程 (PID: 3976)
+2026-03-20 10:18:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:18:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:18:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:19:24 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:19:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:19:24 [INFO] 终止 Flask 进程 (PID: 4089)
+2026-03-20 10:19:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:19:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:19:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:20:34 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:20:34 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:20:34 [INFO] 终止 Flask 进程 (PID: 4190)
+2026-03-20 10:20:35 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:20:40 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:20:40 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:20:40 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:20:40 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:21:42 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:21:42 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:21:42 [INFO] 终止 Flask 进程 (PID: 4312)
+2026-03-20 10:21:43 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:21:48 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:21:48 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:22:51 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:22:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:22:51 [INFO] 终止 Flask 进程 (PID: 4409)
+2026-03-20 10:22:52 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:22:57 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:22:57 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:24:00 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:24:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:24:00 [INFO] 终止 Flask 进程 (PID: 4527)
+2026-03-20 10:24:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:24:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:24:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:24:06 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:24:06 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:24:06 [INFO] 💓 监控心跳 #30 - 状态: ⚠️ 有问题
+2026-03-20 10:25:09 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:25:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:25:09 [INFO] 终止 Flask 进程 (PID: 4625)
+2026-03-20 10:25:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:25:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:25:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:26:19 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:26:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:26:19 [INFO] 终止 Flask 进程 (PID: 4751)
+2026-03-20 10:26:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:26:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:26:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:27:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:27:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:27:28 [INFO] 终止 Flask 进程 (PID: 4857)
+2026-03-20 10:27:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:27:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:27:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:27:34 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:27:34 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:28:38 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:28:38 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:28:38 [INFO] 终止 Flask 进程 (PID: 4961)
+2026-03-20 10:28:39 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:28:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:28:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:29:50 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:29:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:29:50 [INFO] 终止 Flask 进程 (PID: 5070)
+2026-03-20 10:29:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:29:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:29:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:31:03 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:31:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:31:03 [INFO] 终止 Flask 进程 (PID: 5189)
+2026-03-20 10:31:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:31:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:31:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:31:09 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:31:09 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:32:15 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:32:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:32:15 [INFO] 终止 Flask 进程 (PID: 5309)
+2026-03-20 10:32:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:32:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:32:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:33:28 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:33:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:33:28 [INFO] 终止 Flask 进程 (PID: 5414)
+2026-03-20 10:33:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:33:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:33:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:34:40 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:34:40 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:34:40 [INFO] 终止 Flask 进程 (PID: 5521)
+2026-03-20 10:34:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:34:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:34:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:34:47 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:34:47 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:35:51 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:35:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:35:51 [INFO] 终止 Flask 进程 (PID: 5640)
+2026-03-20 10:35:52 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:35:57 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:35:57 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:37:00 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:37:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:37:00 [INFO] 终止 Flask 进程 (PID: 5767)
+2026-03-20 10:37:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:37:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:37:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:38:09 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:38:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:38:09 [INFO] 终止 Flask 进程 (PID: 5869)
+2026-03-20 10:38:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:38:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:38:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:38:16 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:38:16 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:39:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:39:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:39:19 [INFO] 终止 Flask 进程 (PID: 5975)
+2026-03-20 10:39:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:39:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:39:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:40:28 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:40:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:40:28 [INFO] 终止 Flask 进程 (PID: 6073)
+2026-03-20 10:40:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:40:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:40:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:41:37 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:41:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:41:37 [INFO] 终止 Flask 进程 (PID: 6183)
+2026-03-20 10:41:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:41:43 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:41:43 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:41:43 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:41:43 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:42:46 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:42:46 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:42:46 [INFO] 终止 Flask 进程 (PID: 6289)
+2026-03-20 10:42:47 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:42:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:42:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:43:55 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:43:55 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:43:55 [INFO] 终止 Flask 进程 (PID: 6397)
+2026-03-20 10:43:56 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:44:01 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:44:01 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:45:04 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:45:04 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:45:04 [INFO] 终止 Flask 进程 (PID: 6501)
+2026-03-20 10:45:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:45:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:45:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:45:10 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:45:10 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:46:14 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-20 10:46:14 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-20 10:46:14 [INFO] 终止 Flask 进程 (PID: 6627)
+2026-03-20 10:46:15 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:46:20 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:46:20 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:47:23 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:47:23 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:47:23 [INFO] 终止 Flask 进程 (PID: 6735)
+2026-03-20 10:47:24 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:47:29 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:47:29 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:48:32 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:48:32 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:48:32 [INFO] 终止 Flask 进程 (PID: 6835)
+2026-03-20 10:48:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:48:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:48:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:48:38 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:48:38 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:49:41 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:49:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:49:41 [INFO] 终止 Flask 进程 (PID: 6934)
+2026-03-20 10:49:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:49:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:49:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:50:50 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:50:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:50:50 [INFO] 终止 Flask 进程 (PID: 7040)
+2026-03-20 10:50:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:50:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:50:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:51:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:51:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:51:59 [INFO] 终止 Flask 进程 (PID: 7172)
+2026-03-20 10:52:00 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:52:05 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:52:05 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:52:05 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:52:05 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:53:09 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-20 10:53:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-20 10:53:09 [INFO] 终止 Flask 进程 (PID: 7274)
+2026-03-20 10:53:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:53:15 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:53:15 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:54:18 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:54:18 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:54:18 [INFO] 终止 Flask 进程 (PID: 7376)
+2026-03-20 10:54:19 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:54:24 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:54:24 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:55:27 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活
+2026-03-20 10:55:27 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 离线 (ERR_NGROK_3200); ngrok 隧道未激活 (Error: ERR_NGROK_3200) - Action: 重启 Flask
+2026-03-20 10:55:27 [INFO] 终止 Flask 进程 (PID: 7483)
+2026-03-20 10:55:28 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:55:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:55:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:55:33 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:55:33 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:56:35 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:56:35 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:56:35 [INFO] 终止 Flask 进程 (PID: 7610)
+2026-03-20 10:56:36 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:56:41 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:56:41 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:57:45 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:57:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:57:45 [INFO] 终止 Flask 进程 (PID: 7749)
+2026-03-20 10:57:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:57:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:57:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:58:54 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 10:58:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 10:58:54 [INFO] 终止 Flask 进程 (PID: 7861)
+2026-03-20 10:58:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 10:59:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 10:59:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 10:59:00 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 10:59:00 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 10:59:00 [INFO] 💓 监控心跳 #60 - 状态: ⚠️ 有问题
+2026-03-20 11:00:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:00:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:00:03 [INFO] 终止 Flask 进程 (PID: 7964)
+2026-03-20 11:00:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:00:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:00:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:01:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:01:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:01:13 [INFO] 终止 Flask 进程 (PID: 8092)
+2026-03-20 11:01:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:01:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:01:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:02:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:02:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:02:22 [INFO] 终止 Flask 进程 (PID: 8198)
+2026-03-20 11:02:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:02:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:02:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:02:28 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:02:28 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:03:31 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:03:31 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:03:31 [INFO] 终止 Flask 进程 (PID: 8305)
+2026-03-20 11:03:32 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:03:37 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:03:37 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:04:44 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:04:44 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:04:44 [INFO] 终止 Flask 进程 (PID: 8425)
+2026-03-20 11:04:45 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:04:50 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:04:50 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:05:53 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:05:53 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:05:53 [INFO] 终止 Flask 进程 (PID: 8534)
+2026-03-20 11:05:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:05:59 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:05:59 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:05:59 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:05:59 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:07:02 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:07:02 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:07:02 [INFO] 终止 Flask 进程 (PID: 8675)
+2026-03-20 11:07:03 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:07:08 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:07:08 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:08:12 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:08:12 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:08:12 [INFO] 终止 Flask 进程 (PID: 8782)
+2026-03-20 11:08:13 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:08:18 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:08:18 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:09:21 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:09:21 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:09:21 [INFO] 终止 Flask 进程 (PID: 8888)
+2026-03-20 11:09:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:09:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:09:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:09:28 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:09:28 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:10:30 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:10:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:10:30 [INFO] 终止 Flask 进程 (PID: 8997)
+2026-03-20 11:10:31 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:10:36 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:10:36 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:11:39 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:11:39 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:11:39 [INFO] 终止 Flask 进程 (PID: 9124)
+2026-03-20 11:11:40 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:11:45 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:11:45 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:12:48 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:12:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:12:48 [INFO] 终止 Flask 进程 (PID: 9224)
+2026-03-20 11:12:50 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:12:55 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:12:55 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:12:55 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:12:55 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:13:57 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:13:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:13:57 [INFO] 终止 Flask 进程 (PID: 9352)
+2026-03-20 11:13:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:14:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:14:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:15:07 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:15:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:15:07 [INFO] 终止 Flask 进程 (PID: 9465)
+2026-03-20 11:15:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:15:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:15:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:16:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:16:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:16:15 [INFO] 终止 Flask 进程 (PID: 9587)
+2026-03-20 11:16:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:16:22 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:16:22 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:16:22 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:16:22 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:17:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:17:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:17:25 [INFO] 终止 Flask 进程 (PID: 9697)
+2026-03-20 11:17:26 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:17:31 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:17:31 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:18:34 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:18:34 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:18:34 [INFO] 终止 Flask 进程 (PID: 9808)
+2026-03-20 11:18:35 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:18:40 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:18:40 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:19:43 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:19:43 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:19:43 [INFO] 终止 Flask 进程 (PID: 9921)
+2026-03-20 11:19:44 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:19:49 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:19:49 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:19:49 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:19:49 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:20:52 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:20:52 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:20:52 [INFO] 终止 Flask 进程 (PID: 10036)
+2026-03-20 11:20:53 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:20:58 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:20:58 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:22:01 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:22:01 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:22:01 [INFO] 终止 Flask 进程 (PID: 10161)
+2026-03-20 11:22:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:22:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:22:07 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:23:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:23:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:23:10 [INFO] 终止 Flask 进程 (PID: 10269)
+2026-03-20 11:23:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:23:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:23:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:23:16 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:23:16 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:24:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:24:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:24:19 [INFO] 终止 Flask 进程 (PID: 10380)
+2026-03-20 11:24:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:24:26 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:24:26 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:25:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:25:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:25:28 [INFO] 终止 Flask 进程 (PID: 10478)
+2026-03-20 11:25:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:25:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:25:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:26:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:26:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:26:37 [INFO] 终止 Flask 进程 (PID: 10601)
+2026-03-20 11:26:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:26:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:26:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:26:44 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:26:44 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:27:47 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:27:47 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:27:47 [INFO] 终止 Flask 进程 (PID: 10708)
+2026-03-20 11:27:48 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:27:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:27:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:28:56 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:28:56 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:28:56 [INFO] 终止 Flask 进程 (PID: 10817)
+2026-03-20 11:28:57 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:29:02 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:29:02 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:30:06 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:30:06 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:30:06 [INFO] 终止 Flask 进程 (PID: 10917)
+2026-03-20 11:30:07 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:30:12 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:30:12 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:30:12 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:30:12 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:31:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:31:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:31:15 [INFO] 终止 Flask 进程 (PID: 11047)
+2026-03-20 11:31:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:31:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:31:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:32:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:32:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:32:24 [INFO] 终止 Flask 进程 (PID: 11145)
+2026-03-20 11:32:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:32:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:32:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:33:33 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:33:33 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:33:33 [INFO] 终止 Flask 进程 (PID: 11250)
+2026-03-20 11:33:35 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:33:40 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:33:40 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:33:40 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:33:40 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:33:40 [INFO] 💓 监控心跳 #90 - 状态: ⚠️ 有问题
+2026-03-20 11:34:43 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:34:43 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:34:43 [INFO] 终止 Flask 进程 (PID: 11355)
+2026-03-20 11:34:44 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:34:49 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:34:49 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:35:52 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:35:52 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:35:52 [INFO] 终止 Flask 进程 (PID: 11461)
+2026-03-20 11:35:53 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:35:58 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:35:58 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:37:01 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:37:01 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:37:01 [INFO] 终止 Flask 进程 (PID: 11576)
+2026-03-20 11:37:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:37:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:37:07 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:37:07 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:37:07 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:38:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:38:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:38:10 [INFO] 终止 Flask 进程 (PID: 11685)
+2026-03-20 11:38:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:38:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:38:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:39:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:39:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:39:19 [INFO] 终止 Flask 进程 (PID: 11787)
+2026-03-20 11:39:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:39:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:39:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:40:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:40:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:40:28 [INFO] 终止 Flask 进程 (PID: 11894)
+2026-03-20 11:40:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:40:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:40:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:40:34 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:40:34 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:41:38 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:41:38 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:41:38 [INFO] 终止 Flask 进程 (PID: 12015)
+2026-03-20 11:41:39 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:41:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:41:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:42:48 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:42:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:42:48 [INFO] 终止 Flask 进程 (PID: 12123)
+2026-03-20 11:42:49 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:42:54 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:42:54 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:44:00 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:44:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:44:00 [INFO] 终止 Flask 进程 (PID: 12237)
+2026-03-20 11:44:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:44:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:44:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:44:06 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:44:06 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:45:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:45:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:45:13 [INFO] 终止 Flask 进程 (PID: 12342)
+2026-03-20 11:45:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:45:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:45:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:46:26 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:46:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:46:26 [INFO] 终止 Flask 进程 (PID: 12465)
+2026-03-20 11:46:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:46:32 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:46:32 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:47:39 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:47:39 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:47:39 [INFO] 终止 Flask 进程 (PID: 12572)
+2026-03-20 11:47:40 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:47:45 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:47:45 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:47:45 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:47:45 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:48:51 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:48:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:48:52 [INFO] 终止 Flask 进程 (PID: 12685)
+2026-03-20 11:48:53 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:48:58 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:48:58 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:50:01 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:50:01 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:50:01 [INFO] 终止 Flask 进程 (PID: 12802)
+2026-03-20 11:50:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:50:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:50:07 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:51:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:51:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:51:10 [INFO] 终止 Flask 进程 (PID: 12913)
+2026-03-20 11:51:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:51:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:51:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:51:16 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:51:16 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:52:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:52:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:52:19 [INFO] 终止 Flask 进程 (PID: 13033)
+2026-03-20 11:52:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:52:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:52:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:53:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:53:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:53:28 [INFO] 终止 Flask 进程 (PID: 13144)
+2026-03-20 11:53:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:53:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:53:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:54:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:54:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:54:37 [INFO] 终止 Flask 进程 (PID: 13249)
+2026-03-20 11:54:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:54:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:54:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:54:44 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:54:44 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:55:47 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:55:47 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:55:47 [INFO] 终止 Flask 进程 (PID: 13348)
+2026-03-20 11:55:48 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:55:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:55:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:56:56 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:56:56 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:56:56 [INFO] 终止 Flask 进程 (PID: 13472)
+2026-03-20 11:56:57 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:57:02 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:57:02 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:58:05 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:58:05 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:58:05 [INFO] 终止 Flask 进程 (PID: 13567)
+2026-03-20 11:58:06 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:58:11 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:58:11 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 11:58:11 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 11:58:11 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 11:59:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 11:59:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 11:59:15 [INFO] 终止 Flask 进程 (PID: 13689)
+2026-03-20 11:59:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 11:59:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 11:59:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:00:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:00:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:00:24 [INFO] 终止 Flask 进程 (PID: 13827)
+2026-03-20 12:00:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:00:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:00:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:01:33 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:01:33 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:01:33 [INFO] 终止 Flask 进程 (PID: 13971)
+2026-03-20 12:01:34 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:01:39 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:01:39 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:01:39 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:01:39 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:02:42 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:02:42 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:02:42 [INFO] 终止 Flask 进程 (PID: 14076)
+2026-03-20 12:02:43 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:02:48 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:02:48 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:03:52 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:03:52 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:03:52 [INFO] 终止 Flask 进程 (PID: 14182)
+2026-03-20 12:03:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:03:59 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:03:59 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:05:05 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:05:05 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:05:05 [INFO] 终止 Flask 进程 (PID: 14281)
+2026-03-20 12:05:07 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:05:12 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:05:12 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:05:12 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:05:12 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:06:18 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:06:18 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:06:18 [INFO] 终止 Flask 进程 (PID: 14412)
+2026-03-20 12:06:19 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:06:24 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:06:24 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:07:31 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:07:31 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:07:31 [INFO] 终止 Flask 进程 (PID: 14518)
+2026-03-20 12:07:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:07:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:07:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:08:44 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:08:44 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:08:44 [INFO] 终止 Flask 进程 (PID: 14628)
+2026-03-20 12:08:45 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:08:50 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:08:50 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:08:50 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:08:50 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:08:50 [INFO] 💓 监控心跳 #120 - 状态: ⚠️ 有问题
+2026-03-20 12:09:57 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:09:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:09:57 [INFO] 终止 Flask 进程 (PID: 14736)
+2026-03-20 12:09:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:10:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:10:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:11:11 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:11:11 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:11:11 [INFO] 终止 Flask 进程 (PID: 14841)
+2026-03-20 12:11:12 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:11:17 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:11:17 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:12:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:12:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:12:24 [INFO] 终止 Flask 进程 (PID: 14971)
+2026-03-20 12:12:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:12:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:12:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:12:30 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:12:30 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:13:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:13:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:13:37 [INFO] 终止 Flask 进程 (PID: 15088)
+2026-03-20 12:13:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:13:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:13:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:14:50 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:14:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:14:50 [INFO] 终止 Flask 进程 (PID: 15194)
+2026-03-20 12:14:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:14:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:14:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:16:04 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:16:04 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:16:04 [INFO] 终止 Flask 进程 (PID: 15300)
+2026-03-20 12:16:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:16:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:16:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:16:10 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:16:10 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:17:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:17:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:17:15 [INFO] 终止 Flask 进程 (PID: 15431)
+2026-03-20 12:17:17 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:17:22 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:17:22 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:18:29 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:18:29 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:18:29 [INFO] 终止 Flask 进程 (PID: 15536)
+2026-03-20 12:18:30 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:18:35 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:18:35 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:19:41 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:19:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:19:41 [INFO] 终止 Flask 进程 (PID: 15646)
+2026-03-20 12:19:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:19:48 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:19:48 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:19:48 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:19:48 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:20:54 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:20:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:20:54 [INFO] 终止 Flask 进程 (PID: 15752)
+2026-03-20 12:20:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:21:01 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:21:01 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:22:07 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:22:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:22:07 [INFO] 终止 Flask 进程 (PID: 15882)
+2026-03-20 12:22:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:22:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:22:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:23:20 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:23:20 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:23:20 [INFO] 终止 Flask 进程 (PID: 16004)
+2026-03-20 12:23:21 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:23:26 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:23:26 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:23:26 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:23:26 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:24:33 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:24:33 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:24:33 [INFO] 终止 Flask 进程 (PID: 16109)
+2026-03-20 12:24:34 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:24:39 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:24:39 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:25:46 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:25:46 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:25:46 [INFO] 终止 Flask 进程 (PID: 16222)
+2026-03-20 12:25:47 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:25:52 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:25:52 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:26:58 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:26:58 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:26:58 [INFO] 终止 Flask 进程 (PID: 16345)
+2026-03-20 12:26:59 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:27:04 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:27:04 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:27:04 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:27:04 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:28:11 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:28:11 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:28:11 [INFO] 终止 Flask 进程 (PID: 16451)
+2026-03-20 12:28:12 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:28:17 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:28:17 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:29:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:29:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:29:24 [INFO] 终止 Flask 进程 (PID: 16558)
+2026-03-20 12:29:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:29:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:29:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:30:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:30:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:30:37 [INFO] 终止 Flask 进程 (PID: 16667)
+2026-03-20 12:30:39 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:30:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:30:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:30:44 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:30:44 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:31:51 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:31:51 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:31:51 [INFO] 终止 Flask 进程 (PID: 16800)
+2026-03-20 12:31:52 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:31:57 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:31:57 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:33:00 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:33:00 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:33:00 [INFO] 终止 Flask 进程 (PID: 16907)
+2026-03-20 12:33:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:33:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:33:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:34:09 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:34:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:34:09 [INFO] 终止 Flask 进程 (PID: 17026)
+2026-03-20 12:34:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:34:15 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:34:15 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:34:15 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:34:15 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:35:18 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:35:18 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:35:18 [INFO] 终止 Flask 进程 (PID: 17145)
+2026-03-20 12:35:19 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:35:24 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:35:24 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:36:27 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:36:27 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:36:27 [INFO] 终止 Flask 进程 (PID: 17268)
+2026-03-20 12:36:28 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:36:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:36:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:37:36 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:37:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:37:36 [INFO] 终止 Flask 进程 (PID: 17383)
+2026-03-20 12:37:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:37:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:37:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:37:42 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:37:42 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:38:45 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:38:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:38:45 [INFO] 终止 Flask 进程 (PID: 17489)
+2026-03-20 12:38:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:38:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:38:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:39:54 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:39:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:39:54 [INFO] 终止 Flask 进程 (PID: 17593)
+2026-03-20 12:39:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:40:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:40:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:41:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:41:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:41:03 [INFO] 终止 Flask 进程 (PID: 17693)
+2026-03-20 12:41:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:41:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:41:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:41:10 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:41:10 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:42:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:42:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:42:13 [INFO] 终止 Flask 进程 (PID: 17818)
+2026-03-20 12:42:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:42:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:42:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:43:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:43:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:43:22 [INFO] 终止 Flask 进程 (PID: 17922)
+2026-03-20 12:43:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:43:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:43:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:44:31 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:44:31 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:44:31 [INFO] 终止 Flask 进程 (PID: 18030)
+2026-03-20 12:44:32 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:44:37 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:44:37 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:44:37 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:44:37 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:44:37 [INFO] 💓 监控心跳 #150 - 状态: ⚠️ 有问题
+2026-03-20 12:45:40 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:45:40 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:45:40 [INFO] 终止 Flask 进程 (PID: 18138)
+2026-03-20 12:45:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:45:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:45:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:46:50 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:46:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:46:50 [INFO] 终止 Flask 进程 (PID: 18248)
+2026-03-20 12:46:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:46:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:46:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:47:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:47:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:47:59 [INFO] 终止 Flask 进程 (PID: 18351)
+2026-03-20 12:48:00 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:48:05 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:48:05 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:48:05 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:48:05 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:49:08 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:49:08 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:49:08 [INFO] 终止 Flask 进程 (PID: 18455)
+2026-03-20 12:49:09 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:49:14 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:49:14 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:50:17 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:50:17 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:50:17 [INFO] 终止 Flask 进程 (PID: 18559)
+2026-03-20 12:50:18 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:50:23 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:50:23 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:51:26 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:51:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:51:26 [INFO] 终止 Flask 进程 (PID: 18687)
+2026-03-20 12:51:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:51:32 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:51:32 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:51:32 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:51:32 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:52:35 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:52:35 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:52:35 [INFO] 终止 Flask 进程 (PID: 18797)
+2026-03-20 12:52:36 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:52:41 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:52:41 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:53:44 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:53:44 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:53:44 [INFO] 终止 Flask 进程 (PID: 18926)
+2026-03-20 12:53:45 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:53:50 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:53:50 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:54:53 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:54:53 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:54:53 [INFO] 终止 Flask 进程 (PID: 19030)
+2026-03-20 12:54:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:54:59 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:54:59 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:54:59 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:54:59 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:56:02 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:56:02 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:56:02 [INFO] 终止 Flask 进程 (PID: 19137)
+2026-03-20 12:56:03 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:56:08 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:56:08 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:57:12 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:57:12 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:57:12 [INFO] 终止 Flask 进程 (PID: 19302)
+2026-03-20 12:57:13 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:57:18 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:57:18 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:58:21 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:58:21 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:58:21 [INFO] 终止 Flask 进程 (PID: 19417)
+2026-03-20 12:58:22 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:58:27 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:58:27 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 12:58:27 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 12:58:27 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 12:59:30 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 12:59:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 12:59:30 [INFO] 终止 Flask 进程 (PID: 19516)
+2026-03-20 12:59:31 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 12:59:36 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 12:59:36 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:00:39 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:00:39 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:00:39 [INFO] 终止 Flask 进程 (PID: 19621)
+2026-03-20 13:00:40 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:00:45 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:00:45 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:01:48 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:01:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:01:48 [INFO] 终止 Flask 进程 (PID: 19753)
+2026-03-20 13:01:49 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:01:54 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:01:54 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:01:54 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:01:54 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:02:57 [WARNING] 检测到问题: Flask 端口 5004 未开放; ngrok 隧道未激活
+2026-03-20 13:02:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放; ngrok 隧道未激活 - Action: 重启 Flask
+2026-03-20 13:02:57 [INFO] 终止 Flask 进程 (PID: 19864)
+2026-03-20 13:02:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:03:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:03:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:04:07 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:04:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:04:07 [INFO] 终止 Flask 进程 (PID: 19989)
+2026-03-20 13:04:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:04:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:04:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:05:16 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:05:16 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:05:16 [INFO] 终止 Flask 进程 (PID: 20099)
+2026-03-20 13:05:17 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:05:22 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:05:22 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:05:22 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:05:22 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:06:25 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:06:25 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:06:25 [INFO] 终止 Flask 进程 (PID: 20222)
+2026-03-20 13:06:26 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:06:31 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:06:31 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:07:34 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:07:34 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:07:34 [INFO] 终止 Flask 进程 (PID: 20328)
+2026-03-20 13:07:35 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:07:40 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:07:40 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:08:43 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:08:43 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:08:43 [INFO] 终止 Flask 进程 (PID: 20427)
+2026-03-20 13:08:44 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:08:49 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:08:49 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:08:49 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:08:49 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:09:52 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:09:52 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:09:52 [INFO] 终止 Flask 进程 (PID: 20536)
+2026-03-20 13:09:53 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:09:58 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:09:58 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:11:01 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:11:01 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:11:01 [INFO] 终止 Flask 进程 (PID: 20646)
+2026-03-20 13:11:02 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:11:07 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:11:07 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:12:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:12:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:12:10 [INFO] 终止 Flask 进程 (PID: 20768)
+2026-03-20 13:12:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:12:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:12:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:12:16 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:12:16 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:13:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:13:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:13:19 [INFO] 终止 Flask 进程 (PID: 20868)
+2026-03-20 13:13:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:13:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:13:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:14:28 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:14:28 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:14:28 [INFO] 终止 Flask 进程 (PID: 20969)
+2026-03-20 13:14:29 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:14:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:14:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:15:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:15:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:15:37 [INFO] 终止 Flask 进程 (PID: 21076)
+2026-03-20 13:15:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:15:43 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:15:43 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:15:43 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:15:43 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:16:46 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:16:46 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:16:46 [INFO] 终止 Flask 进程 (PID: 21199)
+2026-03-20 13:16:47 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:16:52 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:16:52 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:17:55 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:17:55 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:17:55 [INFO] 终止 Flask 进程 (PID: 21312)
+2026-03-20 13:17:57 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:18:02 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:18:02 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:19:04 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:19:04 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:19:04 [INFO] 终止 Flask 进程 (PID: 21411)
+2026-03-20 13:19:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:19:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:19:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:19:10 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:19:10 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:19:11 [INFO] 💓 监控心跳 #180 - 状态: ⚠️ 有问题
+2026-03-20 13:20:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:20:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:20:13 [INFO] 终止 Flask 进程 (PID: 21516)
+2026-03-20 13:20:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:20:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:20:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:21:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:21:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:21:22 [INFO] 终止 Flask 进程 (PID: 21630)
+2026-03-20 13:21:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:21:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:21:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:22:31 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:22:31 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:22:31 [INFO] 终止 Flask 进程 (PID: 21737)
+2026-03-20 13:22:32 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:22:37 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:22:37 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:22:37 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:22:37 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:23:41 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:23:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:23:41 [INFO] 终止 Flask 进程 (PID: 21850)
+2026-03-20 13:23:43 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:23:48 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:23:48 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:24:54 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:24:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:24:54 [INFO] 终止 Flask 进程 (PID: 22014)
+2026-03-20 13:24:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:25:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:25:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:26:07 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:26:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:26:07 [INFO] 终止 Flask 进程 (PID: 22125)
+2026-03-20 13:26:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:26:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:26:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:26:13 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:26:13 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:27:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:27:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:27:19 [INFO] 终止 Flask 进程 (PID: 22245)
+2026-03-20 13:27:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:27:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:27:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:28:32 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:28:32 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:28:32 [INFO] 终止 Flask 进程 (PID: 22349)
+2026-03-20 13:28:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:28:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:28:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:29:44 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:29:44 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:29:44 [INFO] 终止 Flask 进程 (PID: 22454)
+2026-03-20 13:29:45 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:29:50 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:29:50 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:29:50 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:29:50 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:30:56 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:30:56 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:30:56 [INFO] 终止 Flask 进程 (PID: 22586)
+2026-03-20 13:30:57 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:31:02 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:31:02 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:32:09 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:32:09 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:32:09 [INFO] 终止 Flask 进程 (PID: 22727)
+2026-03-20 13:32:10 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:32:15 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:32:15 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:33:21 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:33:21 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:33:21 [INFO] 终止 Flask 进程 (PID: 22832)
+2026-03-20 13:33:22 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:33:27 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:33:27 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:33:27 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:33:27 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:34:33 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:34:33 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:34:33 [INFO] 终止 Flask 进程 (PID: 22945)
+2026-03-20 13:34:34 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:34:39 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:34:39 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:35:45 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:35:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:35:45 [INFO] 终止 Flask 进程 (PID: 23067)
+2026-03-20 13:35:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:35:52 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:35:52 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:36:58 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:36:58 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:36:58 [INFO] 终止 Flask 进程 (PID: 23190)
+2026-03-20 13:36:59 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:37:04 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:37:04 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:37:04 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:37:04 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:38:11 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:38:11 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:38:11 [INFO] 终止 Flask 进程 (PID: 23295)
+2026-03-20 13:38:12 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:38:17 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:38:17 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:39:24 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:39:24 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:39:24 [INFO] 终止 Flask 进程 (PID: 23402)
+2026-03-20 13:39:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:39:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:39:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:40:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:40:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:40:37 [INFO] 终止 Flask 进程 (PID: 23531)
+2026-03-20 13:40:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:40:43 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:40:43 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:40:43 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:40:43 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:41:49 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:41:49 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:41:49 [INFO] 终止 Flask 进程 (PID: 23674)
+2026-03-20 13:41:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:41:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:41:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:43:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:43:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:43:03 [INFO] 终止 Flask 进程 (PID: 23779)
+2026-03-20 13:43:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:43:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:43:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:44:16 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:44:16 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:44:16 [INFO] 终止 Flask 进程 (PID: 23890)
+2026-03-20 13:44:18 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:44:23 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:44:23 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:44:23 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:44:23 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:45:30 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:45:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:45:30 [INFO] 终止 Flask 进程 (PID: 24006)
+2026-03-20 13:45:31 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:45:36 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:45:36 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:46:43 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:46:43 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:46:43 [INFO] 终止 Flask 进程 (PID: 24139)
+2026-03-20 13:46:44 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:46:49 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:46:49 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:47:57 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:47:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:47:57 [INFO] 终止 Flask 进程 (PID: 24246)
+2026-03-20 13:47:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:48:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:48:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:48:03 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:48:03 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:49:10 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:49:10 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:49:10 [INFO] 终止 Flask 进程 (PID: 24361)
+2026-03-20 13:49:11 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:49:16 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:49:16 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:50:23 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:50:23 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:50:23 [INFO] 终止 Flask 进程 (PID: 24473)
+2026-03-20 13:50:24 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:50:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:50:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:51:37 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:51:37 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:51:37 [INFO] 终止 Flask 进程 (PID: 24612)
+2026-03-20 13:51:38 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:51:43 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:51:43 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:51:43 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:51:43 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:52:49 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:52:49 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:52:49 [INFO] 终止 Flask 进程 (PID: 24726)
+2026-03-20 13:52:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:52:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:52:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:54:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:54:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:54:03 [INFO] 终止 Flask 进程 (PID: 24842)
+2026-03-20 13:54:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:54:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:54:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:55:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:55:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:55:15 [INFO] 终止 Flask 进程 (PID: 24970)
+2026-03-20 13:55:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:55:22 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:55:22 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:55:22 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:55:22 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 13:55:22 [INFO] 💓 监控心跳 #210 - 状态: ⚠️ 有问题
+2026-03-20 13:56:29 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:56:29 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:56:29 [INFO] 终止 Flask 进程 (PID: 25109)
+2026-03-20 13:56:30 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:56:35 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:56:35 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:57:42 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:57:42 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:57:42 [INFO] 终止 Flask 进程 (PID: 25229)
+2026-03-20 13:57:43 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:57:48 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:57:48 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:58:55 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 13:58:55 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 13:58:55 [INFO] 终止 Flask 进程 (PID: 25334)
+2026-03-20 13:58:56 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 13:59:01 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 13:59:01 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 13:59:01 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 13:59:01 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:00:08 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:00:08 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:00:08 [INFO] 终止 Flask 进程 (PID: 25443)
+2026-03-20 14:00:09 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:00:14 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:00:14 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:01:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:01:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:01:22 [INFO] 终止 Flask 进程 (PID: 25576)
+2026-03-20 14:01:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:01:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:01:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:02:34 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:02:35 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:02:35 [INFO] 终止 Flask 进程 (PID: 25705)
+2026-03-20 14:02:36 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:02:41 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:02:41 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:02:41 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:02:41 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:03:48 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:03:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:03:48 [INFO] 终止 Flask 进程 (PID: 25814)
+2026-03-20 14:03:49 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:03:54 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:03:54 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:05:01 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:05:01 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:05:02 [INFO] 终止 Flask 进程 (PID: 25929)
+2026-03-20 14:05:03 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:05:08 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:05:08 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:06:14 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:06:14 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:06:14 [INFO] 终止 Flask 进程 (PID: 26045)
+2026-03-20 14:06:15 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:06:20 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:06:20 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:06:20 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:06:20 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:07:27 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:07:27 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:07:27 [INFO] 终止 Flask 进程 (PID: 26176)
+2026-03-20 14:07:28 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:07:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:07:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:08:40 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:08:40 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:08:40 [INFO] 终止 Flask 进程 (PID: 26288)
+2026-03-20 14:08:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:08:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:08:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:09:53 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:09:53 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:09:53 [INFO] 终止 Flask 进程 (PID: 26392)
+2026-03-20 14:09:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:09:59 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:09:59 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:09:59 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:09:59 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:11:06 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:11:06 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:11:06 [INFO] 终止 Flask 进程 (PID: 26511)
+2026-03-20 14:11:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:11:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:11:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:12:20 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:12:20 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:12:20 [INFO] 终止 Flask 进程 (PID: 26659)
+2026-03-20 14:12:21 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:12:26 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:12:26 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:13:33 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:13:33 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:13:33 [INFO] 终止 Flask 进程 (PID: 26771)
+2026-03-20 14:13:34 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:13:39 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:13:39 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:13:39 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:13:39 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:14:46 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:14:46 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:14:46 [INFO] 终止 Flask 进程 (PID: 26877)
+2026-03-20 14:14:48 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:14:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:14:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:15:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:15:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:16:00 [INFO] 终止 Flask 进程 (PID: 26982)
+2026-03-20 14:16:01 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:16:06 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:16:06 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:17:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:17:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:17:13 [INFO] 终止 Flask 进程 (PID: 27119)
+2026-03-20 14:17:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:17:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:17:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:17:19 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:17:19 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:18:26 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:18:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:18:26 [INFO] 终止 Flask 进程 (PID: 27241)
+2026-03-20 14:18:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:18:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:18:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:32:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:32:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:32:13 [INFO] 终止 Flask 进程 (PID: 27351)
+2026-03-20 14:32:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:32:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:32:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:33:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:33:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:33:22 [INFO] 终止 Flask 进程 (PID: 27499)
+2026-03-20 14:33:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:33:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:33:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:33:28 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:33:28 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:34:32 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:34:32 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:34:32 [INFO] 终止 Flask 进程 (PID: 27606)
+2026-03-20 14:34:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:34:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:34:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:35:41 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:35:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:35:41 [INFO] 终止 Flask 进程 (PID: 27741)
+2026-03-20 14:35:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:35:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:35:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:36:50 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:36:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:36:50 [INFO] 终止 Flask 进程 (PID: 27866)
+2026-03-20 14:36:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:36:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:36:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:36:56 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:36:56 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:37:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:37:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:37:59 [INFO] 终止 Flask 进程 (PID: 27983)
+2026-03-20 14:38:00 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:38:05 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:38:05 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:39:08 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:39:08 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:39:08 [INFO] 终止 Flask 进程 (PID: 28096)
+2026-03-20 14:39:09 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:39:14 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:39:14 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:40:17 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:40:17 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:40:17 [INFO] 终止 Flask 进程 (PID: 28202)
+2026-03-20 14:40:18 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:40:23 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:40:23 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:40:23 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:40:23 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:41:26 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:41:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:41:26 [INFO] 终止 Flask 进程 (PID: 28318)
+2026-03-20 14:41:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:41:33 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:41:33 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:42:36 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:42:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:42:36 [INFO] 终止 Flask 进程 (PID: 28447)
+2026-03-20 14:42:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:42:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:42:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:43:45 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:43:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:43:45 [INFO] 终止 Flask 进程 (PID: 28545)
+2026-03-20 14:43:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:43:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:43:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:43:51 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:43:51 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:43:51 [INFO] 💓 监控心跳 #240 - 状态: ⚠️ 有问题
+2026-03-20 14:44:54 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:44:54 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:44:54 [INFO] 终止 Flask 进程 (PID: 28652)
+2026-03-20 14:44:55 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:45:00 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:45:00 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:46:03 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:46:03 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:46:03 [INFO] 终止 Flask 进程 (PID: 28763)
+2026-03-20 14:46:04 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:46:09 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:46:09 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:47:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:47:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:47:13 [INFO] 终止 Flask 进程 (PID: 28879)
+2026-03-20 14:47:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:47:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:47:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:47:19 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:47:19 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:48:22 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:48:22 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:48:22 [INFO] 终止 Flask 进程 (PID: 28979)
+2026-03-20 14:48:23 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:48:28 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:48:28 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:49:31 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:49:31 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:49:31 [INFO] 终止 Flask 进程 (PID: 29094)
+2026-03-20 14:49:33 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:49:38 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:49:38 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:50:41 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:50:41 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:50:41 [INFO] 终止 Flask 进程 (PID: 29206)
+2026-03-20 14:50:42 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:50:47 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:50:47 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:50:47 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:50:47 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:51:50 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:51:50 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:51:50 [INFO] 终止 Flask 进程 (PID: 29326)
+2026-03-20 14:51:51 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:51:56 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:51:56 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:52:59 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:52:59 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:52:59 [INFO] 终止 Flask 进程 (PID: 29432)
+2026-03-20 14:53:00 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:53:05 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:53:05 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:54:08 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:54:08 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:54:08 [INFO] 终止 Flask 进程 (PID: 29539)
+2026-03-20 14:54:09 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:54:14 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:54:14 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:54:14 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:54:14 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:55:17 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:55:17 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:55:17 [INFO] 终止 Flask 进程 (PID: 29641)
+2026-03-20 14:55:18 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:55:23 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:55:23 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:56:26 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:56:26 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:56:26 [INFO] 终止 Flask 进程 (PID: 29763)
+2026-03-20 14:56:27 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:56:32 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:56:32 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:57:36 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:57:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:57:36 [INFO] 终止 Flask 进程 (PID: 29858)
+2026-03-20 14:57:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:57:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:57:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:57:42 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 14:57:42 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 14:58:45 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:58:45 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:58:45 [INFO] 终止 Flask 进程 (PID: 29975)
+2026-03-20 14:58:46 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 14:58:51 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 14:58:51 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 14:59:55 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 14:59:55 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 14:59:55 [INFO] 终止 Flask 进程 (PID: 30082)
+2026-03-20 14:59:56 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:00:01 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:00:01 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:01:04 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:01:04 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:01:04 [INFO] 终止 Flask 进程 (PID: 30188)
+2026-03-20 15:01:05 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:01:10 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:01:10 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:01:10 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:01:10 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:02:13 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:02:13 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:02:13 [INFO] 终止 Flask 进程 (PID: 30310)
+2026-03-20 15:02:14 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:02:19 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:02:19 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:03:23 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:03:23 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:03:23 [INFO] 终止 Flask 进程 (PID: 30431)
+2026-03-20 15:03:25 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:03:30 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:03:30 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:04:36 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:04:36 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:04:36 [INFO] 终止 Flask 进程 (PID: 30583)
+2026-03-20 15:04:37 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:04:42 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:04:42 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:04:42 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:04:42 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:05:49 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:05:49 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:05:49 [INFO] 终止 Flask 进程 (PID: 30688)
+2026-03-20 15:05:50 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:05:55 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:05:55 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:07:02 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:07:02 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:07:02 [INFO] 终止 Flask 进程 (PID: 30818)
+2026-03-20 15:07:03 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:07:08 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:07:08 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:08:14 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:08:14 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:08:14 [INFO] 终止 Flask 进程 (PID: 30931)
+2026-03-20 15:08:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:08:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:08:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:08:21 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:08:21 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:09:27 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:09:27 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:09:27 [INFO] 终止 Flask 进程 (PID: 31037)
+2026-03-20 15:09:28 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:09:34 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:09:34 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:10:40 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:10:40 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:10:40 [INFO] 终止 Flask 进程 (PID: 31165)
+2026-03-20 15:10:41 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:10:46 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:10:46 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:11:53 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:11:53 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:11:53 [INFO] 终止 Flask 进程 (PID: 31286)
+2026-03-20 15:11:54 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:11:59 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:11:59 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:11:59 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:11:59 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:13:02 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:13:02 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:13:02 [INFO] 终止 Flask 进程 (PID: 31393)
+2026-03-20 15:13:03 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:13:08 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:13:08 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:14:11 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:14:11 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:14:11 [INFO] 终止 Flask 进程 (PID: 31502)
+2026-03-20 15:14:12 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:14:17 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:14:17 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:15:20 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:15:20 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:15:20 [INFO] 终止 Flask 进程 (PID: 31608)
+2026-03-20 15:15:21 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:15:27 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:15:27 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:15:27 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:15:27 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:16:30 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:16:30 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:16:30 [INFO] 终止 Flask 进程 (PID: 31738)
+2026-03-20 15:16:31 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:16:36 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:16:36 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:17:39 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:17:39 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:17:39 [INFO] 终止 Flask 进程 (PID: 31843)
+2026-03-20 15:17:40 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:17:45 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:17:45 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:18:48 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:18:48 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:18:48 [INFO] 终止 Flask 进程 (PID: 31991)
+2026-03-20 15:18:49 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:18:55 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:18:55 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:18:55 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:18:55 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:18:55 [INFO] 💓 监控心跳 #270 - 状态: ⚠️ 有问题
+2026-03-20 15:19:58 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:19:58 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:19:58 [INFO] 终止 Flask 进程 (PID: 32112)
+2026-03-20 15:19:59 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:20:04 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:20:04 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:21:07 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:21:07 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:21:07 [INFO] 终止 Flask 进程 (PID: 32211)
+2026-03-20 15:21:08 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:21:13 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:21:13 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:22:19 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:22:19 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:22:19 [INFO] 终止 Flask 进程 (PID: 32333)
+2026-03-20 15:22:20 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:22:25 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:22:25 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:22:25 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:22:25 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:23:29 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:23:29 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:23:29 [INFO] 终止 Flask 进程 (PID: 32438)
+2026-03-20 15:23:30 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:23:35 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:23:35 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:24:38 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:24:38 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:24:38 [INFO] 终止 Flask 进程 (PID: 32543)
+2026-03-20 15:24:39 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:24:44 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:24:44 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:25:47 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:25:47 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:25:47 [INFO] 终止 Flask 进程 (PID: 32649)
+2026-03-20 15:25:48 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:25:53 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:25:53 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:25:53 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:25:53 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:26:57 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:26:57 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:26:57 [INFO] 终止 Flask 进程 (PID: 32773)
+2026-03-20 15:26:58 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:27:03 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:27:03 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:28:06 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:28:06 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:28:06 [INFO] 终止 Flask 进程 (PID: 32908)
+2026-03-20 15:28:07 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:28:12 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:28:12 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:29:15 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:29:15 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:29:15 [INFO] 终止 Flask 进程 (PID: 33007)
+2026-03-20 15:29:16 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:29:21 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:29:21 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:29:21 [ERROR] ❌ 连续 3 次恢复失败，等待手动干预
+2026-03-20 15:29:21 [ERROR] [ERROR] [both] 连续 3 次自动恢复失败 - Action: 等待手动干预
+2026-03-20 15:30:25 [WARNING] 检测到问题: Flask 端口 5004 未开放
+2026-03-20 15:30:25 [ERROR] [ERROR] [flask] Flask 端口 5004 未开放 - Action: 重启 Flask
+2026-03-20 15:30:25 [INFO] 终止 Flask 进程 (PID: 33113)
+2026-03-20 15:30:26 [INFO] 启动 Flask 服务 (端口: 5004)...
+2026-03-20 15:30:31 [ERROR] ❌ Flask 启动失败 - 端口未开放
+2026-03-20 15:30:31 [ERROR] ❌ 重启 Flask 失败
+2026-03-20 15:31:06 [INFO] 收到信号 15, 正在停止监控...
+2026-03-20 15:31:06 [INFO] 收到信号 15, 正在停止监控...
+2026-03-20 15:31:06 [INFO] 👋 监控服务已停止

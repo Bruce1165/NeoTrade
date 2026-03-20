@@ -1,0 +1,114 @@
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-12 09:35:01,944 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-12 09:35:01,944 - __main__ - INFO - ============================================================
+2026-03-12 09:35:01,944 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-12 09:35:01,944 - __main__ - INFO - ============================================================
+2026-03-12 09:35:01,944 - __main__ - INFO - [0935] 开始分析指数成交额...
+2026-03-12 09:35:07,132 - __main__ - ERROR - 获取上证指数数据失败: HTTPSConnectionPool(host='80.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=b%3AMK0010%2Cm%3A1%2Bt%3A1%2Cm%3A0+t%3A5%2Cm%3A1%2Bs%3A3%2Cm%3A0%2Bt%3A5%2Cm%3A2&fields=f3%2Cf12%2Cf13 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 09:35:13,501 - __main__ - ERROR - 获取深证成指数据失败: HTTPSConnectionPool(host='80.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=b%3AMK0010%2Cm%3A1%2Bt%3A1%2Cm%3A0+t%3A5%2Cm%3A1%2Bs%3A3%2Cm%3A0%2Bt%3A5%2Cm%3A2&fields=f3%2Cf12%2Cf13 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 09:35:19,663 - __main__ - ERROR - 获取沪深300数据失败: HTTPSConnectionPool(host='80.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=b%3AMK0010%2Cm%3A1%2Bt%3A1%2Cm%3A0+t%3A5%2Cm%3A1%2Bs%3A3%2Cm%3A0%2Bt%3A5%2Cm%3A2&fields=f3%2Cf12%2Cf13 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 09:35:25,249 - __main__ - ERROR - 获取创业板指数据失败: HTTPSConnectionPool(host='80.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=b%3AMK0010%2Cm%3A1%2Bt%3A1%2Cm%3A0+t%3A5%2Cm%3A1%2Bs%3A3%2Cm%3A0%2Bt%3A5%2Cm%3A2&fields=f3%2Cf12%2Cf13 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 09:35:31,119 - __main__ - ERROR - 获取科创综指数据失败: HTTPSConnectionPool(host='80.push2.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=100&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=b%3AMK0010%2Cm%3A1%2Bt%3A1%2Cm%3A0+t%3A5%2Cm%3A1%2Bs%3A3%2Cm%3A0%2Bt%3A5%2Cm%3A2&fields=f3%2Cf12%2Cf13 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-03-12 09:35:31,131 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-12/0935_index.md
+2026-03-12 09:35:31,131 - __main__ - INFO - [0935] 指数分析完成
+2026-03-12 09:35:31,131 - __main__ - INFO - ============================================================
+2026-03-12 09:35:31,131 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-12 09:35:31,131 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-13 09:37:58,392 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-13 09:37:58,393 - __main__ - INFO - ============================================================
+2026-03-13 09:37:58,393 - __main__ - INFO - 开始执行盘中任务: 0937
+2026-03-13 09:37:58,393 - __main__ - INFO - ============================================================
+2026-03-13 09:37:58,393 - __main__ - INFO - [0937] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:26,  1.68s/it] 12%|█▏        | 2/17 [00:03<00:28,  1.93s/it]                                              2026-03-13 09:38:10,731 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-13 09:38:16,924 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-13 09:38:23,074 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]                                      2026-03-13 09:38:30,515 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-13 09:38:36,600 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-13 09:38:36,619 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-13/0937_index.md
+2026-03-13 09:38:36,619 - __main__ - INFO - [0937] 指数分析完成
+2026-03-13 09:38:36,619 - __main__ - INFO - ============================================================
+2026-03-13 09:38:36,619 - __main__ - INFO - 盘中任务完成: 0937
+2026-03-13 09:38:36,619 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-16 09:35:09,416 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-16 09:35:09,416 - __main__ - INFO - ============================================================
+2026-03-16 09:35:09,416 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-16 09:35:09,416 - __main__ - INFO - ============================================================
+2026-03-16 09:35:09,416 - __main__ - INFO - [0935] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:20,  1.31s/it] 12%|█▏        | 2/17 [00:02<00:22,  1.50s/it] 18%|█▊        | 3/17 [00:03<00:16,  1.14s/it] 24%|██▎       | 4/17 [00:04<00:14,  1.08s/it]                                              2026-03-16 09:35:21,860 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 09:35:27,240 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 09:35:32,612 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 09:35:38,487 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 09:35:45,032 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-16 09:35:49,569 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-16/0935_index.md
+2026-03-16 09:35:49,570 - __main__ - INFO - [0935] 指数分析完成
+2026-03-16 09:35:49,570 - __main__ - INFO - ============================================================
+2026-03-16 09:35:49,570 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-16 09:35:49,570 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-17 09:35:05,478 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-17 09:35:05,478 - __main__ - INFO - ============================================================
+2026-03-17 09:35:05,478 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-17 09:35:05,478 - __main__ - INFO - ============================================================
+2026-03-17 09:35:05,478 - __main__ - INFO - [0935] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:00<00:15,  1.02it/s] 12%|█▏        | 2/17 [00:02<00:18,  1.21s/it]                                              2026-03-17 09:35:17,287 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-17 09:35:23,650 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-17 09:35:29,468 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]                                      2026-03-17 09:35:42,258 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-17 09:35:48,012 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-17 09:35:48,032 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-17/0935_index.md
+2026-03-17 09:35:48,032 - __main__ - INFO - [0935] 指数分析完成
+2026-03-17 09:35:48,032 - __main__ - INFO - ============================================================
+2026-03-17 09:35:48,032 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-17 09:35:48,032 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-18 09:35:01,078 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-18 09:35:01,078 - __main__ - INFO - ============================================================
+2026-03-18 09:35:01,078 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-18 09:35:01,078 - __main__ - INFO - ============================================================
+2026-03-18 09:35:01,078 - __main__ - INFO - [0935] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:31,  1.94s/it] 12%|█▏        | 2/17 [00:03<00:29,  1.97s/it] 18%|█▊        | 3/17 [00:05<00:24,  1.77s/it] 24%|██▎       | 4/17 [00:06<00:18,  1.46s/it] 29%|██▉       | 5/17 [00:08<00:19,  1.59s/it] 35%|███▌      | 6/17 [00:09<00:15,  1.39s/it] 41%|████      | 7/17 [00:10<00:13,  1.37s/it] 47%|████▋     | 8/17 [00:12<00:12,  1.44s/it] 53%|█████▎    | 9/17 [00:13<00:12,  1.54s/it] 59%|█████▉    | 10/17 [00:14<00:09,  1.36s/it] 65%|██████▍   | 11/17 [00:16<00:08,  1.47s/it] 71%|███████   | 12/17 [00:18<00:07,  1.45s/it] 76%|███████▋  | 13/17 [00:19<00:05,  1.41s/it] 82%|████████▏ | 14/17 [00:21<00:04,  1.53s/it] 88%|████████▊ | 15/17 [00:22<00:03,  1.58s/it] 94%|█████████▍| 16/17 [00:23<00:01,  1.36s/it]100%|██████████| 17/17 [00:25<00:00,  1.42s/it]                                               2026-03-18 09:35:28,658 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-18/0935_index.md
+2026-03-18 09:35:28,659 - __main__ - INFO - [0935] 指数分析完成
+2026-03-18 09:35:28,660 - __main__ - INFO - ============================================================
+2026-03-18 09:35:28,660 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-18 09:35:28,660 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-19 09:35:00,675 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-19 09:35:00,675 - __main__ - INFO - ============================================================
+2026-03-19 09:35:00,675 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-19 09:35:00,675 - __main__ - INFO - ============================================================
+2026-03-19 09:35:00,675 - __main__ - INFO - [0935] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:21,  1.35s/it] 12%|█▏        | 2/17 [00:02<00:17,  1.17s/it]                                              2026-03-19 09:35:10,696 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-19 09:35:16,067 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-19 09:35:22,506 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]                                      2026-03-19 09:35:29,461 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-19 09:35:35,196 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-19 09:35:35,212 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-19/0935_index.md
+2026-03-19 09:35:35,212 - __main__ - INFO - [0935] 指数分析完成
+2026-03-19 09:35:35,212 - __main__ - INFO - ============================================================
+2026-03-19 09:35:35,212 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-19 09:35:35,212 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-20 09:35:01,207 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-20 09:35:01,207 - __main__ - INFO - ============================================================
+2026-03-20 09:35:01,207 - __main__ - INFO - 开始执行盘中任务: 0935
+2026-03-20 09:35:01,207 - __main__ - INFO - ============================================================
+2026-03-20 09:35:01,207 - __main__ - INFO - [0935] 开始分析指数成交额...
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:19,  1.22s/it] 12%|█▏        | 2/17 [00:02<00:16,  1.08s/it]                                              2026-03-20 09:35:09,183 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]                                      2026-03-20 09:35:22,232 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-20 09:35:27,655 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]  6%|▌         | 1/17 [00:01<00:25,  1.57s/it]                                              2026-03-20 09:35:41,656 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-20 09:35:48,499 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-20 09:35:48,514 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-20/0935_index.md
+2026-03-20 09:35:48,514 - __main__ - INFO - [0935] 指数分析完成
+2026-03-20 09:35:48,515 - __main__ - INFO - ============================================================
+2026-03-20 09:35:48,515 - __main__ - INFO - 盘中任务完成: 0935
+2026-03-20 09:35:48,515 - __main__ - INFO - ============================================================
