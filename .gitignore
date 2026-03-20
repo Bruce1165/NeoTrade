@@ -1,13 +1,22 @@
-# Large data files
+# Data files (large)
 *.db
 *.db-journal
-data/stock_data.db
-data/*.db
+*.sqlite
+*.sqlite3
+/data/
+!/data/.gitkeep
+dashboard/data/
+scripts/data/
+
+# Excel files (generated outputs)
+*.xlsx
+*.xls
+*.csv
 
 # Logs
-logs/*.log
-logs/*.json
+logs/
 *.log
+npm-debug.log*
 
 # Python
 __pycache__/
@@ -20,32 +29,33 @@ venv/
 ENV/
 build/
 dist/
+*.egg-info/
 
 # Node
 node_modules/
-npm-debug.log*
+.npm
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Large Excel files
-data/**/*.xlsx
-data/**/*.xls
+# ngrok
+ngrok*
+*.ngrok
 
-# Progress files (large)
-data/progress/*.json
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# Ngrok logs
-data/ngrok.log
-data/dashboard-urls.log
-
-# Cache
-.pytest_cache/
-.mypy_cache/
+# Temporary files
+tmp/
+temp/
+*.tmp
