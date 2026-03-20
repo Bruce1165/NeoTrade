@@ -1,0 +1,51 @@
+# Large data files
+*.db
+*.db-journal
+data/stock_data.db
+data/*.db
+
+# Logs
+logs/*.log
+logs/*.json
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large Excel files
+data/**/*.xlsx
+data/**/*.xls
+
+# Progress files (large)
+data/progress/*.json
+
+# Ngrok logs
+data/ngrok.log
+data/dashboard-urls.log
+
+# Cache
+.pytest_cache/
+.mypy_cache/
