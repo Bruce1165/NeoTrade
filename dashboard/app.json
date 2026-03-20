@@ -1,0 +1,17 @@
+{
+  "name": "Neo Dashboard Backend",
+  "description": "Flask API for trading screener dashboard",
+  "repository": "https://github.com/Bruce1165/NeoTrade",
+  "keywords": ["flask", "trading", "screener"],
+  "env": {
+    "DASHBOARD_PASSWORD": {
+      "description": "Password for dashboard access (required)",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+#!/usr/bin/env python3
+"""
+Stock Screener - Cup Handle Pattern with Volume Surge (Final)
+Target date: 2026-03-11 (yesterday)
+Criteria:
+- 换手率 > 5%
+- 收盘价涨幅 > 2%
+- 过去3天成交总额 / 过去4-6天成交总额 = 1.7x to 2.0x
+- 杯柄日期范围：从昨天倒退45个交易日开始，到过去12个月内
+"""
+
+import sqlite3
+from datetime import datetime, timedelta
+import pandas as pd
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+
+def get_trading_days(conn, start_date, end_date):
+    """Get all trading days in range, sorted."""
+    query = """
+    SELECT DISTINCT trade_date 
+    FROM daily_prices 
+    WHERE trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(start_date, end_date))
+    return df['trade_date'].tolist()
+
+def screen_stocks():
+    conn = sqlite3.connect(DB_PATH)
+    
+    # Get target date's data with basic filters
+    base_query = """
+    SELECT 
+        dp.code,
+        s.name,
+        dp.trade_date,
+        dp.high as target_high,
+        dp.close,
+        dp.pct_change,
+        dp.turnover,
+        dp.volume,
+        dp.amount
+    FROM daily_prices dp
+    JOIN stocks s ON dp.code = s.code
+    WHERE dp.trade_date = ?
+        AND dp.turnover > 5
+        AND dp.pct_change > 2
+    """
+    
+    base_df = pd.read_sql(base_query, conn, params=(TARGET_DATE,))
+    
+    if base_df.empty:
+        print("没有股票符合基本条件（换手率 > 5%，涨幅 > 2%）")
+        return
+    
+    print(f"基础候选股票: {len(base_df)} 只")
+    
+    # Get all trading days up to target date (need 12 months + 45 trading days history)
+    start_history = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=450)).strftime("%Y-%m-%d")
+    trading_days = get_trading_days(conn, start_history, TARGET_DATE)
+    
+    if len(trading_days) < 60:
+        print("交易历史数据不足")
+        return
+    
+    # Find target date index
+    try:
+        target_idx = trading_days.index(TARGET_DATE)
+    except ValueError:
+        print(f"{TARGET_DATE} 不是交易日")
+        return
+    
+    # Need at least 6 days before target for volume calculation
+    if target_idx < 6:
+        print("目标日期前没有足够的交易日")
+        return
+    
+    # Volume calculation windows
+    # Recent 3 days: target_idx-2, target_idx-1, target_idx
+    # Previous 3 days: target_idx-5, target_idx-4, target_idx-3
+    recent_days = trading_days[target_idx-2:target_idx+1]  # -2, -1, 0
+    prev_days = trading_days[target_idx-5:target_idx-2]     # -5, -4, -3
+    
+    print(f"最近3个交易日: {recent_days}")
+    print(f"前3个交易日: {prev_days}")
+    
+    # Calculate cup handle date range
+    # From 45 trading days before target to 12 months ago
+    # 45 trading days before target = trading_days[target_idx - 45]
+    if target_idx < 45:
+        print("交易历史不足45个交易日")
+        return
+    
+    cup_handle_start = trading_days[target_idx - 45]  # 45个交易日前的日期
+    cup_handle_end = (datetime.strptime(TARGET_DATE, "%Y-%m-%d") - timedelta(days=365)).strftime("%Y-%m-%d")
+    
+    print(f"杯柄日期范围: {cup_handle_end} 到 {cup_handle_start} (45个交易日前)")
+    
+    results = []
+    
+    for _, row in base_df.iterrows():
+        code = row['code']
+        target_high = row['target_high']
+        name = row['name']
+        
+        # Get volume data for recent 3 days
+        vol_query = """
+        SELECT trade_date, volume, amount, high
+        FROM daily_prices
+        WHERE code = ? AND trade_date IN (?, ?, ?)
+        """
+        recent_df = pd.read_sql(vol_query, conn, params=(code, *recent_days))
+        
+        if len(recent_df) < 3:
+            continue
+        
+        recent_volume = recent_df['volume'].sum()
+        recent_amount = recent_df['amount'].sum()
+        
+        # Get volume data for previous 3 days
+        prev_df = pd.read_sql(vol_query, conn, params=(code, *prev_days))
+        
+        if len(prev_df) < 3:
+            continue
+        
+        prev_volume = prev_df['volume'].sum()
+        prev_amount = prev_df['amount'].sum()
+        
+        # Calculate volume surge multiple
+        if prev_amount == 0:
+            continue
+        
+        volume_multiple = recent_amount / prev_amount
+        
+        # Filter: volume multiple between 1.7 and 2.0
+        if not (1.7 <= volume_multiple <= 2.0):
+            continue
+        
+        # Find cup handle date (from 45 trading days before target to 12 months ago)
+        cup_handle_query = """
+        SELECT trade_date, high
+        FROM daily_prices
+        WHERE code = ? 
+            AND trade_date <= ?
+            AND trade_date >= ?
+            AND high BETWEEN ? AND ?
+        ORDER BY trade_date DESC
+        LIMIT 1
+        """
+        
+        high_low = target_high * 0.9
+        high_high = target_high * 1.1
+        
+        cup_df = pd.read_sql(cup_handle_query, conn, 
+                             params=(code, cup_handle_start, cup_handle_end, high_low, high_high))
+        
+        if cup_df.empty:
+            continue
+        
+        cup_handle_date = cup_df.iloc[0]['trade_date']
+        
+        results.append({
+            '股票代码': code,
+            '股票名称': name,
+            '放量倍数': round(volume_multiple, 2),
+            '换手率': round(row['turnover'], 2),
+            '昨日成交总额': round(row['amount'] / 10000, 2),  # in 万元
+            '杯柄日期': cup_handle_date
+        })
+    
+    conn.close()
+    
+    if not results:
+        print("没有股票符合所有条件")
+        return
+    
+    # Sort by volume multiple descending
+    results_df = pd.DataFrame(results)
+    results_df = results_df.sort_values('放量倍数', ascending=False)
+    
+    print(f"\n{'='*100}")
+    print(f"筛选结果: {len(results)} 只股票")
+    print(f"{'='*100}")
+    print(results_df.to_string(index=False))
+    
+    # Save to CSV
+    output_path = "/Users/mac/.openclaw/workspace-neo/data/screening_results_20260311_final.csv"
+    results_df.to_csv(output_path, index=False, encoding='utf-8-sig')
+    print(f"\n结果已保存至: {output_path}")
+    
+    return results_df
+
+if __name__ == "__main__":
+    screen_stocks()

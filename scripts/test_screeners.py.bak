@@ -1,0 +1,429 @@
+#!/usr/bin/env python3
+"""
+筛选器测试脚本 - Screener Test Script
+
+测试内容：
+1. 交易日历模块
+2. 新闻抓取模块
+3. LLM分析模块
+4. 进度跟踪模块
+5. 输出管理模块
+6. 基础筛选器类
+7. 各筛选器功能
+"""
+
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+import os
+import logging
+from datetime import datetime, timedelta
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+
+def test_trading_calendar():
+    """测试交易日历模块"""
+    logger.info("\n" + "="*60)
+    logger.info("测试交易日历模块")
+    logger.info("="*60)
+    
+    try:
+        from trading_calendar import TradingCalendar, get_recent_trading_day
+        
+        calendar = TradingCalendar()
+        
+        # 测试是否为交易日
+        test_date = datetime.now()
+        logger.info(f"今天 ({test_date.strftime('%Y-%m-%d')}) 是交易日: {calendar.is_trading_day(test_date)}")
+        
+        # 测试获取最近交易日
+        recent_day = calendar.get_recent_trading_day()
+        logger.info(f"最近交易日: {recent_day}")
+        
+        # 测试获取N个交易日前的日期
+        five_days_ago = calendar.get_n_trading_days_ago(5)
+        logger.info(f"5个交易日前的日期: {five_days_ago}")
+        
+        # 测试获取交易日窗口
+        window = calendar.get_trading_days_window(recent_day, 10)
+        logger.info(f"最近10个交易日: {window}")
+        
+        logger.info("✓ 交易日历模块测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 交易日历模块测试失败: {e}")
+        return False
+
+
+def test_news_fetcher():
+    """测试新闻抓取模块"""
+    logger.info("\n" + "="*60)
+    logger.info("测试新闻抓取模块")
+    logger.info("="*60)
+    
+    try:
+        from news_fetcher import NewsFetcher
+        
+        fetcher = NewsFetcher()
+        
+        # 测试单只股票新闻
+        test_code = "600519"  # 贵州茅台
+        logger.info(f"测试获取 {test_code} 的新闻...")
+        
+        news = fetcher.get_news(test_code, max_news=3, use_cache=False)
+        
+        if news:
+            logger.info(f"获取到 {len(news)} 条新闻")
+            for item in news[:2]:
+                logger.info(f"  - {item.get('title', 'N/A')[:50]}...")
+        else:
+            logger.warning("未获取到新闻（可能网络问题）")
+        
+        # 测试新闻摘要
+        summary = fetcher.get_news_summary(test_code, max_news=3)
+        logger.info(f"新闻摘要:\n{summary[:100]}...")
+        
+        logger.info("✓ 新闻抓取模块测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 新闻抓取模块测试失败: {e}")
+        return False
+
+
+def test_llm_analyzer():
+    """测试LLM分析模块"""
+    logger.info("\n" + "="*60)
+    logger.info("测试LLM分析模块")
+    logger.info("="*60)
+    
+    try:
+        from llm_analyzer import LLMAnalyzer
+        
+        analyzer = LLMAnalyzer()
+        
+        # 测试分析单只股票
+        test_code = "600519"
+        test_name = "贵州茅台"
+        test_news = """
+1. [2026-03-13] 贵州茅台发布2025年年报，净利润同比增长15%
+2. [2026-03-12] 白酒板块整体走强，茅台领涨
+3. [2026-03-10] 茅台推出新品，市场反响热烈
+"""
+        
+        logger.info(f"测试分析 {test_code} {test_name}...")
+        
+        result = analyzer.analyze_stock(test_code, test_name, test_news, use_cache=False)
+        
+        logger.info("分析结果:")
+        for key, value in result.items():
+            logger.info(f"  {key}: {value}")
+        
+        logger.info("✓ LLM分析模块测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ LLM分析模块测试失败: {e}")
+        return False
+
+
+def test_progress_tracker():
+    """测试进度跟踪模块"""
+    logger.info("\n" + "="*60)
+    logger.info("测试进度跟踪模块")
+    logger.info("="*60)
+    
+    try:
+        from progress_tracker import ProgressTracker
+        
+        tracker = ProgressTracker('test_screener')
+        
+        # 重置进度
+        tracker.reset()
+        
+        # 开始任务
+        tracker.start(total_stocks=1000, metadata={'date': '2026-03-14'})
+        logger.info("进度跟踪已启动")
+        
+        # 模拟处理
+        for i in range(10):
+            tracker.update(
+                processed=i+1,
+                matched=i//3,
+                current_code=f'600{i:03d}'
+            )
+        
+        # 添加匹配的股票
+        tracker.add_matched_code('600001')
+        tracker.add_matched_code('600002')
+        
+        # 获取进度摘要
+        summary = tracker.get_summary()
+        logger.info("进度摘要:")
+        for key, value in summary.items():
+            logger.info(f"  {key}: {value}")
+        
+        # 完成任务
+        tracker.complete(success=True)
+        logger.info("进度跟踪已完成")
+        
+        logger.info("✓ 进度跟踪模块测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 进度跟踪模块测试失败: {e}")
+        return False
+
+
+def test_output_manager():
+    """测试输出管理模块"""
+    logger.info("\n" + "="*60)
+    logger.info("测试输出管理模块")
+    logger.info("="*60)
+    
+    try:
+        from output_manager import OutputManager
+        
+        manager = OutputManager('test_screener')
+        
+        # 测试数据
+        test_results = [
+            {'code': '600519', 'name': '贵州茅台', 'close': 1800.0, 'pct_change': 2.5},
+            {'code': '000001', 'name': '平安银行', 'close': 12.5, 'pct_change': 1.8},
+        ]
+        
+        # 测试保存结果
+        output_path = manager.save_results(test_results, suffix='test')
+        logger.info(f"结果已保存: {output_path}")
+        
+        # 测试带分析数据保存
+        analysis_data = {
+            '600519': {
+                '上涨原因': '业绩超预期',
+                '行业分类': '白酒',
+                '相关概念': '消费、白酒',
+                '新闻摘要': '茅台发布年报，净利润增长15%',
+                '分析置信度': '高'
+            },
+            '000001': {
+                '上涨原因': '银行板块走强',
+                '行业分类': '银行',
+                '相关概念': '金融、银行',
+                '新闻摘要': '银行业绩改善',
+                '分析置信度': '中'
+            }
+        }
+        
+        output_path2 = manager.save_with_analysis(test_results, analysis_data, suffix='with_analysis')
+        logger.info(f"带分析的结果已保存: {output_path2}")
+        
+        # 测试统计
+        stats = manager.get_stats()
+        logger.info("统计信息:")
+        for key, value in stats.items():
+            logger.info(f"  {key}: {value}")
+        
+        # 清理测试文件
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        if os.path.exists(output_path2):
+            os.remove(output_path2)
+        
+        logger.info("✓ 输出管理模块测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 输出管理模块测试失败: {e}")
+        return False
+
+
+def test_base_screener():
+    """测试基础筛选器类"""
+    logger.info("\n" + "="*60)
+    logger.info("测试基础筛选器类")
+    logger.info("="*60)
+    
+    try:
+        from base_screener import BaseScreener
+        
+        # 创建测试筛选器
+        class TestScreener(BaseScreener):
+            def screen_stock(self, code, name):
+                df = self.get_stock_data(code, days=5)
+                if df is not None and len(df) >= 2:
+                    latest = df.iloc[-1]
+                    if latest.get('pct_change', 0) > 9:  # 涨停
+                        return {
+                            'code': code,
+                            'name': name,
+                            'close': latest['close'],
+                            'pct_change': latest['pct_change']
+                        }
+                return None
+        
+        screener = TestScreener(
+            screener_name='test',
+            enable_news=False,
+            enable_llm=False,
+            enable_progress=False
+        )
+        
+        # 测试获取股票数据
+        test_code = "600519"
+        df = screener.get_stock_data(test_code, days=10)
+        
+        if df is not None:
+            logger.info(f"获取到 {test_code} 的 {len(df)} 天数据")
+            logger.info(f"最近一天数据: {df.iloc[-1].to_dict()}")
+        
+        # 测试获取所有股票
+        stocks = screener.get_all_stocks()
+        logger.info(f"获取到 {len(stocks)} 只股票")
+        
+        # 测试统计
+        stats = screener.get_stats()
+        logger.info(f"统计信息: {stats}")
+        
+        logger.info("✓ 基础筛选器类测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 基础筛选器类测试失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def test_coffee_cup_screener():
+    """测试咖啡杯筛选器"""
+    logger.info("\n" + "="*60)
+    logger.info("测试咖啡杯筛选器")
+    logger.info("="*60)
+    
+    try:
+        from coffee_cup_screener import CoffeeCupScreener
+        
+        screener = CoffeeCupScreener(
+            enable_news=False,
+            enable_llm=False,
+            enable_progress=False
+        )
+        
+        # 测试单只股票筛选
+        test_code = "600519"
+        result = screener.screen_stock(test_code, "贵州茅台")
+        
+        if result:
+            logger.info(f"{test_code} 符合咖啡杯形态:")
+            for key, value in result.items():
+                logger.info(f"  {key}: {value}")
+        else:
+            logger.info(f"{test_code} 不符合咖啡杯形态")
+        
+        logger.info("✓ 咖啡杯筛选器测试通过")
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 咖啡杯筛选器测试失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def test_directory_structure():
+    """测试目录结构"""
+    logger.info("\n" + "="*60)
+    logger.info("测试目录结构")
+    logger.info("="*60)
+    
+    try:
+        expected_dirs = [
+            'data/screeners/coffee_cup',
+            'data/screeners/coffee_cup/charts',
+            'data/screeners/jin_feng_huang',
+            'data/screeners/jin_feng_huang/charts',
+            'data/screeners/yin_feng_huang',
+            'data/screeners/yin_feng_huang/charts',
+            'data/screeners/shi_pan_xian',
+            'data/screeners/shi_pan_xian/charts',
+            'data/screeners/er_ban_hui_tiao',
+            'data/screeners/er_ban_hui_tiao/charts',
+            'data/screeners/zhang_ting_bei_liang_yin',
+            'data/screeners/zhang_ting_bei_liang_yin/charts',
+        ]
+        
+        all_exist = True
+        for dir_path in expected_dirs:
+            full_path = os.path.join('/Users/mac/.openclaw/workspace-neo', dir_path)
+            exists = os.path.exists(full_path)
+            status = "✓" if exists else "✗"
+            logger.info(f"{status} {dir_path}")
+            if not exists:
+                all_exist = False
+        
+        if all_exist:
+            logger.info("✓ 目录结构测试通过")
+        else:
+            logger.warning("部分目录不存在，将在首次运行时创建")
+        
+        return True
+        
+    except Exception as e:
+        logger.error(f"✗ 目录结构测试失败: {e}")
+        return False
+
+
+def run_all_tests():
+    """运行所有测试"""
+    logger.info("\n" + "="*80)
+    logger.info("开始运行所有测试")
+    logger.info("="*80)
+    
+    tests = [
+        ("目录结构", test_directory_structure),
+        ("交易日历模块", test_trading_calendar),
+        ("新闻抓取模块", test_news_fetcher),
+        ("LLM分析模块", test_llm_analyzer),
+        ("进度跟踪模块", test_progress_tracker),
+        ("输出管理模块", test_output_manager),
+        ("基础筛选器类", test_base_screener),
+        ("咖啡杯筛选器", test_coffee_cup_screener),
+    ]
+    
+    results = []
+    for name, test_func in tests:
+        try:
+            result = test_func()
+            results.append((name, result))
+        except Exception as e:
+            logger.error(f"测试 {name} 发生异常: {e}")
+            results.append((name, False))
+    
+    # 打印汇总
+    logger.info("\n" + "="*80)
+    logger.info("测试结果汇总")
+    logger.info("="*80)
+    
+    passed = sum(1 for _, result in results if result)
+    total = len(results)
+    
+    for name, result in results:
+        status = "✓ 通过" if result else "✗ 失败"
+        logger.info(f"{status}: {name}")
+    
+    logger.info("="*80)
+    logger.info(f"总计: {passed}/{total} 项测试通过")
+    logger.info("="*80)
+    
+    return passed == total
+
+
+if __name__ == '__main__':
+    success = run_all_tests()
+    sys.exit(0 if success else 1)

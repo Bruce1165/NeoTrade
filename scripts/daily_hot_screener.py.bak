@@ -1,0 +1,381 @@
+#!/usr/bin/env python3
+"""
+每日最热股筛选器
+
+筛选条件：
+1. A股（去除ST股、指数股、北交所股、上市时间少于2个月的新股）
+2. 涨幅≥5%
+3. 成交额≥10亿
+
+输出字段：
+代码、名称、涨幅、总金额、换手率、AB股总市值、流通市值、行业、
+市盈率、市净率、累计涨停天数、5日涨幅、10日涨幅、20日涨幅、
+60日涨幅、上市日期、异动类型、板块类型
+"""
+
+import os
+import sys
+import logging
+import sqlite3
+import pandas as pd
+from datetime import datetime, timedelta
+from pathlib import Path
+
+# Add workspace to path
+WORKSPACE_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(WORKSPACE_ROOT))
+sys.path.insert(0, str(WORKSPACE_ROOT / "scripts"))
+
+from database import init_db, get_session, Stock, DailyPrice
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+DB_PATH = WORKSPACE_ROOT / "data" / "stock_data.db"
+OUTPUT_DIR = WORKSPACE_ROOT / "data" / "每日热冷股"
+
+# 涨停阈值
+LIMIT_UP_THRESHOLDS = {
+    '主板': 9.9,      # 10% 涨停
+    '创业板': 19.9,   # 20% 涨停
+    '科创板': 19.9,   # 20% 涨停
+}
+
+
+class DailyHotScreener:
+    """每日最热股筛选器"""
+
+    def __init__(self):
+        self.engine = init_db()
+        self.session = get_session(self.engine)
+        self.thresholds = LIMIT_UP_THRESHOLDS
+
+    def _setup_logging(self):
+        """设置日志"""
+        logger = logging.getLogger('daily_hot_screener')
+        if not logger.handlers:
+            handler = logging.StreamHandler()
+            handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+            logger.addHandler(handler)
+            logger.setLevel(logging.INFO)
+        return logger
+
+    def get_stock_board(self, code):
+        """判断股票所属板块"""
+        if code.startswith('68'):  # 科创板
+            return '科创板'
+        elif code.startswith('30'):  # 创业板
+            return '创业板'
+        elif code.startswith('00') or code.startswith('60'):  # 主板
+            return '主板'
+        else:
+            return '其他'
+
+    def get_limit_up_threshold(self, code):
+        """获取涨停阈值"""
+        board = self.get_stock_board(code)
+        return self.thresholds.get(board, 9.9)
+
+    def get_stock_data(self, code, days=70):
+        """获取股票最近N天的数据"""
+        query = """
+            SELECT trade_date, open, high, low, close, volume, amount, turnover, pct_change
+            FROM daily_prices
+            WHERE code = ?
+            ORDER BY trade_date DESC
+            LIMIT ?
+        """
+        conn = sqlite3.connect(DB_PATH)
+        df = pd.read_sql_query(query, conn, params=(code, days))
+        conn.close()
+
+        if df.empty:
+            return None
+
+        df['trade_date'] = pd.to_datetime(df['trade_date'])
+        df = df.sort_values('trade_date').reset_index(drop=True)
+        return df
+
+    def calculate_limit_up_stats(self, df, code):
+        """
+        计算涨停统计
+        返回: {
+            'total_limit_up': 近20日累计涨停次数,
+            'board': 所属板块
+        }
+        """
+        if df is None or len(df) < 5:
+            return {'total_limit_up': 0, 'board': self.get_stock_board(code)}
+
+        threshold = self.get_limit_up_threshold(code)
+        board = self.get_stock_board(code)
+
+        # 取最近20个交易日
+        recent_df = df.tail(20)
+
+        # 计算涨停次数（涨幅 >= 阈值）
+        total_limit_up = (recent_df['pct_change'] >= threshold).sum()
+
+        return {
+            'total_limit_up': int(total_limit_up),
+            'board': board
+        }
+
+    def calculate_returns(self, df):
+        """计算多周期收益率"""
+        if df is None or len(df) < 5:
+            return {'return_5d': 0, 'return_10d': 0, 'return_20d': 0, 'return_60d': 0}
+
+        latest_close = df.iloc[-1]['close']
+
+        def calc_return(days):
+            if len(df) < days + 1:
+                return 0
+            past_close = df.iloc[-(days+1)]['close']
+            if past_close == 0:
+                return 0
+            return (latest_close - past_close) / past_close * 100
+
+        return {
+            'return_5d': round(calc_return(5), 2),
+            'return_10d': round(calc_return(10), 2),
+            'return_20d': round(calc_return(20), 2),
+            'return_60d': round(calc_return(60), 2)
+        }
+
+    def detect_anomaly_type(self, row, df):
+        """
+        从数据推断异动类型
+        """
+        anomaly_types = []
+
+        # 放量大涨
+        if row.get('turnover', 0) > 5 and row.get('pct_change', 0) > 5:
+            anomaly_types.append('放量大涨')
+
+        # 涨停
+        threshold = self.get_limit_up_threshold(row.get('code', ''))
+        if row.get('pct_change', 0) >= threshold:
+            anomaly_types.append('涨停')
+
+        # 突破（创20日新高）
+        if df is not None and len(df) >= 20:
+            high_20d = df.tail(20)['high'].max()
+            if row.get('high', 0) >= high_20d * 0.99:
+                anomaly_types.append('突破')
+
+        # 换手率异常
+        if row.get('turnover', 0) > 15:
+            anomaly_types.append('高换手')
+
+        return ' + '.join(anomaly_types) if anomaly_types else '异动'
+
+    def screen_stock(self, stock, latest_date):
+        """筛选单只股票"""
+        code = stock.code
+        name = stock.name
+
+        # 排除条件
+        if not code or not name:
+            return None
+
+        # 排除指数股
+        if code.startswith('399') or code.startswith('000') or code.startswith('899'):
+            return None
+
+        # 排除北交所
+        if code.startswith('8') or code.startswith('4'):
+            return None
+
+        # 排除ST股
+        if 'ST' in name or '退' in name:
+            return None
+
+        # 排除新股（上市少于2个月）
+        if stock.list_date:
+            try:
+                if isinstance(stock.list_date, str):
+                    listing = datetime.strptime(stock.list_date, '%Y-%m-%d')
+                else:
+                    listing = stock.list_date
+                if (datetime.now() - listing).days < 60:
+                    return None
+            except:
+                pass
+
+        # 获取数据
+        df = self.get_stock_data(code, days=70)
+        if df is None or df.empty:
+            return None
+
+        # 获取最新数据
+        latest = df.iloc[-1]
+
+        # 检查是否是目标日期
+        latest_trade_date = latest['trade_date'].strftime('%Y-%m-%d')
+        if latest_trade_date != latest_date:
+            return None
+
+        # 筛选条件
+        pct_change = latest.get('pct_change', 0) or 0
+        amount = latest.get('amount', 0) or 0
+
+        # 涨幅≥5%
+        if pct_change < 5:
+            return None
+
+        # 成交额≥10亿
+        if amount < 1000000000:  # 10亿 = 1000000000
+            return None
+
+        # 计算涨停统计
+        limit_stats = self.calculate_limit_up_stats(df, code)
+
+        # 计算多周期收益
+        returns = self.calculate_returns(df)
+
+        # 检测异动类型
+        anomaly_type = self.detect_anomaly_type({
+            'code': code,
+            'turnover': latest.get('turnover', 0),
+            'pct_change': pct_change,
+            'high': latest.get('high', 0)
+        }, df)
+
+        return {
+            'code': code,
+            'name': name,
+            'board': limit_stats['board'],
+            'close': round(latest['close'], 2),
+            'pct_change': round(pct_change, 2),
+            'amount': round(amount / 100000000, 2) if amount and not (amount != amount) else 0,  # 转为亿, 处理NaN
+            'turnover': round(latest.get('turnover', 0) or 0, 2),
+            'total_market_cap': '-',  # 数据库暂无该字段
+            'circulating_cap': '-',   # 数据库暂无该字段
+            'industry': stock.industry or '-',
+            'pe': '-',  # 数据库暂无该字段
+            'pb': '-',  # 数据库暂无该字段
+            'total_limit_up': limit_stats['total_limit_up'],
+            'return_5d': returns['return_5d'],
+            'return_10d': returns['return_10d'],
+            'return_20d': returns['return_20d'],
+            'return_60d': returns['return_60d'],
+            'listing_date': str(stock.list_date) if stock.list_date else '-',
+            'anomaly_type': anomaly_type
+        }
+
+    def run_screening(self, trade_date: str = None):
+        """
+        运行筛选
+
+        Args:
+            trade_date: 交易日期，格式 YYYY-MM-DD，默认为最近交易日
+        """
+        if trade_date is None:
+            trade_date = datetime.now().strftime('%Y-%m-%d')
+
+        logger.info("="*60)
+        logger.info("每日最热股筛选器")
+        logger.info(f"日期: {trade_date}")
+        logger.info("="*60)
+
+        # 获取所有股票
+        stocks = self.session.query(Stock).all()
+        logger.info(f"Total stocks: {len(stocks)}")
+
+        results = []
+        checked = 0
+
+        for stock in stocks:
+            checked += 1
+            if checked % 500 == 0:
+                logger.info(f"Checked {checked} stocks, found {len(results)} matches")
+
+            result = self.screen_stock(stock, trade_date)
+            if result:
+                results.append(result)
+                logger.info(f"✓ Found: {stock.code} {stock.name} - 涨幅{result['pct_change']:.1f}%")
+
+        logger.info(f"\n{'='*60}")
+        logger.info(f"筛选完成!")
+        logger.info(f"检查: {checked} 只股票")
+        logger.info(f"命中: {len(results)} 只股票")
+        logger.info(f"{'='*60}")
+
+        return results
+
+    def save_results(self, results, trade_date: str = None):
+        """保存结果到Excel和CSV"""
+        if not results:
+            logger.warning("没有结果需要保存")
+            return None
+
+        if trade_date is None:
+            trade_date = datetime.now().strftime('%Y-%m-%d')
+
+        # 确保输出目录存在
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+        df = pd.DataFrame(results)
+
+        # 调整列顺序
+        columns = [
+            'code', 'name', 'board', 'industry',
+            'close', 'pct_change', 'amount', 'turnover',
+            'total_market_cap', 'circulating_cap', 'pe', 'pb',
+            'total_limit_up', 'return_5d', 'return_10d', 'return_20d', 'return_60d',
+            'listing_date', 'anomaly_type'
+        ]
+        df = df[columns]
+
+        # 重命名列为中文
+        df.columns = [
+            '代码', '名称', '板块', '行业',
+            '收盘价', '涨幅%', '成交额(亿)', '换手率%',
+            '总市值(亿)', '流通市值(亿)', '市盈率', '市净率',
+            '累计涨停天数', '5日涨幅%', '10日涨幅%', '20日涨幅%', '60日涨幅%',
+            '上市日期', '异动类型'
+        ]
+
+        # 按板块和涨幅排序
+        df = df.sort_values(['板块', '涨幅%'], ascending=[True, False])
+
+        # 保存Excel
+        excel_path = OUTPUT_DIR / f"{trade_date}.xlsx"
+        df.to_excel(excel_path, index=False, engine='openpyxl')
+        logger.info(f"Excel结果已保存: {excel_path}")
+
+        # 保存CSV
+        csv_path = OUTPUT_DIR / f"{trade_date}.csv"
+        df.to_csv(csv_path, index=False, encoding='utf-8-sig')
+        logger.info(f"CSV结果已保存: {csv_path}")
+
+        return str(excel_path)
+
+
+def main():
+    """主函数"""
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--date', type=str, help='交易日期 (YYYY-MM-DD)')
+    args = parser.parse_args()
+
+    screener = DailyHotScreener()
+    results = screener.run_screening(args.date)
+
+    if results:
+        screener.save_results(results, args.date)
+
+        print("\n" + "="*80)
+        print("筛选结果:")
+        print("="*80)
+        for r in results[:10]:
+            print(f"{r['code']} {r['name']} ({r['board']}): 涨幅{r['pct_change']:.1f}%, 成交额{r['amount']:.1f}亿, 涨停{r['total_limit_up']}次")
+        if len(results) > 10:
+            print(f"... 共 {len(results)} 只股票")
+    else:
+        print("\n没有找到符合条件的股票")
+
+
+if __name__ == '__main__':
+    main()

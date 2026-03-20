@@ -1,0 +1,244 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #333;
+    background: #fff;
+}
+
+h1 {
+    color: #1a1a1a;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 15px;
+    font-size: 2.2em;
+}
+
+h2 {
+    color: #2563eb;
+    margin-top: 40px;
+    font-size: 1.6em;
+    border-left: 4px solid #2563eb;
+    padding-left: 15px;
+}
+
+h3 {
+    color: #4b5563;
+    margin-top: 30px;
+    font-size: 1.3em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95em;
+}
+
+th, td {
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #f3f4f6;
+    font-weight: 600;
+    color: #374151;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+code {
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    background: #1f2937;
+    color: #e5e7eb;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9em;
+}
+
+pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+blockquote {
+    border-left: 4px solid #2563eb;
+    margin: 20px 0;
+    padding: 15px 20px;
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #e5e7eb;
+    margin: 40px 0;
+}
+
+@media print {
+    body {
+        padding: 20px;
+    }
+    
+    h1 {
+        page-break-before: always;
+    }
+    
+    h1:first-of-type {
+        page-break-before: avoid;
+    }
+    
+    pre {
+        page-break-inside: avoid;
+    }
+    
+    table {
+        page-break-inside: avoid;
+    }
+}
+
+/* 检查结果样式 */
+.check-result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.check-result-success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-color: #10b981;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.check-result-fail {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-color: #ef4444;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.check-result-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.check-result-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.check-result-details,
+.check-result-reasons {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.check-reasons-list {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+}
+
+.check-reasons-list ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.check-reasons-list li {
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.check-details-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.check-details-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.check-details-table td:first-child {
+    font-weight: 500;
+    color: var(--text-secondary);
+    width: 40%;
+}
+
+.check-details-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 风控信息样式 */
+.risk-management {
+    margin-top: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+}
+
+.risk-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #92400e;
+    margin-bottom: 10px;
+}
+
+.risk-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.risk-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+}
+
+.risk-label {
+    color: #78350f;
+    font-weight: 500;
+}
+
+.risk-value {
+    color: #92400e;
+    font-weight: 600;
+}
+
+/* 按钮样式 */
+.btn-info {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+}

@@ -1,0 +1,217 @@
+#!/usr/bin/env python3
+"""
+Cup Handle Pattern Chart Generator - Metro Style
+地铁线路图风格的杯柄形态示意图
+"""
+
+import sqlite3
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from datetime import datetime, timedelta
+import numpy as np
+import os
+
+# 设置中文字体
+plt.rcParams['font.sans-serif'] = ['PingFang SC', 'SimHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+
+DB_PATH = "/Users/mac/.openclaw/workspace-neo/data/stock_data.db"
+TARGET_DATE = "2026-03-11"
+OUTPUT_DIR = "/Users/mac/.openclaw/workspace-neo/data/charts"
+
+def get_stocks_from_excel():
+    """从Excel文件读取筛选结果"""
+    excel_path = f"/Users/mac/.openclaw/workspace-neo/data/12month_cuphold_{TARGET_DATE}.xlsx"
+    if os.path.exists(excel_path):
+        df = pd.read_excel(excel_path)
+        stocks = []
+        for _, row in df.iterrows():
+            stocks.append({
+                'code': str(row['股票代码']),
+                'name': row['股票名称'],
+                'cup_handle_date': str(row['杯柄日期'])[:10],
+                'volume_multiple': row['放量倍数']
+            })
+        return stocks
+    return []
+
+def get_stock_data(conn, code, start_date, end_date):
+    """获取股票日线数据"""
+    query = """
+    SELECT trade_date, open, high, low, close, volume, amount
+    FROM daily_prices
+    WHERE code = ? AND trade_date BETWEEN ? AND ?
+    ORDER BY trade_date
+    """
+    df = pd.read_sql(query, conn, params=(code, start_date, end_date))
+    df['trade_date'] = pd.to_datetime(df['trade_date'])
+    return df
+
+def plot_metro_style(ax, df, title, cup_handle_date, target_date):
+    """地铁线路图风格的杯柄形态示意图"""
+    
+    cup_handle_dt = pd.to_datetime(cup_handle_date)
+    target_dt = pd.to_datetime(target_date)
+    
+    # 找到关键点位
+    cup_handle_row = df[df['trade_date'] == cup_handle_dt]
+    target_row = df[df['trade_date'] == target_dt]
+    
+    if cup_handle_row.empty or target_row.empty:
+        ax.text(0.5, 0.5, '数据不足', ha='center', va='center', transform=ax.transAxes)
+        ax.set_title(title)
+        return
+    
+    cup_handle_high = cup_handle_row['high'].values[0]
+    target_high = target_row['high'].values[0]
+    
+    # 重置索引，用连续的数字作为X轴
+    df = df.reset_index(drop=True)
+    df['x_pos'] = df.index
+    
+    cup_handle_idx = df[df['trade_date'] == cup_handle_dt]['x_pos'].values[0]
+    target_idx = df[df['trade_date'] == target_dt]['x_pos'].values[0]
+    
+    # 找到杯底（两个高点之间的最低点）
+    between_df = df[(df['x_pos'] >= min(cup_handle_idx, target_idx)) & 
+                    (df['x_pos'] <= max(cup_handle_idx, target_idx))]
+    if not between_df.empty:
+        cup_bottom_row = between_df.loc[between_df['low'].idxmin()]
+        cup_bottom_price = cup_bottom_row['low']
+        cup_bottom_idx = cup_bottom_row['x_pos']
+    else:
+        cup_bottom_price = df['low'].min()
+        cup_bottom_idx = df.loc[df['low'].idxmin(), 'x_pos']
+    
+    # 计算杯深
+    avg_high = (cup_handle_high + target_high) / 2
+    cup_depth = (avg_high - cup_bottom_price) / avg_high * 100
+    
+    # 创建双Y轴
+    ax_price = ax
+    ax_volume = ax.twinx()
+    
+    # 画价格折线（收盘价）- 地铁线路风格
+    ax_price.plot(df['x_pos'], df['close'], color='#1f77b4', linewidth=2, label='收盘价')
+    
+    # 画最高价线（杯沿轮廓）
+    ax_price.plot(df['x_pos'], df['high'], color='#ff7f0e', linewidth=1, alpha=0.5, linestyle='--')
+    ax_price.plot(df['x_pos'], df['low'], color='#2ca02c', linewidth=1, alpha=0.5, linestyle='--')
+    
+    # 画成交量（柱状图）- 简化显示
+    volume_normalized = df['volume'] / df['volume'].max() * (avg_high * 0.3)  # 缩放到合适范围
+    colors = ['#d62728' if c >= o else '#2ca02c' for c, o in zip(df['close'], df['open'])]
+    ax_volume.bar(df['x_pos'], volume_normalized, color=colors, alpha=0.3, width=0.8)
+    
+    # 标记关键点位
+    # 杯柄高点
+    ax_price.scatter([cup_handle_idx], [cup_handle_high], color='blue', s=150, marker='o', 
+                    zorder=5, edgecolors='white', linewidths=2)
+    ax_price.annotate(f'{cup_handle_high:.2f}', xy=(cup_handle_idx, cup_handle_high),
+                     xytext=(cup_handle_idx-3, cup_handle_high*1.02), fontsize=8, color='blue',
+                     arrowprops=dict(arrowstyle='->', color='blue', alpha=0.5))
+    
+    # 昨日高点
+    ax_price.scatter([target_idx], [target_high], color='orange', s=150, marker='o', 
+                    zorder=5, edgecolors='white', linewidths=2)
+    ax_price.annotate(f'{target_high:.2f}', xy=(target_idx, target_high),
+                     xytext=(target_idx+2, target_high*1.02), fontsize=8, color='orange',
+                     arrowprops=dict(arrowstyle='->', color='orange', alpha=0.5))
+    
+    # 杯底
+    ax_price.scatter([cup_bottom_idx], [cup_bottom_price], color='green', s=120, marker='v', 
+                    zorder=5, edgecolors='white', linewidths=2)
+    ax_price.annotate(f'{cup_bottom_price:.2f}\n杯深{cup_depth:.1f}%', 
+                     xy=(cup_bottom_idx, cup_bottom_price),
+                     xytext=(cup_bottom_idx, cup_bottom_price*0.95), fontsize=8, color='green',
+                     ha='center', va='top',
+                     bbox=dict(boxstyle='round,pad=0.3', facecolor='lightgreen', alpha=0.7))
+    
+    # 画杯沿参考线
+    ax_price.axhline(y=cup_handle_high, color='blue', linestyle='--', alpha=0.3, linewidth=1)
+    ax_price.axhline(y=target_high, color='orange', linestyle='--', alpha=0.3, linewidth=1)
+    ax_price.axhline(y=avg_high, color='purple', linestyle='-', alpha=0.5, linewidth=1.5)
+    
+    # 填充杯柄区域
+    ax_price.axvspan(min(cup_handle_idx, target_idx), max(cup_handle_idx, target_idx), 
+                    alpha=0.1, color='gray')
+    
+    # 设置标题
+    ax_price.set_title(title, fontsize=10, fontweight='bold')
+    
+    # 设置X轴标签
+    tick_positions = []
+    tick_labels = []
+    for i in range(0, len(df), max(1, len(df)//4)):
+        tick_positions.append(i)
+        tick_labels.append(df.iloc[i]['trade_date'].strftime('%m-%d'))
+    ax_price.set_xticks(tick_positions)
+    ax_price.set_xticklabels(tick_labels, rotation=0, fontsize=8)
+    
+    # 设置Y轴范围
+    price_min = min(df['low'].min(), cup_bottom_price) * 0.95
+    price_max = max(df['high'].max(), cup_handle_high, target_high) * 1.05
+    ax_price.set_ylim(price_min, price_max)
+    ax_price.set_xlim(-1, len(df))
+    
+    # 隐藏成交量Y轴刻度
+    ax_volume.set_yticks([])
+    
+    # 添加网格
+    ax_price.grid(True, alpha=0.2, linestyle='--')
+    
+    # 添加图例
+    handles = [
+        mpatches.Patch(color='blue', label='杯柄高点'),
+        mpatches.Patch(color='orange', label='昨日高点'),
+        mpatches.Patch(color='green', label='杯底'),
+        mpatches.Patch(color='#d62728', label='上涨'),
+        mpatches.Patch(color='#2ca02c', label='下跌')
+    ]
+    ax_price.legend(handles=handles, loc='upper left', fontsize=7, ncol=2)
+
+def create_charts():
+    """创建所有股票的图表"""
+    
+    conn = sqlite3.connect(DB_PATH)
+    STOCKS = get_stocks_from_excel()
+    
+    if not STOCKS:
+        print("没有找到股票数据")
+        return
+    
+    # 创建大图 (7行3列，支持21只股票)
+    n_stocks = len(STOCKS)
+    n_rows = (n_stocks + 2) // 3  # 向上取整
+    fig, axes = plt.subplots(n_rows, 3, figsize=(18, 4 * n_rows))
+    axes = axes.flatten()
+    
+    for idx, stock in enumerate(STOCKS):
+        code = stock['code']
+        name = stock['name']
+        cup_handle_date = stock['cup_handle_date']
+        volume_multiple = stock['volume_multiple']
+        
+        df = get_stock_data(conn, code, cup_handle_date, TARGET_DATE)
+        
+        if df.empty:
+            axes[idx].text(0.5, 0.5, '数据不足', ha='center', va='center', transform=axes[idx].transAxes)
+            continue
+        
+        title = f"{code} {name} 放量{volume_multiple}x"
+        plot_metro_style(axes[idx], df, title, cup_handle_date, TARGET_DATE)
+    
+    conn.close()
+    
+    plt.tight_layout()
+    plt.subplots_adjust(hspace=0.3, wspace=0.2)
+    
+    output_path = os.path.join(OUTPUT_DIR, f"cup_handle_metro_{TARGET_DATE}.png")
+    plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
+    print(f"图表已保存至: {output_path}")
+    
+    plt.close()
+
+if __name__ == "__main__":
+    create_charts()

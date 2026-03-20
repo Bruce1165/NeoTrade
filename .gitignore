@@ -1,0 +1,61 @@
+# Data files (large)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+/data/
+!/data/.gitkeep
+dashboard/data/
+scripts/data/
+
+# Excel files (generated outputs)
+*.xlsx
+*.xls
+*.csv
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Node
+node_modules/
+.npm
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ngrok
+ngrok*
+*.ngrok
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp/
+temp/
+*.tmp

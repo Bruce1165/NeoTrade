@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+"""
+全A股筛选器 - 基于本地数据库
+筛选条件：涨幅>8%（强势股）
+"""
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+from datetime import datetime, timedelta
+from database import init_db, get_session, Stock, DailyPrice
+import pandas as pd
+import logging
+from pathlib import Path
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class StockScreener:
+    """全A股筛选器"""
+    
+    def __init__(self):
+        self.engine = init_db()
+        self.session = get_session(self.engine)
+        self.data_dir = Path('/Users/mac/.openclaw/workspace-neo/data/screening')
+        self.data_dir.mkdir(parents=True, exist_ok=True)
+    
+    def screen_strong_stocks(self, trade_date=None, min_change=8.0):
+        """
+        筛选强势股
+        
+        条件：
+        - 涨幅 > min_change% (默认8%)
+        
+        输出：
+        - 股票代码、名称、行业
+        - 收盘价、涨跌幅、成交量、成交额、换手率
+        - 最高价、最低价
+        """
+        if trade_date is None:
+            trade_date = datetime.now().date()
+        else:
+            trade_date = pd.to_datetime(trade_date).date()
+        
+        logger.info(f"="*60)
+        logger.info(f"筛选强势股: {trade_date}")
+        logger.info(f"筛选条件: 涨幅>{min_change}%")
+        logger.info(f"="*60)
+        
+        # 查询数据
+        query = self.session.query(
+            DailyPrice, Stock
+        ).join(
+            Stock, DailyPrice.code == Stock.code
+        ).filter(
+            DailyPrice.trade_date == trade_date,
+            DailyPrice.pct_change > min_change
+        ).order_by(DailyPrice.pct_change.desc())
+        
+        results = query.all()
+        
+        if not results:
+            logger.warning(f"{trade_date} 没有符合条件的股票")
+            return pd.DataFrame()
+        
+        # 整理数据
+        data = []
+        for dp, stock in results:
+            data.append({
+                '代码': dp.code,
+                '名称': stock.name,
+                '行业': stock.industry,
+                '地区': stock.area,
+                '收盘价': round(dp.close, 2) if dp.close else None,
+                '涨跌幅(%)': round(dp.pct_change, 2) if dp.pct_change else None,
+                '最高价': round(dp.high, 2) if dp.high else None,
+                '最低价': round(dp.low, 2) if dp.low else None,
+                '成交量(万股)': round(dp.volume / 10000, 2) if dp.volume else None,
+                '成交额(万元)': round(dp.amount / 10000, 2) if dp.amount else None,
+                '换手率(%)': round(dp.turnover, 2) if dp.turnover else None,
+            })
+        
+        df = pd.DataFrame(data)
+        
+        logger.info(f"筛选出 {len(df)} 只强势股")
+        logger.info(f"平均涨幅: {df['涨跌幅(%)'].mean():.2f}%")
+        logger.info(f"最高涨幅: {df['涨跌幅(%)'].max():.2f}%")
+        
+        return df
+    
+    def save_results(self, df, trade_date=None, suffix='strong'):
+        """保存筛选结果"""
+        if trade_date is None:
+            trade_date = datetime.now().strftime('%Y%m%d')
+        else:
+            trade_date = pd.to_datetime(trade_date).strftime('%Y%m%d')
+        
+        save_dir = self.data_dir / trade_date
+        save_dir.mkdir(parents=True, exist_ok=True)
+        
+        filepath = save_dir / f'{suffix}_stocks.xlsx'
+        
+        with pd.ExcelWriter(filepath, engine='openpyxl') as writer:
+            df.to_excel(writer, sheet_name='强势股', index=False)
+        
+        logger.info(f"结果已保存: {filepath}")
+        return filepath
+    
+    def get_stock_history(self, code, days=30):
+        """获取单只股票近期历史"""
+        end_date = datetime.now().date()
+        start_date = end_date - timedelta(days=days)
+        
+        query = self.session.query(DailyPrice).filter(
+            DailyPrice.code == code,
+            DailyPrice.trade_date >= start_date,
+            DailyPrice.trade_date <= end_date
+        ).order_by(DailyPrice.trade_date.desc())
+        
+        results = query.all()
+        
+        if not results:
+            return pd.DataFrame()
+        
+        data = []
+        for dp in results:
+            data.append({
+                '日期': dp.trade_date,
+                '开盘': dp.open,
+                '最高': dp.high,
+                '最低': dp.low,
+                '收盘': dp.close,
+                '涨跌幅': dp.pct_change,
+                '成交量': dp.volume,
+                '换手率': dp.turnover
+            })
+        
+        return pd.DataFrame(data)
+
+def main():
+    """主函数"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='全A股强势股筛选')
+    parser.add_argument('--date', type=str, help='指定日期 (YYYY-MM-DD)')
+    parser.add_argument('--min-change', type=float, default=8.0, help='最小涨幅 (默认8%)')
+    args = parser.parse_args()
+    
+    screener = StockScreener()
+    
+    # 筛选
+    df = screener.screen_strong_stocks(
+        trade_date=args.date,
+        min_change=args.min_change
+    )
+    
+    if not df.empty:
+        # 保存
+        trade_date = args.date or datetime.now().strftime('%Y-%m-%d')
+        screener.save_results(df, trade_date)
+        
+        # 打印前10
+        print("\n前10名:")
+        print(df.head(10).to_string(index=False))
+
+if __name__ == '__main__':
+    main()

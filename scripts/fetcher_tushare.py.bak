@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""
+Tushare公告抓取器 - 全A股公告数据
+需要Tushare Pro账号
+"""
+import sys
+sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
+
+import tushare as ts
+from datetime import datetime, timedelta
+from database import init_db, get_session, Announcement
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class TushareAnnouncementFetcher:
+    """Tushare公告抓取器"""
+    
+    def __init__(self, token=None):
+        """
+        初始化
+        
+        Args:
+            token: Tushare Pro API Token
+        """
+        if token is None:
+            # 尝试从环境变量读取
+            import os
+            token = os.getenv('TUSHARE_TOKEN')
+        
+        if not token:
+            logger.warning("未设置Tushare Token，请在环境变量TUSHARE_TOKEN中设置")
+            self.pro = None
+        else:
+            ts.set_token(token)
+            self.pro = ts.pro_api()
+        
+        self.engine = init_db()
+        self.session = get_session(self.engine)
+    
+    def fetch_announcements(self, start_date=None, end_date=None):
+        """
+        获取公告数据
+        
+        Args:
+            start_date: 开始日期 (YYYYMMDD)
+            end_date: 结束日期 (YYYYMMDD)
+        """
+        if self.pro is None:
+            logger.error("Tushare未初始化，无法获取公告")
+            return
+        
+        if end_date is None:
+            end_date = datetime.now().strftime('%Y%m%d')
+        if start_date is None:
+            start_date = (datetime.now() - timedelta(days=7)).strftime('%Y%m%d')
+        
+        logger.info(f"获取公告: {start_date} 至 {end_date}")
+        
+        try:
+            # 获取公告数据
+            df = self.pro.anns(
+                start_date=start_date,
+                end_date=end_date
+            )
+            
+            if df is None or df.empty:
+                logger.info("无公告数据")
+                return
+            
+            logger.info(f"获取到 {len(df)} 条公告")
+            
+            # 存入数据库
+            for _, row in df.iterrows():
+                ann_id = row.get('ann_id', f"{row.get('ts_code')}_{row.get('ann_date')}_{_}")
+                
+                # 检查是否已存在
+                existing = self.session.query(Announcement).filter_by(id=ann_id).first()
+                
+                if existing:
+                    continue
+                
+                new_ann = Announcement(
+                    id=ann_id,
+                    code=row.get('ts_code', '').split('.')[0] if row.get('ts_code') else '',
+                    name=row.get('name', ''),
+                    title=row.get('title', ''),
+                    type=row.get('ann_type', ''),
+                    publish_date=datetime.strptime(row.get('ann_date'), '%Y%m%d') if row.get('ann_date') else None,
+                    url=row.get('url', '')
+                )
+                self.session.add(new_ann)
+            
+            self.session.commit()
+            logger.info(f"公告数据保存完成")
+            
+        except Exception as e:
+            logger.error(f"获取公告失败: {e}")
+            self.session.rollback()
+    
+    def get_recent_announcements(self, code=None, days=7):
+        """
+        获取近期公告
+        
+        Args:
+            code: 股票代码（None则获取全部）
+            days: 最近几天
+        """
+        start_date = datetime.now() - timedelta(days=days)
+        
+        query = self.session.query(Announcement).filter(
+            Announcement.publish_date >= start_date
+        )
+        
+        if code:
+            query = query.filter(Announcement.code == code)
+        
+        return query.order_by(Announcement.publish_date.desc()).all()
+
+def main():
+    """主函数"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Tushare公告抓取')
+    parser.add_argument('--token', type=str, help='Tushare Token')
+    parser.add_argument('--start', type=str, help='开始日期 (YYYYMMDD)')
+    parser.add_argument('--end', type=str, help='结束日期 (YYYYMMDD)')
+    args = parser.parse_args()
+    
+    fetcher = TushareAnnouncementFetcher(token=args.token)
+    fetcher.fetch_announcements(start_date=args.start, end_date=args.end)
+
+if __name__ == '__main__':
+    main()

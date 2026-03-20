@@ -1,0 +1,63 @@
+[
+  {
+    "timestamp": "2026-03-17T09:00:03",
+    "status": "fail",
+    "checks": {
+      "data_freshness": {
+        "status": "fail",
+        "latest_date_in_db": "2026-03-15",
+        "expected_date": "2026-03-17",
+        "delay_days": 2,
+        "message": "数据最新日期: 2026-03-15, 期望日期: 2026-03-17, 延迟: 2天"
+      },
+      "stock_completeness": {
+        "status": "pass",
+        "actual_count": 4663,
+        "expected_count": 4663,
+        "total_stocks_in_db": 4663,
+        "missing_count": 0,
+        "message": "最新日期股票数量: 4663/4663, 缺失: 0"
+      },
+      "duplicate_data": {
+        "status": "fail",
+        "duplicate_groups": 15,
+        "total_duplicate_records": 30,
+        "message": "发现 15 组重复数据，共 30 条记录",
+        "samples": [
+          {"code": "000001.SZ", "trade_date": "2026-03-15", "count": 2},
+          {"code": "000002.SZ", "trade_date": "2026-03-15", "count": 2},
+          {"code": "600000.SH", "trade_date": "2026-03-15", "count": 2}
+        ]
+      },
+      "data_quality": {
+        "status": "warning",
+        "issues": [
+          {"type": "extreme_price_change", "count": 5, "message": "发现 5 条涨跌幅超过20%的记录"},
+          {"type": "zero_volume", "count": 12, "message": "发现 12 条零成交量记录"}
+        ],
+        "message": "发现 2 类数据质量问题"
+      }
+    },
+    "alerts": [
+      {
+        "severity": "critical",
+        "type": "data_stale",
+        "message": "数据延迟 2 天，最新数据日期: 2026-03-15"
+      },
+      {
+        "severity": "critical",
+        "type": "duplicate_data",
+        "message": "发现 15 组重复数据",
+        "details": {
+          "duplicate_groups": 15,
+          "samples": [
+            {"code": "000001.SZ", "trade_date": "2026-03-15", "count": 2},
+            {"code": "000002.SZ", "trade_date": "2026-03-15", "count": 2},
+            {"code": "600000.SH", "trade_date": "2026-03-15", "count": 2}
+          ]
+        }
+      }
+    ],
+    "alert_file": "/Users/mac/.openclaw/workspace-neo/alerts/2026-03-17_alert.json"
+  }
+]

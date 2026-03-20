@@ -1,0 +1,49 @@
+# 用户自定义筛选配置
+# Bruce的强势股筛选策略
+
+screening_configs:
+  # 配置1：放量突破策略
+  volume_breakout:
+    name: "放量突破"
+    description: "换手率>10%，涨幅>2%，近3天成交额是前3-6天的2倍以上"
+    
+    # 时间范围
+    time_range:
+      base_date: "yesterday"  # 昨天
+      
+    # 筛选条件
+    filters:
+      - field: turnover
+        operator: ">"
+        value: 10
+        unit: "%"
+        
+      - field: pct_change
+        operator: ">"
+        value: 2
+        unit: "%"
+        
+      - field: volume_sum_3d
+        operator: ">="
+        value: 2
+        compare_to: "volume_sum_4_6d"
+        description: "近3天成交额 >= 前3-6天成交额的2倍"
+    
+    # 输出字段
+    output_fields:
+      - code
+      - name
+      - close
+      - pct_change
+      - turnover
+      - volume_3d_sum
+      - volume_4_6d_sum
+      - volume_ratio
+      
+    # 排序
+    sort_by:
+      field: volume_ratio
+      order: desc
+      
+    # 限制数量
+    limit: 50

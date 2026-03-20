@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""
+慧博投研公告爬虫调试 - 使用Playwright
+"""
+
+import asyncio
+from playwright.async_api import async_playwright
+
+
+async def debug_page():
+    """调试页面结构"""
+    
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        context = await browser.new_context(
+            user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+        )
+        page = await context.new_page()
+        
+        # 访问慧博搜索页面
+        stock_code = "000001"
+        search_url = f"https://www.hibor.com.cn/search?keyword={stock_code}"
+        
+        print(f"访问: {search_url}")
+        await page.goto(search_url, wait_until="networkidle", timeout=30000)
+        
+        # 等待页面加载
+        await page.wait_for_timeout(3000)
+        
+        # 保存页面截图
+        await page.screenshot(path='/Users/mac/Desktop/hibor_debug.png')
+        print("截图已保存: /Users/mac/Desktop/hibor_debug.png")
+        
+        # 获取页面HTML
+        html = await page.content()
+        print(f"\n页面HTML长度: {len(html)}")
+        
+        # 查找所有文本内容
+        texts = await page.eval_on_selector_all('*', 'elements => elements.map(e => e.textContent).filter(t => t && t.trim().length > 0)')
+        print(f"\n页面文本片段 (前20个):")
+        for i, text in enumerate(texts[:20], 1):
+            if len(text.strip()) > 10:
+                print(f"{i}. {text.strip()[:100]}")
+        
+        # 查找所有链接
+        links = await page.query_selector_all('a')
+        print(f"\n找到 {len(links)} 个链接")
+        
+        for i, link in enumerate(links[:10], 1):
+            href = await link.get_attribute('href')
+            text = await link.text_content()
+            if text and len(text.strip()) > 5:
+                print(f"{i}. {text.strip()[:50]} -> {href}")
+        
+        await browser.close()
+
+
+if __name__ == '__main__':
+    asyncio.run(debug_page())
