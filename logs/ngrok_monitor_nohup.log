@@ -653,3 +653,517 @@
 2026-03-20 16:54:33 [INFO] ✅ All services restarted successfully
 2026-03-20 16:54:33 [INFO] [CRITICAL] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
 2026-03-20 16:54:33 [INFO] ✅ restart all services successful
+2026-03-20 16:55:36 [WARNING] Issues detected: Flask process not running
+2026-03-20 16:55:36 [INFO] 🔄 Restarting all services...
+2026-03-20 16:55:36 [INFO] Killing ngrok (PID: 41764)
+2026-03-20 16:55:39 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 16:55:40 [INFO] Starting Flask (port: 5003)...
+2026-03-20 16:55:48 [INFO] ✅ Flask started successfully
+2026-03-20 16:55:51 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 16:55:56 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 16:55:57 [INFO] ✅ All services restarted successfully
+2026-03-20 16:55:57 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 16:55:57 [INFO] ✅ restart all services successful
+2026-03-20 16:55:58 [INFO] 💓 Heartbeat #60 - Status: ✅ Healthy
+2026-03-20 16:57:02 [WARNING] Issues detected: Flask process not running
+2026-03-20 16:57:02 [INFO] 🔄 Restarting all services...
+2026-03-20 16:57:02 [INFO] Killing ngrok (PID: 41918)
+2026-03-20 16:57:04 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 16:57:05 [INFO] Starting Flask (port: 5003)...
+2026-03-20 16:57:14 [INFO] ✅ Flask started successfully
+2026-03-20 16:57:17 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 16:57:22 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 16:57:23 [INFO] ✅ All services restarted successfully
+2026-03-20 16:57:23 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 16:57:23 [INFO] ✅ restart all services successful
+2026-03-20 16:58:27 [WARNING] Issues detected: Flask process not running
+2026-03-20 16:58:27 [INFO] 🔄 Restarting all services...
+2026-03-20 16:58:27 [INFO] Killing ngrok (PID: 42057)
+2026-03-20 16:58:29 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 16:58:30 [INFO] Starting Flask (port: 5003)...
+2026-03-20 16:58:38 [INFO] ✅ Flask started successfully
+2026-03-20 16:58:41 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 16:58:46 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 16:58:47 [INFO] ✅ All services restarted successfully
+2026-03-20 16:58:47 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 16:58:47 [INFO] ✅ restart all services successful
+2026-03-20 16:59:51 [WARNING] Issues detected: Flask process not running
+2026-03-20 16:59:51 [INFO] 🔄 Restarting all services...
+2026-03-20 16:59:51 [INFO] Killing ngrok (PID: 42184)
+2026-03-20 16:59:53 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 16:59:54 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:00:02 [INFO] ✅ Flask started successfully
+2026-03-20 17:00:05 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:00:10 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:00:10 [ERROR] ❌ ngrok start failed
+2026-03-20 17:00:10 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:00:10 [ERROR] ❌ restart all services failed
+2026-03-20 17:01:14 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:01:14 [INFO] 🔄 Restarting all services...
+2026-03-20 17:01:14 [INFO] Killing ngrok (PID: 42335)
+2026-03-20 17:01:16 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:01:17 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:01:25 [INFO] ✅ Flask started successfully
+2026-03-20 17:01:28 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:01:33 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:01:34 [INFO] ✅ All services restarted successfully
+2026-03-20 17:01:34 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:01:34 [INFO] ✅ restart all services successful
+2026-03-20 17:02:38 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:02:38 [INFO] 🔄 Restarting all services...
+2026-03-20 17:02:38 [INFO] Killing ngrok (PID: 42480)
+2026-03-20 17:02:40 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:02:41 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:02:49 [INFO] ✅ Flask started successfully
+2026-03-20 17:02:52 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:02:57 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:02:58 [INFO] ✅ All services restarted successfully
+2026-03-20 17:02:58 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:02:58 [INFO] ✅ restart all services successful
+2026-03-20 17:04:02 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:04:02 [INFO] 🔄 Restarting all services...
+2026-03-20 17:04:02 [INFO] Killing ngrok (PID: 42614)
+2026-03-20 17:04:04 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:04:05 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:04:13 [INFO] ✅ Flask started successfully
+2026-03-20 17:04:16 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:04:21 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:04:23 [INFO] ✅ All services restarted successfully
+2026-03-20 17:04:23 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:04:23 [INFO] ✅ restart all services successful
+2026-03-20 17:05:26 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:05:26 [INFO] 🔄 Restarting all services...
+2026-03-20 17:05:26 [INFO] Killing ngrok (PID: 42763)
+2026-03-20 17:05:28 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:05:29 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:05:38 [INFO] ✅ Flask started successfully
+2026-03-20 17:05:41 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:05:46 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:05:46 [ERROR] ❌ ngrok start failed
+2026-03-20 17:05:46 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:05:46 [ERROR] ❌ restart all services failed
+2026-03-20 17:06:53 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:06:53 [INFO] 🔄 Restarting all services...
+2026-03-20 17:06:53 [INFO] Killing ngrok (PID: 42917)
+2026-03-20 17:06:55 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:06:56 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:07:04 [INFO] ✅ Flask started successfully
+2026-03-20 17:07:07 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:07:12 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:07:13 [INFO] ✅ All services restarted successfully
+2026-03-20 17:07:13 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:07:13 [INFO] ✅ restart all services successful
+2026-03-20 17:08:20 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:08:20 [INFO] 🔄 Restarting all services...
+2026-03-20 17:08:20 [INFO] Killing ngrok (PID: 43043)
+2026-03-20 17:08:22 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:08:23 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:08:31 [INFO] ✅ Flask started successfully
+2026-03-20 17:08:34 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:08:39 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:08:41 [INFO] ✅ All services restarted successfully
+2026-03-20 17:08:41 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:08:41 [INFO] ✅ restart all services successful
+2026-03-20 17:09:47 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:09:47 [INFO] 🔄 Restarting all services...
+2026-03-20 17:09:47 [INFO] Killing ngrok (PID: 43184)
+2026-03-20 17:09:49 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:09:50 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:09:58 [INFO] ✅ Flask started successfully
+2026-03-20 17:10:01 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:10:06 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:10:07 [INFO] ✅ All services restarted successfully
+2026-03-20 17:10:07 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:10:07 [INFO] ✅ restart all services successful
+2026-03-20 17:11:13 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:11:13 [INFO] 🔄 Restarting all services...
+2026-03-20 17:11:13 [INFO] Killing ngrok (PID: 43327)
+2026-03-20 17:11:16 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:11:17 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:11:25 [INFO] ✅ Flask started successfully
+2026-03-20 17:11:28 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:11:33 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:11:34 [INFO] ✅ All services restarted successfully
+2026-03-20 17:11:34 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:11:34 [INFO] ✅ restart all services successful
+2026-03-20 17:12:39 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:12:39 [INFO] 🔄 Restarting all services...
+2026-03-20 17:12:39 [INFO] Killing ngrok (PID: 43475)
+2026-03-20 17:12:41 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:12:43 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:12:51 [INFO] ✅ Flask started successfully
+2026-03-20 17:12:54 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:12:59 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:13:00 [INFO] ✅ All services restarted successfully
+2026-03-20 17:13:00 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:13:00 [INFO] ✅ restart all services successful
+2026-03-20 17:14:06 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:14:06 [INFO] 🔄 Restarting all services...
+2026-03-20 17:14:06 [INFO] Killing ngrok (PID: 43602)
+2026-03-20 17:14:09 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:14:10 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:14:18 [INFO] ✅ Flask started successfully
+2026-03-20 17:14:21 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:14:26 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:14:27 [INFO] ✅ All services restarted successfully
+2026-03-20 17:14:27 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:14:27 [INFO] ✅ restart all services successful
+2026-03-20 17:15:33 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:15:33 [INFO] 🔄 Restarting all services...
+2026-03-20 17:15:33 [INFO] Killing ngrok (PID: 43740)
+2026-03-20 17:15:35 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:15:36 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:15:44 [INFO] ✅ Flask started successfully
+2026-03-20 17:15:48 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:15:53 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:15:54 [INFO] ✅ All services restarted successfully
+2026-03-20 17:15:54 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:15:54 [INFO] ✅ restart all services successful
+2026-03-20 17:16:57 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:16:57 [INFO] 🔄 Restarting all services...
+2026-03-20 17:16:57 [INFO] Killing ngrok (PID: 43898)
+2026-03-20 17:17:00 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:17:01 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:17:09 [INFO] ✅ Flask started successfully
+2026-03-20 17:17:12 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:17:17 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:17:17 [ERROR] ❌ ngrok start failed
+2026-03-20 17:17:17 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:17:17 [ERROR] ❌ restart all services failed
+2026-03-20 17:18:21 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:18:21 [INFO] 🔄 Restarting all services...
+2026-03-20 17:18:21 [INFO] Killing ngrok (PID: 44042)
+2026-03-20 17:18:23 [ERROR] Failed to kill process on port 5003: (pid=41656)
+2026-03-20 17:18:24 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:18:32 [INFO] ✅ Flask started successfully
+2026-03-20 17:18:35 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:18:40 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:18:41 [INFO] ✅ All services restarted successfully
+2026-03-20 17:18:41 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:18:41 [INFO] ✅ restart all services successful
+2026-03-20 17:19:46 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:19:46 [INFO] 🔄 Restarting all services...
+2026-03-20 17:19:46 [INFO] Killing ngrok (PID: 44166)
+2026-03-20 17:19:49 [ERROR] Failed to kill process on port 5003: (pid=44263)
+2026-03-20 17:19:50 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:19:58 [INFO] ✅ Flask started successfully
+2026-03-20 17:20:01 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:20:06 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:20:07 [INFO] ✅ All services restarted successfully
+2026-03-20 17:20:07 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:20:07 [INFO] ✅ restart all services successful
+2026-03-20 17:21:11 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:21:11 [INFO] 🔄 Restarting all services...
+2026-03-20 17:21:11 [INFO] Killing ngrok (PID: 44307)
+2026-03-20 17:21:13 [ERROR] Failed to kill process on port 5003: (pid=44388)
+2026-03-20 17:21:14 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:21:22 [INFO] ✅ Flask started successfully
+2026-03-20 17:21:25 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:21:30 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:21:30 [ERROR] ❌ ngrok start failed
+2026-03-20 17:21:30 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:21:30 [ERROR] ❌ restart all services failed
+2026-03-20 17:22:34 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:22:34 [INFO] 🔄 Restarting all services...
+2026-03-20 17:22:34 [INFO] Killing ngrok (PID: 44456)
+2026-03-20 17:22:37 [ERROR] Failed to kill process on port 5003: (pid=44388)
+2026-03-20 17:22:38 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:22:46 [INFO] ✅ Flask started successfully
+2026-03-20 17:22:49 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:22:54 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:22:55 [INFO] ✅ All services restarted successfully
+2026-03-20 17:22:55 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:22:55 [INFO] ✅ restart all services successful
+2026-03-20 17:23:59 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:23:59 [INFO] 🔄 Restarting all services...
+2026-03-20 17:23:59 [INFO] Killing ngrok (PID: 44594)
+2026-03-20 17:24:02 [ERROR] Failed to kill process on port 5003: (pid=44388)
+2026-03-20 17:24:03 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:24:11 [INFO] ✅ Flask started successfully
+2026-03-20 17:24:14 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:24:19 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:24:20 [INFO] ✅ All services restarted successfully
+2026-03-20 17:24:20 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:24:20 [INFO] ✅ restart all services successful
+2026-03-20 17:25:24 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:25:24 [INFO] 🔄 Restarting all services...
+2026-03-20 17:25:24 [INFO] Killing ngrok (PID: 44722)
+2026-03-20 17:25:26 [ERROR] Failed to kill process on port 5003: (pid=44388)
+2026-03-20 17:25:27 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:25:35 [INFO] ✅ Flask started successfully
+2026-03-20 17:25:38 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:25:43 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:25:43 [ERROR] ❌ ngrok start failed
+2026-03-20 17:25:43 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:25:43 [ERROR] ❌ restart all services failed
+2026-03-20 17:26:48 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:26:48 [INFO] 🔄 Restarting all services...
+2026-03-20 17:26:48 [INFO] Killing ngrok (PID: 44876)
+2026-03-20 17:26:50 [ERROR] Failed to kill process on port 5003: (pid=44388)
+2026-03-20 17:26:51 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:26:59 [INFO] ✅ Flask started successfully
+2026-03-20 17:27:02 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:27:07 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:27:08 [INFO] ✅ All services restarted successfully
+2026-03-20 17:27:08 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:27:08 [INFO] ✅ restart all services successful
+2026-03-20 17:28:14 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:28:14 [INFO] 🔄 Restarting all services...
+2026-03-20 17:28:14 [INFO] Killing ngrok (PID: 44998)
+2026-03-20 17:28:16 [ERROR] Failed to kill process on port 5003: (pid=45190)
+2026-03-20 17:28:17 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:28:25 [INFO] ✅ Flask started successfully
+2026-03-20 17:28:28 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:28:34 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:28:34 [ERROR] ❌ ngrok start failed
+2026-03-20 17:28:34 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:28:34 [ERROR] ❌ restart all services failed
+2026-03-20 17:29:41 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:29:41 [INFO] 🔄 Restarting all services...
+2026-03-20 17:29:41 [INFO] Killing ngrok (PID: 45377)
+2026-03-20 17:29:44 [ERROR] Failed to kill process on port 5003: (pid=45190)
+2026-03-20 17:29:45 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:29:53 [INFO] ✅ Flask started successfully
+2026-03-20 17:29:56 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:30:01 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:30:02 [INFO] ✅ All services restarted successfully
+2026-03-20 17:30:02 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:30:02 [INFO] ✅ restart all services successful
+2026-03-20 17:31:12 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:31:12 [INFO] 🔄 Restarting all services...
+2026-03-20 17:31:12 [INFO] Killing ngrok (PID: 45409)
+2026-03-20 17:31:14 [ERROR] Failed to kill process on port 5003: (pid=45190)
+2026-03-20 17:31:15 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:31:23 [INFO] ✅ Flask started successfully
+2026-03-20 17:31:26 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:31:31 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:31:32 [INFO] ✅ All services restarted successfully
+2026-03-20 17:31:32 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:31:32 [INFO] ✅ restart all services successful
+2026-03-20 17:32:40 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:32:40 [INFO] 🔄 Restarting all services...
+2026-03-20 17:32:40 [INFO] Killing ngrok (PID: 45593)
+2026-03-20 17:32:42 [ERROR] Failed to kill process on port 5003: (pid=45190)
+2026-03-20 17:32:43 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:32:52 [INFO] ✅ Flask started successfully
+2026-03-20 17:32:55 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:33:00 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:33:00 [ERROR] ❌ ngrok start failed
+2026-03-20 17:33:00 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:33:00 [ERROR] ❌ restart all services failed
+2026-03-20 17:34:07 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:34:07 [INFO] 🔄 Restarting all services...
+2026-03-20 17:34:07 [INFO] Killing ngrok (PID: 45739)
+2026-03-20 17:34:10 [ERROR] Failed to kill process on port 5003: (pid=45762)
+2026-03-20 17:34:11 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:34:19 [INFO] ✅ Flask started successfully
+2026-03-20 17:34:22 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:34:27 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:34:30 [INFO] ✅ All services restarted successfully
+2026-03-20 17:34:30 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:34:30 [INFO] ✅ restart all services successful
+2026-03-20 17:35:37 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:35:37 [INFO] 🔄 Restarting all services...
+2026-03-20 17:35:37 [INFO] Killing ngrok (PID: 45874)
+2026-03-20 17:35:39 [ERROR] Failed to kill process on port 5003: (pid=45762)
+2026-03-20 17:35:40 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:35:48 [INFO] ✅ Flask started successfully
+2026-03-20 17:35:51 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:35:56 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:35:58 [INFO] ✅ All services restarted successfully
+2026-03-20 17:35:58 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:35:58 [INFO] ✅ restart all services successful
+2026-03-20 17:37:04 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:37:04 [INFO] 🔄 Restarting all services...
+2026-03-20 17:37:04 [INFO] Killing ngrok (PID: 46034)
+2026-03-20 17:37:07 [ERROR] Failed to kill process on port 5003: (pid=45762)
+2026-03-20 17:37:08 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:37:16 [INFO] ✅ Flask started successfully
+2026-03-20 17:37:19 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:37:24 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:37:24 [ERROR] ❌ ngrok start failed
+2026-03-20 17:37:24 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:37:24 [ERROR] ❌ restart all services failed
+2026-03-20 17:38:32 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:38:32 [INFO] 🔄 Restarting all services...
+2026-03-20 17:38:32 [INFO] Killing ngrok (PID: 46167)
+2026-03-20 17:38:34 [ERROR] Failed to kill process on port 5003: (pid=46260)
+2026-03-20 17:38:35 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:38:43 [INFO] ✅ Flask started successfully
+2026-03-20 17:38:46 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:38:51 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:38:52 [INFO] ✅ All services restarted successfully
+2026-03-20 17:38:52 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:38:52 [INFO] ✅ restart all services successful
+2026-03-20 17:38:54 [INFO] 💓 Heartbeat #90 - Status: ✅ Healthy
+2026-03-20 17:40:01 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:40:01 [INFO] 🔄 Restarting all services...
+2026-03-20 17:40:01 [INFO] Killing ngrok (PID: 46307)
+2026-03-20 17:40:03 [ERROR] Failed to kill process on port 5003: (pid=45762)
+2026-03-20 17:40:04 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:40:12 [INFO] ✅ Flask started successfully
+2026-03-20 17:40:16 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:40:21 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:40:22 [INFO] ✅ All services restarted successfully
+2026-03-20 17:40:22 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:40:22 [INFO] ✅ restart all services successful
+2026-03-20 17:41:29 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:41:29 [INFO] 🔄 Restarting all services...
+2026-03-20 17:41:29 [INFO] Killing ngrok (PID: 46464)
+2026-03-20 17:41:32 [ERROR] Failed to kill process on port 5003: (pid=45762)
+2026-03-20 17:41:33 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:41:41 [INFO] ✅ Flask started successfully
+2026-03-20 17:41:44 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:41:49 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:41:49 [ERROR] ❌ ngrok start failed
+2026-03-20 17:41:49 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:41:49 [ERROR] ❌ restart all services failed
+2026-03-20 17:42:56 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:42:56 [INFO] 🔄 Restarting all services...
+2026-03-20 17:42:56 [INFO] Killing ngrok (PID: 46737)
+2026-03-20 17:42:58 [ERROR] Failed to kill process on port 5003: (pid=46704)
+2026-03-20 17:43:00 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:43:08 [INFO] ✅ Flask started successfully
+2026-03-20 17:43:11 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:43:16 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:43:17 [INFO] ✅ All services restarted successfully
+2026-03-20 17:43:17 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:43:17 [INFO] ✅ restart all services successful
+2026-03-20 17:44:25 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:44:25 [INFO] 🔄 Restarting all services...
+2026-03-20 17:44:25 [INFO] Killing ngrok (PID: 46762)
+2026-03-20 17:44:27 [ERROR] Failed to kill process on port 5003: (pid=46860)
+2026-03-20 17:44:28 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:44:36 [INFO] ✅ Flask started successfully
+2026-03-20 17:44:39 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:44:44 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:44:46 [INFO] ✅ All services restarted successfully
+2026-03-20 17:44:46 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:44:46 [INFO] ✅ restart all services successful
+2026-03-20 17:45:53 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:45:53 [INFO] 🔄 Restarting all services...
+2026-03-20 17:45:53 [INFO] Killing ngrok (PID: 46922)
+2026-03-20 17:45:55 [ERROR] Failed to kill process on port 5003: (pid=46848)
+2026-03-20 17:45:56 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:46:05 [INFO] ✅ Flask started successfully
+2026-03-20 17:46:08 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:46:13 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:46:14 [INFO] ✅ All services restarted successfully
+2026-03-20 17:46:14 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:46:14 [INFO] ✅ restart all services successful
+2026-03-20 17:47:21 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:47:21 [INFO] 🔄 Restarting all services...
+2026-03-20 17:47:21 [INFO] Killing ngrok (PID: 47064)
+2026-03-20 17:47:23 [ERROR] Failed to kill process on port 5003: (pid=46848)
+2026-03-20 17:47:24 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:47:33 [INFO] ✅ Flask started successfully
+2026-03-20 17:47:36 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:47:41 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:47:42 [INFO] ✅ All services restarted successfully
+2026-03-20 17:47:42 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:47:42 [INFO] ✅ restart all services successful
+2026-03-20 17:48:50 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:48:50 [INFO] 🔄 Restarting all services...
+2026-03-20 17:48:50 [INFO] Killing ngrok (PID: 47200)
+2026-03-20 17:48:52 [ERROR] Failed to kill process on port 5003: (pid=47233)
+2026-03-20 17:48:53 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:49:01 [INFO] ✅ Flask started successfully
+2026-03-20 17:49:05 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:49:10 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:49:11 [INFO] ✅ All services restarted successfully
+2026-03-20 17:49:11 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:49:11 [INFO] ✅ restart all services successful
+2026-03-20 17:50:19 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:50:19 [INFO] 🔄 Restarting all services...
+2026-03-20 17:50:19 [INFO] Killing ngrok (PID: 47361)
+2026-03-20 17:50:22 [ERROR] Failed to kill process on port 5003: (pid=47233)
+2026-03-20 17:50:23 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:50:31 [INFO] ✅ Flask started successfully
+2026-03-20 17:50:34 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:50:39 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:50:39 [ERROR] ❌ ngrok start failed
+2026-03-20 17:50:39 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:50:39 [ERROR] ❌ restart all services failed
+2026-03-20 17:51:47 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:51:47 [INFO] 🔄 Restarting all services...
+2026-03-20 17:51:47 [INFO] Killing ngrok (PID: 47518)
+2026-03-20 17:51:49 [ERROR] Failed to kill process on port 5003: (pid=47233)
+2026-03-20 17:51:51 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:51:59 [INFO] ✅ Flask started successfully
+2026-03-20 17:52:02 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:52:07 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:52:08 [INFO] ✅ All services restarted successfully
+2026-03-20 17:52:08 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:52:08 [INFO] ✅ restart all services successful
+2026-03-20 17:53:15 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:53:15 [INFO] 🔄 Restarting all services...
+2026-03-20 17:53:15 [INFO] Killing ngrok (PID: 47648)
+2026-03-20 17:53:17 [ERROR] Failed to kill process on port 5003: (pid=47233)
+2026-03-20 17:53:18 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:53:26 [INFO] ✅ Flask started successfully
+2026-03-20 17:53:29 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:53:35 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:53:35 [INFO] ✅ All services restarted successfully
+2026-03-20 17:53:35 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:53:35 [INFO] ✅ restart all services successful
+2026-03-20 17:54:42 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:54:42 [INFO] 🔄 Restarting all services...
+2026-03-20 17:54:42 [INFO] Killing ngrok (PID: 47786)
+2026-03-20 17:54:45 [ERROR] Failed to kill process on port 5003: (pid=47898)
+2026-03-20 17:54:46 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:54:54 [INFO] ✅ Flask started successfully
+2026-03-20 17:54:57 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:55:02 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:55:03 [INFO] ✅ All services restarted successfully
+2026-03-20 17:55:03 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:55:03 [INFO] ✅ restart all services successful
+2026-03-20 17:56:07 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:56:07 [INFO] 🔄 Restarting all services...
+2026-03-20 17:56:07 [INFO] Killing ngrok (PID: 47933)
+2026-03-20 17:56:10 [ERROR] Failed to kill process on port 5003: (pid=48003)
+2026-03-20 17:56:11 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:56:19 [INFO] ✅ Flask started successfully
+2026-03-20 17:56:22 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:56:27 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 17:56:27 [ERROR] ❌ ngrok start failed
+2026-03-20 17:56:27 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:56:27 [ERROR] ❌ restart all services failed
+2026-03-20 17:57:30 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 17:57:30 [INFO] 🔄 Restarting all services...
+2026-03-20 17:57:30 [INFO] Killing ngrok (PID: 48098)
+2026-03-20 17:57:33 [ERROR] Failed to kill process on port 5003: (pid=48003)
+2026-03-20 17:57:34 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:57:42 [INFO] ✅ Flask started successfully
+2026-03-20 17:57:45 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:57:50 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:57:50 [INFO] ✅ All services restarted successfully
+2026-03-20 17:57:50 [ERROR] [ERROR] [both] Flask process not running; ngrok tunnel not active - Action: restart all services
+2026-03-20 17:57:50 [INFO] ✅ restart all services successful
+2026-03-20 17:58:54 [WARNING] Issues detected: Flask process not running
+2026-03-20 17:58:54 [INFO] 🔄 Restarting all services...
+2026-03-20 17:58:54 [INFO] Killing ngrok (PID: 48248)
+2026-03-20 17:58:56 [ERROR] Failed to kill process on port 5003: (pid=48003)
+2026-03-20 17:58:57 [INFO] Starting Flask (port: 5003)...
+2026-03-20 17:59:06 [INFO] ✅ Flask started successfully
+2026-03-20 17:59:09 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 17:59:14 [INFO] ✅ ngrok started - URL: https://chariest-nancy-nonincidentally.ngrok-free.dev
+2026-03-20 17:59:14 [INFO] ✅ All services restarted successfully
+2026-03-20 17:59:14 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 17:59:14 [INFO] ✅ restart all services successful
+2026-03-20 18:00:18 [WARNING] Issues detected: Flask process not running
+2026-03-20 18:00:18 [INFO] 🔄 Restarting all services...
+2026-03-20 18:00:18 [INFO] Killing ngrok (PID: 48390)
+2026-03-20 18:00:20 [ERROR] Failed to kill process on port 5003: (pid=48003)
+2026-03-20 18:00:21 [INFO] Starting Flask (port: 5003)...
+2026-03-20 18:00:29 [INFO] ✅ Flask started successfully
+2026-03-20 18:00:32 [INFO] Starting ngrok (pointing to port: 5003)...
+2026-03-20 18:00:37 [ERROR] ❌ ngrok failed to start - Unknown: Expecting value: line 1 column 1 (char 0)
+2026-03-20 18:00:37 [ERROR] ❌ ngrok start failed
+2026-03-20 18:00:37 [ERROR] [ERROR] [both] Flask process not running - Action: restart all services
+2026-03-20 18:00:37 [ERROR] ❌ restart all services failed
+2026-03-20 18:01:41 [WARNING] Issues detected: Flask process not running; ngrok tunnel not active
+2026-03-20 18:01:41 [INFO] 🔄 Restarting all services...
+2026-03-20 18:01:43 [ERROR] Failed to kill process on port 5003: (pid=48003)
+2026-03-20 18:01:44 [INFO] Starting Flask (port: 5003)...
+2026-03-20 18:01:52 [INFO] ✅ Flask started successfully
+2026-03-20 18:01:55 [INFO] Starting ngrok (pointing to port: 5003)...

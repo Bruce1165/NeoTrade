@@ -1,9 +1,9 @@
 {
   "screener_name": "ascending_triangle",
   "status": "completed",
-  "start_time": "2026-03-20T10:57:07.829034",
-  "end_time": "2026-03-20T10:57:14.233082",
-  "last_updated": "2026-03-20T10:57:14.233086",
+  "start_time": "2026-03-20T18:11:46.431090",
+  "end_time": "2026-03-20T18:11:53.293756",
+  "last_updated": "2026-03-20T18:11:53.293757",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 0,
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-19",
+    "date": "2026-03-20",
     "screener": "ascending_triangle"
   }
 }

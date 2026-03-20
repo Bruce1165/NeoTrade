@@ -1,12 +1,12 @@
 {
   "screener_name": "double_bottom",
   "status": "completed",
-  "start_time": "2026-03-20T14:35:54.187579",
-  "end_time": "2026-03-20T14:35:59.308159",
-  "last_updated": "2026-03-20T14:35:59.308160",
+  "start_time": "2026-03-20T18:12:04.909788",
+  "end_time": "2026-03-20T18:12:09.792533",
+  "last_updated": "2026-03-20T18:12:09.792535",
   "total_stocks": 4663,
   "processed_stocks": 4601,
-  "matched_stocks": 87,
+  "matched_stocks": 0,
   "current_batch": 0,
   "total_batches": 1,
   "processed_codes": [

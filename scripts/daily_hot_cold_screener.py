@@ -208,11 +208,14 @@ class DailyHotColdScreener:
         if df is None or df.empty:
             return None, None
 
-        latest = df.iloc[-1]
-        latest_trade_date = latest['trade_date'].strftime('%Y-%m-%d')
-        if latest_trade_date != latest_date:
+        # Find the row for the specific date we're analyzing
+        df['date_str'] = df['trade_date'].dt.strftime('%Y-%m-%d')
+        date_row = df[df['date_str'] == latest_date]
+        
+        if date_row.empty:
             return None, None
-
+            
+        latest = date_row.iloc[0]
         pct_change = latest.get('pct_change', 0) or 0
         amount = latest.get('amount', 0) or 0
 
@@ -227,15 +230,18 @@ class DailyHotColdScreener:
         if not is_hot and not is_cold:
             return None, None
 
-        limit_stats = self.calculate_limit_up_stats(df, code)
-        returns = self.calculate_returns(df)
+        # Filter dataframe up to the target date for calculations
+        df_up_to_date = df[df['date_str'] <= latest_date].copy()
+        
+        limit_stats = self.calculate_limit_up_stats(df_up_to_date, code)
+        returns = self.calculate_returns(df_up_to_date)
         anomaly_type = self.detect_anomaly_type({
             'code': code,
             'turnover': latest.get('turnover', 0),
             'pct_change': pct_change,
             'high': latest.get('high', 0),
             'low': latest.get('low', 0)
-        }, df, is_hot=True if is_hot else False)
+        }, df_up_to_date, is_hot=True if is_hot else False)
 
         result = {
             'code': code,

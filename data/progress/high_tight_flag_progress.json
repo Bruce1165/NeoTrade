@@ -1,12 +1,12 @@
 {
   "screener_name": "high_tight_flag",
   "status": "completed",
-  "start_time": "2026-03-18T07:35:13.123406",
-  "end_time": "2026-03-18T07:35:17.441630",
-  "last_updated": "2026-03-18T07:35:17.441632",
+  "start_time": "2026-03-20T18:07:49.436956",
+  "end_time": "2026-03-20T18:07:52.918625",
+  "last_updated": "2026-03-20T18:07:52.918627",
   "total_stocks": 4663,
   "processed_stocks": 4601,
-  "matched_stocks": 1,
+  "matched_stocks": 0,
   "current_batch": 0,
   "total_batches": 1,
   "processed_codes": [
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-17",
+    "date": "2026-03-19",
     "screener": "high_tight_flag"
   }
 }
