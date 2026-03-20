@@ -183,6 +183,41 @@
    - 添加提示："CSV works with all Excel versions"
    - 修改文件：`dashboard2/frontend/src/App.tsx`, `App.css`
 
+### 2026-03-20 Milestone v1.0.0 Release
+**Production-Ready Trading Dashboard Released**
+- **Commit:** `f256895`
+- **Tag:** `v1.0.0`
+- **Status:** Production Ready
+
+**Major Features:**
+- 14 Active Technical Screeners with data availability check
+- Daily Hot/Cold Screener with date-specific filtering
+- iFind Realtime daily data download (4663 stocks)
+- Database storage for screener results
+- K-Line Chart display with ECharts
+- Ngrok HA monitoring with auto-restart
+- CSV/Excel export functionality
+- Data integrity check + Baostock backfill scripts
+
+**Critical Fixes:**
+- Date format handling: All dates use YYYY-MM-DD internally
+- Data availability check: Screeners verify DB before running
+- Removed 4 outdated screeners (intraday, postmarket, daily_update, keyword_expander)
+- Fixed daily_hot_cold_screener to filter by specific date (not just latest)
+- Frontend tab state sync with URL
+- Fixed date input initialization to prevent pattern mismatch
+
+**Infrastructure:**
+- Ngrok monitoring LaunchAgent for auto-recovery
+- Daily QA system for screener testing
+- Scripts: `verify_data_integrity.py`, `backfill_baostock.py`, `download_today_ifind.py`
+
+**Data Status:**
+- Total stocks: 4,663
+- Date range: 2024-09-02 to 2026-03-20
+- Today's data: ✅ Complete
+- Known gap: 2026-02-16 (external source needed)
+
 ---
 
 **For current priorities, check CACHE.md**
