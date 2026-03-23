@@ -1,9 +1,9 @@
 {
   "screener_name": "ascending_triangle",
   "status": "completed",
-  "start_time": "2026-03-20T18:11:46.431090",
-  "end_time": "2026-03-20T18:11:53.293756",
-  "last_updated": "2026-03-20T18:11:53.293757",
+  "start_time": "2026-03-21T14:21:48.090214",
+  "end_time": "2026-03-21T14:21:55.376151",
+  "last_updated": "2026-03-21T14:21:55.376153",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 0,

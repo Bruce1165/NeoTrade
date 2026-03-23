@@ -41,6 +41,6 @@ if [ "$CURRENT_URL" != "$OLD_URL" ]; then
     echo "============================================" >> "$LOG_FILE"
     echo "🔔 Dashboard URL 已变更!" >> "$LOG_FILE"
     echo "📍 新地址: $CURRENT_URL" >> "$LOG_FILE"
-    echo "🔐 登录信息: admin / bruce2024" >> "$LOG_FILE"
+    echo "🔐 登录信息: admin / neo123" >> "$LOG_FILE"
     echo "============================================" >> "$LOG_FILE"
 fi

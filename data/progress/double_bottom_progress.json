@@ -1,9 +1,9 @@
 {
   "screener_name": "double_bottom",
   "status": "completed",
-  "start_time": "2026-03-20T18:12:04.909788",
-  "end_time": "2026-03-20T18:12:09.792533",
-  "last_updated": "2026-03-20T18:12:09.792535",
+  "start_time": "2026-03-22T17:36:42.057526",
+  "end_time": "2026-03-22T17:36:47.652648",
+  "last_updated": "2026-03-22T17:36:47.652649",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 0,
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-19",
+    "date": "2026-03-20",
     "screener": "double_bottom"
   }
 }

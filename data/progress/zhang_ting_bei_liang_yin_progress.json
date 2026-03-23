@@ -1,12 +1,12 @@
 {
   "screener_name": "zhang_ting_bei_liang_yin",
   "status": "completed",
-  "start_time": "2026-03-19T11:33:53.217336",
-  "end_time": "2026-03-19T11:33:59.745894",
-  "last_updated": "2026-03-19T11:33:59.745896",
+  "start_time": "2026-03-21T14:21:06.831005",
+  "end_time": "2026-03-21T14:21:13.130525",
+  "last_updated": "2026-03-21T14:21:13.130527",
   "total_stocks": 4663,
   "processed_stocks": 4601,
-  "matched_stocks": 2,
+  "matched_stocks": 4,
   "current_batch": 0,
   "total_batches": 1,
   "processed_codes": [
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-18",
+    "date": "2026-03-20",
     "screener": "zhang_ting_bei_liang_yin"
   }
 }

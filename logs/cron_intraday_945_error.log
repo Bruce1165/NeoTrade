@@ -117,3 +117,20 @@
 2026-03-20 09:45:33,805 - __main__ - INFO - ============================================================
 2026-03-20 09:45:33,805 - __main__ - INFO - 盘中任务完成: 0945
 2026-03-20 09:45:33,805 - __main__ - INFO - ============================================================
+/Users/mac/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-23 09:45:01,546 - keyword_library - INFO - 关键词库管理器初始化完成
+2026-03-23 09:45:01,546 - __main__ - INFO - ============================================================
+2026-03-23 09:45:01,546 - __main__ - INFO - 开始执行盘中任务: 0945
+2026-03-23 09:45:01,546 - __main__ - INFO - ============================================================
+2026-03-23 09:45:01,546 - __main__ - INFO - [0945] 开始分析指数成交额...
+2026-03-23 09:45:07,018 - __main__ - ERROR - 获取上证指数数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-23 09:45:13,141 - __main__ - ERROR - 获取深证成指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-23 09:45:19,094 - __main__ - ERROR - 获取沪深300数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  0%|          | 0/17 [00:00<?, ?it/s]                                      2026-03-23 09:45:29,283 - __main__ - ERROR - 获取创业板指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-23 09:45:34,994 - __main__ - ERROR - 获取科创综指数据失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-23 09:45:35,017 - __main__ - INFO - MD文件已保存: /Users/mac/.openclaw/workspace-neo/data/intraday/2026-03-23/0945_index.md
+2026-03-23 09:45:35,017 - __main__ - INFO - [0945] 指数分析完成
+2026-03-23 09:45:35,017 - __main__ - INFO - ============================================================
+2026-03-23 09:45:35,017 - __main__ - INFO - 盘中任务完成: 0945
+2026-03-23 09:45:35,017 - __main__ - INFO - ============================================================

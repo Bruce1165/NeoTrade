@@ -1,12 +1,12 @@
 {
   "screener_name": "breakout_20day",
   "status": "completed",
-  "start_time": "2026-03-19T15:50:07.238752",
-  "end_time": "2026-03-19T15:50:10.573534",
-  "last_updated": "2026-03-19T15:50:10.573536",
+  "start_time": "2026-03-22T12:54:50.313785",
+  "end_time": "2026-03-22T12:54:53.042063",
+  "last_updated": "2026-03-22T12:54:53.042064",
   "total_stocks": 4663,
   "processed_stocks": 4601,
-  "matched_stocks": 10,
+  "matched_stocks": 0,
   "current_batch": 0,
   "total_batches": 1,
   "processed_codes": [
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-18",
+    "date": "2026-03-20",
     "screener": "breakout_20day"
   }
 }

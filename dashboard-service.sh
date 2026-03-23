@@ -17,7 +17,7 @@ case "$1" in
         cd "$WORKSPACE"
         
         # 启动 ngrok
-        nohup ngrok http 5003 --basic-auth="admin:bruce2024" > "$LOGFILE" 2>&1 &
+        nohup ngrok http 5003 --basic-auth="admin:neo123" > "$LOGFILE" 2>&1 &
         echo $! > "$PIDFILE"
         
         sleep 3
@@ -28,7 +28,7 @@ case "$1" in
         if [ -n "$URL" ]; then
             echo "✅ Dashboard 已启动"
             echo "📍 访问地址: $URL"
-            echo "🔐 登录信息: admin / bruce2024"
+            echo "🔐 登录信息: admin / neo123"
             
             # 保存 URL 到文件
             echo "$URL" > /tmp/dashboard-url.txt
@@ -60,7 +60,7 @@ case "$1" in
             echo "✅ Dashboard 运行中"
             if [ -n "$URL" ]; then
                 echo "📍 访问地址: $URL"
-                echo "🔐 登录信息: admin / bruce2024"
+                echo "🔐 登录信息: admin / neo123"
             fi
         else
             echo "❌ Dashboard 未运行"

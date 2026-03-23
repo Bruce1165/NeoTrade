@@ -1,9 +1,9 @@
 {
   "screener_name": "breakout_main",
   "status": "completed",
-  "start_time": "2026-03-20T15:57:14.424822",
-  "end_time": "2026-03-20T15:57:21.094742",
-  "last_updated": "2026-03-20T15:57:21.094743",
+  "start_time": "2026-03-22T17:40:35.059438",
+  "end_time": "2026-03-22T17:40:41.954230",
+  "last_updated": "2026-03-22T17:40:41.954231",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 219,

@@ -1,9 +1,9 @@
 {
   "screener_name": "coffee_cup",
   "status": "completed",
-  "start_time": "2026-03-20T17:58:06.295813",
-  "end_time": "2026-03-20T17:58:10.506626",
-  "last_updated": "2026-03-20T17:58:10.506628",
+  "start_time": "2026-03-21T14:20:44.778895",
+  "end_time": "2026-03-21T14:20:49.702632",
+  "last_updated": "2026-03-21T14:20:49.702633",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 2,

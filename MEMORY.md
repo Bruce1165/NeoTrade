@@ -220,5 +220,44 @@
 
 ---
 
+## 🐛 Bug Fixes & Technical Notes
+
+### 2026-03-23 - Hot/Cold Screener JSON NaN Fix
+**Issue:** Download buttons not working for `daily_hot_cold_screener`
+- Frontend error: "JSON Parse error: Unexpected identifier NaN"
+- Root cause: Stock 600673 (东阳光) had `NaN` in `return_10d` field
+- Python's `json.dumps()` outputs `NaN` by default, which is **not valid JSON**
+
+**Files Modified:**
+- `dashboard2/frontend/api/app.py` - Added SafeJSONEncoder
+- `dashboard2/frontend/api/models.py` - Fixed database path
+
+**Solution:**
+```python
+class SafeJSONEncoder(json.JSONEncoder):
+    """JSON encoder that handles NaN, Infinity, -Infinity by converting to null"""
+    def encode(self, obj):
+        obj = self._sanitize(obj)
+        return super().encode(obj)
+    
+    def _sanitize(self, obj):
+        if isinstance(obj, float):
+            if math.isnan(obj) or math.isinf(obj):
+                return None
+            return obj
+        elif isinstance(obj, dict):
+            return {k: self._sanitize(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._sanitize(item) for item in obj]
+        return obj
+```
+
+Also fixed database path in models.py:
+- Was: `data/stock_data.db` (wrong location)
+- Now: `dashboard2/frontend/api/data/dashboard.db` (correct)
+
+**Status:** ✅ Fixed - All download buttons working
+
+---
 **For current priorities, check CACHE.md**
 **For daily work logs, check memory/YYYY-MM-DD.md**

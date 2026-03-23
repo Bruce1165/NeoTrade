@@ -1,9 +1,9 @@
 {
   "screener_name": "er_ban_hui_tiao",
   "status": "completed",
-  "start_time": "2026-03-20T16:48:16.978457",
-  "end_time": "2026-03-20T16:48:25.889320",
-  "last_updated": "2026-03-20T16:48:25.889323",
+  "start_time": "2026-03-21T14:20:57.149279",
+  "end_time": "2026-03-21T14:21:06.177024",
+  "last_updated": "2026-03-21T14:21:06.177025",
   "total_stocks": 4663,
   "processed_stocks": 4601,
   "matched_stocks": 45,
@@ -62,7 +62,7 @@
   "last_processed_code": "301609",
   "error_message": null,
   "metadata": {
-    "date": "2026-03-21",
+    "date": "2026-03-20",
     "screener": "er_ban_hui_tiao"
   }
 }

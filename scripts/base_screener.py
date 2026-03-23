@@ -33,6 +33,7 @@ from news_fetcher import NewsFetcher
 from llm_analyzer import LLMAnalyzer
 from progress_tracker import ProgressTracker
 from output_manager import OutputManager
+from screener_monitor import ScreenerMonitor
 
 logger = logging.getLogger(__name__)
 
@@ -82,6 +83,9 @@ class BaseScreener:
         
         # 初始化输出管理器
         self.output_manager = OutputManager(screener_name)
+        
+        # 初始化监控器（自动创建pick跟踪）
+        self.screener_monitor = ScreenerMonitor(db_path)
         
         # 当前日期
         self.current_date = get_recent_trading_day(db_path=db_path)
@@ -386,7 +390,7 @@ class BaseScreener:
     def save_results(self, results: List[Dict], analysis_data: Optional[Dict[str, Dict]] = None,
                      suffix: str = "", column_mapping: Optional[Dict[str, str]] = None) -> str:
         """
-        保存结果
+        保存结果并创建监控pick
         
         Args:
             results: 结果列表
@@ -401,14 +405,48 @@ class BaseScreener:
             logger.warning("No results to save")
             return ""
         
+        # Save to file/DB
         if analysis_data:
-            return self.output_manager.save_with_analysis(
+            saved_path = self.output_manager.save_with_analysis(
                 results, analysis_data, self.current_date, suffix, column_mapping
             )
         else:
-            return self.output_manager.save_results(
+            saved_path = self.output_manager.save_results(
                 results, self.current_date, suffix, column_mapping
             )
+        
+        # Create monitoring picks for each result (Coffee Cup only for POC)
+        if self.screener_monitor and saved_path:
+            try:
+                # Map screener_name to screener_id format
+                screener_id = self.screener_name.replace(' ', '_').lower() + '_screener'
+                
+                # Only create picks for Coffee Cup during POC phase
+                if screener_id == 'coffee_cup_screener':
+                    for result in results:
+                        code = result.get('code')
+                        close_price = result.get('close', result.get('current_price', 0))
+                        
+                        if code and close_price:
+                            # For Coffee Cup screener, pass cup pattern data
+                            cup_rim = result.get('cup_rim_price')
+                            cup_bottom = result.get('cup_bottom_price')
+                            self.screener_monitor.create_pick(
+                                screener_id=screener_id,
+                                stock_code=code,
+                                entry_date=self.current_date,
+                                entry_price=float(close_price),
+                                cup_rim_price=cup_rim,
+                                cup_bottom_price=cup_bottom
+                            )
+                    
+                    logger.info(f"✅ Created {len(results)} monitoring picks for {screener_id}")
+                else:
+                    logger.info(f"⏭️ Skipped monitoring picks for {screener_id} (POC phase - Coffee Cup only)")
+            except Exception as e:
+                logger.warning(f"Failed to create monitoring picks: {e}")
+        
+        return saved_path
     
     def get_stats(self) -> Dict:
         """获取统计信息"""

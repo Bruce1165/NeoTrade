@@ -367,6 +367,8 @@ class CoffeeCupScreener(BaseScreener):
             'cup_is_u_shape': cup_handle['cup_is_u_shape'],
             'cup_position': cup_handle['cup_position'],
             'breakout_pct': cup_handle['breakout_pct'],
+            'cup_rim_price': cup_handle['cup_high'],      # 杯沿价格 = cup_high
+            'cup_bottom_price': cup_handle['cup_low'],    # 杯底价格 = cup_low
             'ma50': ma_info['ma50'],
             'ma150': ma_info['ma150'],
             'ma200': ma_info['ma200'],

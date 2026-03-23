@@ -31,7 +31,7 @@ class Config:
     FLASK_PORT = int(os.getenv('FLASK_PORT', 5003))  # Flask port
     NGROK_API_PORT = int(os.getenv('NGROK_API_PORT', 4040))  # ngrok API port
     NGROK_DOMAIN = os.getenv('NGROK_DOMAIN', 'chariest-nancy-nonincidentally.ngrok-free.dev')
-    DASHBOARD_PASSWORD = os.getenv('DASHBOARD_PASSWORD', 'neiltrade123')
+    DASHBOARD_PASSWORD = os.getenv('DASHBOARD_PASSWORD', 'neo123')
     
     # Paths
     WORKSPACE = Path(os.getenv('WORKSPACE', '/Users/mac/.openclaw/workspace-neo'))
@@ -50,7 +50,7 @@ class Config:
     FLASK_HOST = '127.0.0.1'
     
     # ngrok settings
-    NGROK_CMD = ['ngrok', 'http', str(FLASK_PORT), '--domain', NGROK_DOMAIN]
+    NGROK_CMD = ['/opt/homebrew/bin/ngrok', 'http', str(FLASK_PORT), '--domain', NGROK_DOMAIN, '--pooling-enabled']
     
     @classmethod
     def ensure_dirs(cls):
@@ -451,13 +451,14 @@ class ServiceManager:
             env['FLASK_RUN_HOST'] = Config.FLASK_HOST
             env['DASHBOARD_PASSWORD'] = Config.DASHBOARD_PASSWORD  # Critical: set password
             
-            # Start Flask
+            # Start Flask with new session to prevent signal propagation
             subprocess.Popen(
                 [sys.executable, Config.FLASK_APP],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 env=env,
-                cwd=Config.DASHBOARD_DIR
+                cwd=Config.DASHBOARD_DIR,
+                start_new_session=True  # Detach from parent process
             )
             
             # Wait for startup
@@ -480,10 +481,12 @@ class ServiceManager:
         try:
             logger.info(f"Starting ngrok (pointing to port: {Config.FLASK_PORT})...")
             
+            # Start ngrok with new session to prevent signal propagation
             subprocess.Popen(
                 Config.NGROK_CMD,
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
+                stderr=subprocess.DEVNULL,
+                start_new_session=True  # Detach from parent process
             )
             
             # Wait for startup
