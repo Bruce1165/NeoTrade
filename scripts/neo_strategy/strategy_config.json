@@ -1,0 +1,41 @@
+{
+  "name": "neo_trend_momentum_v1",
+  "description": "Multi-timeframe momentum strategy with sector confirmation",
+  "timeframes": {
+    "long": "200-day MA for trend direction",
+    "medium": "50-day MA for intermediate trend",
+    "short": "20-day RS + 10-day MA pullback entry"
+  },
+  "entry_conditions": [
+    "Price > 200-day MA (long-term uptrend)",
+    "Price > 50-day MA (medium-term uptrend)",
+    "20-day RS in top 20% of market",
+    "Sector RS in top 30%",
+    "Price within 5% of 10-day MA (pullback entry)",
+    "ATR(14) < 5% (volatility filter)"
+  ],
+  "exit_conditions": [
+    "Stop loss: -8% from entry",
+    "Take profit: +20% from entry",
+    "Time stop: 15 days",
+    "Price < 50-day MA (trend reversal)"
+  ],
+  "position_sizing": {
+    "max_positions": 5,
+    "capital_per_position": 2000,
+    "max_sector_exposure": 40
+  },
+  "parameters": {
+    "trend_ma_long": 200,
+    "trend_ma_medium": 50,
+    "entry_ma_short": 10,
+    "rs_lookback": 20,
+    "rs_threshold": 80,
+    "sector_rs_threshold": 70,
+    "pullback_pct": 5,
+    "volatility_atr_threshold": 5,
+    "stop_loss": 10,
+    "take_profit": 15,
+    "max_hold_days": 15
+  }
+}
