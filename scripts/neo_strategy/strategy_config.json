@@ -30,12 +30,12 @@
     "trend_ma_medium": 50,
     "entry_ma_short": 10,
     "rs_lookback": 20,
-    "rs_threshold": 80,
+    "rs_threshold": 75,
     "sector_rs_threshold": 70,
     "pullback_pct": 5,
     "volatility_atr_threshold": 5,
-    "stop_loss": 10,
-    "take_profit": 15,
+    "stop_loss": 8,
+    "take_profit": 20,
     "max_hold_days": 15
   }
 }
