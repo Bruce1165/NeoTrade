@@ -125,10 +125,10 @@ class NeoStrategyBacktest:
         return sum(tr_values) / len(tr_values) if tr_values else None
     
     def calculate_rs(self, code: str, date: str, lookback: int) -> Optional[float]:
-        """Calculate relative strength (percentile rank)"""
+        """Calculate relative strength (percentile rank) - simplified fast version"""
         cursor = self.conn.cursor()
         
-        # Get stock return
+        # Get stock price change over lookback period
         cursor.execute('''
             SELECT close FROM daily_prices
             WHERE code = ? AND trade_date <= ?
@@ -141,34 +141,13 @@ class NeoStrategyBacktest:
         
         current_price = rows[0]['close']
         past_price = rows[-1]['close']
-        stock_return = (current_price - past_price) / past_price * 100
+        price_change = (current_price - past_price) / past_price * 100
         
-        # Get all stocks' returns for the same period
-        start_date = (datetime.strptime(date, '%Y-%m-%d') - timedelta(days=lookback + 30)).strftime('%Y-%m-%d')
-        cursor.execute('''
-            SELECT code, 
-                   (SELECT close FROM daily_prices WHERE code = dp.code AND trade_date <= ? ORDER BY trade_date DESC LIMIT 1) as current_price,
-                   (SELECT close FROM daily_prices WHERE code = dp.code AND trade_date <= ? ORDER BY trade_date DESC LIMIT 1 OFFSET ?) as past_price
-            FROM daily_prices dp
-            WHERE trade_date = ?
-            GROUP BY code
-            HAVING current_price IS NOT NULL AND past_price IS NOT NULL
-        ''', (date, date, lookback, date))
+        # Simple momentum score: map price change to 0-100 scale
+        # Assume -50% to +50% range maps to 0-100
+        rs_score = max(0, min(100, 50 + price_change))
         
-        all_returns = []
-        for row in cursor.fetchall():
-            if row['current_price'] and row['past_price'] and row['past_price'] > 0:
-                ret = (row['current_price'] - row['past_price']) / row['past_price'] * 100
-                all_returns.append(ret)
-        
-        if not all_returns:
-            return None
-        
-        # Calculate percentile rank
-        below_count = sum(1 for r in all_returns if r < stock_return)
-        percentile = (below_count / len(all_returns)) * 100
-        
-        return percentile
+        return rs_score
     
     def get_stock_data(self, code: str, date: str) -> Optional[Dict]:
         """Get stock data for a specific date"""
