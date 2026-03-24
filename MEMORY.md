@@ -48,6 +48,39 @@
 
 ### 12month-cuphold Screening Task (Legacy)
 **Status:** Archived
+
+---
+
+## 🧬 NeoTrade Strategy Research (AutoResearch Skill)
+
+**Status:** Active - Experiment Loop Running  
+**Created:** 2026-03-24  
+**Branch:** `autoresearch/strategy-v1`  
+**Skill:** `/autoresearch` - Autonomous experiment protocol  
+
+**Goal:** Build short-to-medium term trading strategy targeting:
+- Win rate > 65%
+- Annual return > 50%
+- Max drawdown < 10%
+
+**Strategy:** Multi-factor momentum (RS ranking + MA pullback entry)
+
+**Baseline Results (v0.1):**
+```
+Sharpe: -0.186 | Return: -1.57% | Win Rate: 42.9% | DD: 6.08%
+```
+
+**Active Experiments:**
+- EXP-1: Widen stop loss -8% → -10%, reduce take profit +20% → +15%
+
+**Data Split:**
+- Training: 2024-09-02 to 2025-08-31
+- Validation: 2025-09-01 to 2026-02-28 (LOCKED)
+
+**Files:**
+- `autoresearch.config.md` - Experiment protocol
+- `results.tsv` - Experiment log
+- `scripts/neo_strategy/` - Strategy implementation
 **Created:** 2026-03-12
 **Note:** Replaced by Coffee Cup Pattern Screener
 
