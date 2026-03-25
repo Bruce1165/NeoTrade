@@ -340,4 +340,14 @@ UI
 
 ---
 
-*Last updated: 2026-03-19 13:03 by Neo*
+### 2026-03-24 Daily Summary
+- ✅ ShiPanXian screener database connection fixed (Lite version deployed)
+- ✅ Turnover data download fixed (download_today_ifind.py)
+- ✅ Access statistics showing unique visitors (not page views)
+- ✅ Ngrok tunnel stabilized after multiple restarts
+- 🔄 2026-03-23/24 turnover data batch repair in progress (Baostock)
+- 🔄 AutoResearch skill applied to strategy optimization (subagent spawned)
+
+---
+
+*Last updated: 2026-03-24 20:17 by Neo*

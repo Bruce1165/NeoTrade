@@ -29,6 +29,7 @@ sys.path.insert(0, '/Users/mac/.openclaw/workspace-neo/scripts')
 import sqlite3
 import pandas as pd
 from datetime import datetime, timedelta
+from pathlib import Path
 from database import init_db, get_session, Stock, DailyPrice
 from sqlalchemy import create_engine
 import logging
@@ -37,7 +38,9 @@ import argparse
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-DB_PATH = "data/stock_data.db"
+# Get absolute path to database
+PROJECT_ROOT = Path(__file__).parent.parent
+DB_PATH = str(PROJECT_ROOT / "data" / "stock_data.db")
 
 
 class ShiPanXianScreener:
@@ -64,7 +67,13 @@ class ShiPanXianScreener:
             breakout_volume_ratio: 再次放量倍数（相对于缩量期均量）
         """
         actual_db_path = db_path or DB_PATH
-        self.engine = create_engine(f'sqlite:///{actual_db_path}', echo=False)
+        # Ensure absolute path for SQLAlchemy
+        abs_path = str(Path(actual_db_path).resolve())
+        import logging
+        logging.basicConfig()
+        logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+        print(f"DEBUG: Creating engine with path: {abs_path}")
+        self.engine = create_engine(f'sqlite:///{abs_path}', echo=False)
         init_db(self.engine)
         self.session = get_session(self.engine)
         self.consolidation_days = consolidation_days
@@ -275,6 +284,54 @@ class ShiPanXianScreener:
         
         return None
     
+    def check_single_stock(self, code, date_str=None):
+        """检查单个股票（兼容 Dashboard API）"""
+        if date_str:
+            self.current_date = date_str
+        
+        # Get stock name
+        try:
+            stock = self.session.query(Stock).filter_by(code=code).first()
+            name = stock.name if stock else ''
+        except:
+            name = ''
+        
+        reasons = []
+        details = {}
+        
+        df = self.get_stock_data(code)
+        if df is None or len(df) < 50:
+            return {
+                'match': False,
+                'code': code,
+                'name': name,
+                'date': self.current_date,
+                'reasons': ['无法获取足够的历史数据（需要至少50天）'],
+                'details': {}
+            }
+        
+        # Run the screening logic
+        result = self.screen_stock(code, name)
+        
+        if result is None:
+            return {
+                'match': False,
+                'code': code,
+                'name': name,
+                'date': self.current_date,
+                'reasons': ['未找到涨停试盘线形态（需满足：高量阳线→涨停→缩量回调→再次放量）'],
+                'details': {}
+            }
+        
+        return {
+            'match': True,
+            'code': code,
+            'name': name,
+            'date': self.current_date,
+            'reasons': [],
+            'details': result
+        }
+    
     def screen_stock(self, code, name):
         """筛选单只股票"""
         df = self.get_stock_data(code)
@@ -319,8 +376,8 @@ class ShiPanXianScreener:
     
     def run_screening(self, date=None):
         """运行筛选"""
-        if date_str:
-            self.current_date = date_str
+        if date:
+            self.current_date = date
         
         # 检查数据是否可用
         if not self.check_data_availability(self.current_date):

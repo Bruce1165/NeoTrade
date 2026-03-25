@@ -72,6 +72,18 @@ Sharpe: -0.186 | Return: -1.57% | Win Rate: 42.9% | DD: 6.08%
 
 **Active Experiments:**
 - EXP-1: Widen stop loss -8% → -10%, reduce take profit +20% → +15%
+- Status: Subagent completed, awaiting next run
+
+**Recent Fixes (2026-03-24):**
+- ✅ ShiPanXian screener database connection fixed (using Lite version)
+- ✅ Turnover data download fixed for future dates
+- ✅ Access statistics showing unique visitors (not page views)
+- ✅ Ngrok tunnel stabilized
+
+**Known Issues:**
+- 2026-03-23/24 turnover data partially missing (5104/5105 stocks affected)
+- Batch repair in progress using Baostock
+- ShiPanXian full feature pending (Lite version active)
 
 **Data Split:**
 - Training: 2024-09-02 to 2025-08-31

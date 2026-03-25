@@ -56,7 +56,8 @@ def download_today_data():
     
     print("⬇️ Downloading realtime data...")
     try:
-        df = feed.fetch(codes)
+        # Use FULL_INDICATORS to include turnoverRatio
+        df = feed.fetch(codes, indicators=feed.FULL_INDICATORS)
         print(f"✅ Downloaded {len(df)} stocks")
         print(f"📊 Columns: {list(df.columns)}")
         print(df.head())
