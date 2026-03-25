@@ -310,16 +310,19 @@ Also fixed database path in models.py:
 ### Data Infrastructure
 
 #### 🔴 High Priority
-- [ ] **Fix network access for AKShare/iFind APIs**
+- [ ] **Fix network access for AKShare APIs**
   - **Problem:** AKShare connection reset, East Money API 502 error
   - **Impact:** Cannot fetch market cap (总市值/流通市值), list_date (上市日期), ROE, debt_ratio
-  - **Current status:** Baostock working (96% coverage for industry, PE, PB)
+  - **Current status:** 
+    - ✅ Baostock working (96% coverage for industry, PE, PB)
+    - ❌ iFind API limitation: `real_time_quotation` only supports trading data, NOT fundamental data
   - **Solutions to try:**
-    1. Wait for rate limit reset (temporary)
-    2. Configure iFind token (`~/.ifind/token`)
-    3. Import from local Excel/CSV files
-    4. Use proxy/VPN
+    1. Wait for AKShare rate limit reset (temporary)
+    2. Use proxy/VPN for AKShare
+    3. Purchase iFind data package with fundamental data API
+    4. Import from downloaded Excel/CSV files (manual)
   - **Created:** 2026-03-25
+  - **Updated:** 2026-03-25 - iFind API confirmed NOT supporting market cap/list date
 
 #### 🟡 Medium Priority  
 - [ ] Complete stocks table fundamental data
