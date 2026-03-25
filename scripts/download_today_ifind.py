@@ -66,6 +66,20 @@ def download_today_data():
         print(f"❌ Download failed: {e}")
         raise
 
+def sync_fundamentals():
+    """同步股票基本面数据（总市值、流通市值等）"""
+    print("\n📊 同步股票基本面数据...")
+    try:
+        from sync_ifind_fundamentals import get_all_stock_codes, fetch_fundamental_data, update_stocks_fundamentals
+        
+        codes = get_all_stock_codes()
+        client = IfindClient()
+        data = fetch_fundamental_data(codes[:500], client)  # 先同步前500只
+        update_stocks_fundamentals(data)
+        print("✅ 基本面数据同步完成")
+    except Exception as e:
+        print(f"⚠️ 基本面同步失败: {e}")
+
 def save_to_database(df, trade_date, db_path='data/stock_data.db'):
     """Save data to SQLite database"""
     print(f"💾 Saving to database...")
@@ -121,11 +135,30 @@ def save_to_database(df, trade_date, db_path='data/stock_data.db'):
     return inserted
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Download iFind stock data')
+    parser.add_argument('--fundamentals', action='store_true', help='Also sync fundamental data (market cap, etc.)')
+    parser.add_argument('--check-only', action='store_true', help='Only check iFind connection')
+    args = parser.parse_args()
+    
+    if args.check_only:
+        client = IfindClient()
+        if client.access_token:
+            print("✅ iFind connection OK")
+            sys.exit(0)
+        else:
+            print("❌ iFind connection failed")
+            sys.exit(1)
+    
     try:
         df, today = download_today_data()
         if len(df) > 0:
             inserted = save_to_database(df, today)
             print(f"\n🎉 Success! Downloaded {inserted} stocks for {today}")
+            
+            # Sync fundamentals if requested
+            if args.fundamentals:
+                sync_fundamentals()
         else:
             print("❌ No data downloaded")
     except Exception as e:
