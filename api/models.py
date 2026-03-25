@@ -7,6 +7,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+# Use the dashboard database
 DB_PATH = Path(__file__).parent / "data" / "dashboard.db"
 
 def init_db():
@@ -73,6 +74,93 @@ def init_db():
             volume INTEGER,
             amount REAL,
             UNIQUE(stock_code, trade_date)
+        )
+    ''')
+    
+    # Strategy backtest results table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS strategy_backtest_results (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            strategy_version TEXT NOT NULL,
+            screener_name TEXT NOT NULL,
+            params TEXT NOT NULL,  -- JSON encoded parameters
+            train_start DATE NOT NULL,
+            train_end DATE NOT NULL,
+            total_return REAL DEFAULT 0,
+            sharpe_ratio REAL DEFAULT 0,
+            max_drawdown REAL DEFAULT 0,
+            win_rate REAL DEFAULT 0,
+            total_trades INTEGER DEFAULT 0,
+            profit_factor REAL DEFAULT 0,
+            calmar_ratio REAL DEFAULT 0,
+            volatility REAL DEFAULT 0,
+            avg_trade_return REAL DEFAULT 0,
+            avg_hold_days REAL DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            git_commit TEXT,
+            parent_version TEXT  -- Previous generation for lineage
+        )
+    ''')
+    
+    # Strategy trades table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS strategy_trades (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            backtest_id INTEGER NOT NULL,
+            trade_date DATE NOT NULL,
+            code TEXT NOT NULL,
+            name TEXT,
+            action TEXT NOT NULL,  -- BUY, SELL
+            price REAL NOT NULL,
+            shares INTEGER,
+            position_value REAL,
+            realized_pnl REAL,
+            realized_pnl_pct REAL,
+            hold_days INTEGER,
+            exit_reason TEXT,  -- target_hit, stop_loss, timeout, end_of_data
+            FOREIGN KEY (backtest_id) REFERENCES strategy_backtest_results(id) ON DELETE CASCADE
+        )
+    ''')
+    
+    # Experiment configuration table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS experiment_configs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            screener_name TEXT NOT NULL,
+            param_space TEXT NOT NULL,  -- JSON: parameter ranges and constraints
+            mutation_strategy TEXT DEFAULT 'gaussian',  -- gaussian, grid, random
+            population_size INTEGER DEFAULT 10,
+            elite_ratio REAL DEFAULT 0.2,
+            mutation_rate REAL DEFAULT 0.3,
+            crossover_rate REAL DEFAULT 0.5,
+            max_generations INTEGER DEFAULT 100,
+            early_stop_patience INTEGER DEFAULT 20,
+            target_sharpe REAL DEFAULT 1.0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # Access log table for visitor statistics
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS access_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ip_address TEXT,
+            user_agent TEXT,
+            request_path TEXT,
+            access_date DATE NOT NULL,
+            access_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # Access statistics summary (daily aggregation)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS access_stats (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            stat_date DATE UNIQUE NOT NULL,
+            daily_count INTEGER DEFAULT 0,
+            unique_ips INTEGER DEFAULT 0,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
     
@@ -327,6 +415,110 @@ def get_cached_prices(stock_code, days=60):
     conn.close()
     
     return [dict(row) for row in rows]
+
+# Access log operations
+def log_access(ip_address, user_agent, request_path):
+    """Log a single access"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    today = datetime.now().strftime('%Y-%m-%d')
+    
+    cursor.execute('''
+        INSERT INTO access_logs (ip_address, user_agent, request_path, access_date)
+        VALUES (?, ?, ?, ?)
+    ''', (ip_address, user_agent, request_path, today))
+    
+    conn.commit()
+    conn.close()
+
+def update_daily_stats():
+    """Update daily access statistics"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    today = datetime.now().strftime('%Y-%m-%d')
+    
+    # Count today's accesses (excluding local IPs)
+    cursor.execute('''
+        SELECT COUNT(*) as total_count, COUNT(DISTINCT ip_address) as unique_ips
+        FROM access_logs
+        WHERE access_date = ? 
+        AND ip_address NOT IN ('127.0.0.1', '::1', 'localhost')
+        AND ip_address NOT LIKE '192.168.%'
+        AND ip_address NOT LIKE '10.%'
+        AND ip_address NOT LIKE '172.1[6-9].%'
+        AND ip_address NOT LIKE '172.2[0-9].%'
+        AND ip_address NOT LIKE '172.3[0-1].%'
+    ''', (today,))
+    
+    row = cursor.fetchone()
+    daily_count = row['total_count']
+    unique_ips = row['unique_ips']
+    
+    # Upsert daily stats
+    cursor.execute('''
+        INSERT INTO access_stats (stat_date, daily_count, unique_ips)
+        VALUES (?, ?, ?)
+        ON CONFLICT(stat_date) DO UPDATE SET
+            daily_count = excluded.daily_count,
+            unique_ips = excluded.unique_ips,
+            updated_at = CURRENT_TIMESTAMP
+    ''', (today, daily_count, unique_ips))
+    
+    conn.commit()
+    conn.close()
+
+def get_access_stats():
+    """Get access statistics for today and this month (count unique IPs only)"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    today = datetime.now().strftime('%Y-%m-%d')
+    first_day_of_month = datetime.now().replace(day=1).strftime('%Y-%m-%d')
+    
+    # Today's unique IP count (each IP counted once per day)
+    cursor.execute('''
+        SELECT COUNT(DISTINCT ip_address) as unique_ips
+        FROM access_logs
+        WHERE access_date = ?
+        AND ip_address NOT IN ('127.0.0.1', '::1', 'localhost')
+        AND ip_address NOT LIKE '192.168.%'
+        AND ip_address NOT LIKE '10.%'
+        AND ip_address NOT LIKE '172.1[6-9].%'
+        AND ip_address NOT LIKE '172.2[0-9].%'
+        AND ip_address NOT LIKE '172.3[0-1].%'
+    ''', (today,))
+    
+    today_row = cursor.fetchone()
+    
+    # This month's unique IP count
+    cursor.execute('''
+        SELECT COUNT(DISTINCT ip_address) as unique_ips
+        FROM access_logs
+        WHERE access_date >= ?
+        AND ip_address NOT IN ('127.0.0.1', '::1', 'localhost')
+        AND ip_address NOT LIKE '192.168.%'
+        AND ip_address NOT LIKE '10.%'
+        AND ip_address NOT LIKE '172.1[6-9].%'
+        AND ip_address NOT LIKE '172.2[0-9].%'
+        AND ip_address NOT LIKE '172.3[0-1].%'
+    ''', (first_day_of_month,))
+    
+    month_row = cursor.fetchone()
+    conn.close()
+    
+    return {
+        'today': {
+            'date': today,
+            'unique_visitors': today_row['unique_ips']
+        },
+        'this_month': {
+            'start_date': first_day_of_month,
+            'end_date': today,
+            'unique_visitors': month_row['unique_ips']
+        }
+    }
 
 if __name__ == '__main__':
     init_db()

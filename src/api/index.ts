@@ -39,7 +39,7 @@ export interface CheckResult {
 const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 // 认证信息
-const AUTH_HEADER = 'Basic ' + btoa('user:neiltrade123');
+const AUTH_HEADER = 'Basic ' + btoa('user:neo123');
 
 // 通用请求函数
 export async function apiRequest<T>(

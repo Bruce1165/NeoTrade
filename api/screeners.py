@@ -14,7 +14,7 @@ import pandas as pd
 import inspect
 
 # Add workspace to path
-WORKSPACE_ROOT = Path(__file__).parent.parent
+WORKSPACE_ROOT = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(WORKSPACE_ROOT))
 sys.path.insert(0, str(WORKSPACE_ROOT / "scripts"))
 

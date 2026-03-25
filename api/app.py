@@ -4,20 +4,49 @@ Flask Backend API for Trading Screener Dashboard
 """
 import os
 import sys
+import sqlite3
 from pathlib import Path
 from datetime import datetime, date
 from flask import Flask, jsonify, request, send_from_directory, Response
 from flask_cors import CORS
 from functools import wraps
+import json
+import math
+
+class SafeJSONEncoder(json.JSONEncoder):
+    """JSON encoder that handles NaN, Infinity, -Infinity by converting to null"""
+    def encode(self, obj):
+        # Recursively walk through and replace NaN/Infinity
+        obj = self._sanitize(obj)
+        return super().encode(obj)
+    
+    def _sanitize(self, obj):
+        if isinstance(obj, float):
+            if math.isnan(obj) or math.isinf(obj):
+                return None
+            return obj
+        elif isinstance(obj, dict):
+            return {k: self._sanitize(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._sanitize(item) for item in obj]
+        return obj
+
+def safe_jsonify(data):
+    """Return JSON response with NaN/Infinity handling"""
+    return Response(
+        json.dumps(data, cls=SafeJSONEncoder, ensure_ascii=False),
+        mimetype='application/json'
+    )
 
 # Add dashboard to path
 DASHBOARD_DIR = Path(__file__).parent
 sys.path.insert(0, str(DASHBOARD_DIR))
+sys.path.insert(0, str(DASHBOARD_DIR.parent.parent.parent))  # Add workspace root
 os.chdir(DASHBOARD_DIR)  # Change to dashboard directory
 
 from models import (
     init_db, get_all_screeners, get_screener, get_runs, get_run,
-    get_results, get_results_by_date
+    get_results, get_results_by_date, log_access, get_access_stats
 )
 from screeners import (
     register_discovered_screeners, run_screener_subprocess,
@@ -52,7 +81,7 @@ def require_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-app = Flask(__name__, static_folder=str(DASHBOARD_DIR / 'static'), static_url_path='')
+app = Flask(__name__, static_folder=None)  # Disable default static folder, we handle it manually
 CORS(app)  # Enable CORS for all routes
 
 # 为所有路由添加认证（除了健康检查）
@@ -61,14 +90,68 @@ def before_request():
     # 健康检查端点不需要认证
     if request.path == '/api/health':
         return None
+    
+    # 记录访问（只记录主页面路由，排除 API、静态资源和健康检查）
+    # 只记录根路径 / 和明确的页面路径，排除 /assets/, /favicon 等
+    if request.path == '/' or (not request.path.startswith('/api/') and 
+                               not request.path.startswith('/assets/') and
+                               not request.path.startswith('/favicon') and
+                               not request.path.endswith('.svg') and
+                               not request.path.endswith('.ico')):
+        ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+        # 排除本地 IP
+        local_ips = ['127.0.0.1', '::1', 'localhost']
+        is_local = ip in local_ips or ip.startswith('192.168.') or ip.startswith('10.') or \
+                   any(ip.startswith(f'172.{x}.') for x in range(16, 32))
+        if not is_local:
+            try:
+                log_access(ip, request.user_agent.string, request.path)
+            except:
+                pass  # Don't block request if logging fails
+    
     # 静态文件和 API 都需要认证
     auth = request.authorization
     if not auth or not check_auth(auth.username, auth.password):
         return authenticate()
 
-# Serve index.html at root
+# Serve index.html at root - NO CACHE
 @app.route('/')
 def index():
+    response = send_from_directory(DASHBOARD_DIR / 'static', 'index.html')
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
+# Serve assets - with cache busting
+@app.route('/assets/<path:filename>')
+def serve_assets(filename):
+    response = send_from_directory(DASHBOARD_DIR / 'static/assets', filename)
+    # Assets have hash in filename, so we can cache them long-term
+    if '.' in filename and filename.split('.')[-2] and len(filename.split('.')[-2]) > 8:
+        # Hashed assets - cache for 1 year
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+    else:
+        # Non-hashed assets - no cache
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    return response
+
+# Serve favicon and other root files
+@app.route('/favicon.svg')
+def serve_favicon():
+    return send_from_directory(DASHBOARD_DIR / 'static', 'favicon.svg')
+
+@app.route('/icons.svg')
+def serve_icons():
+    return send_from_directory(DASHBOARD_DIR / 'static', 'icons.svg')
+
+# Catch-all route for React Router - must be last
+@app.route('/<path:path>')
+def catch_all(path):
+    # Don't catch API routes
+    if path.startswith('api/'):
+        return jsonify({'error': 'Not found'}), 404
+    # For all other routes, serve index.html (React Router handles client-side routing)
     return send_from_directory(DASHBOARD_DIR / 'static', 'index.html')
 
 # Initialize database on startup
@@ -102,14 +185,12 @@ MODULES = {
     'cron': {
         'title': 'Cron Tasks',
         'items': [
-            'intraday_screener',
-            'postmarket_screener',
-            'keyword_expander_screener'
+            'daily_hot_cold_screener',
+            'coffee_cup_screener'
         ],
         'schedules': {
-            'intraday_screener': '09:35, 09:45, 10:00, 15:00',
-            'postmarket_screener': '15:30 daily',
-            'keyword_expander_screener': '16:00 daily'
+            'daily_hot_cold_screener': '16:00 daily',
+            'coffee_cup_screener': '16:30 daily'
         }
     },
     'jobs': {
@@ -216,9 +297,46 @@ def get_results_endpoint():
     results = get_results_by_date(screener_name, run_date)
     
     if results is None:
-        return jsonify({'error': 'No run found for this screener and date'}), 404
+        # Debug: check what runs exist for this screener
+        all_runs = get_runs(screener_name=screener_name, limit=5)
+        print(f"DEBUG: No run found for {screener_name} on {run_date}")
+        print(f"DEBUG: Recent runs for this screener: {[r['run_date'] for r in all_runs]}")
+        return jsonify({'error': f'No run found for {screener_name} on {run_date}'}), 404
     
-    return jsonify({
+    print(f"DEBUG: Found {len(results)} results for {screener_name} on {run_date}")
+    
+    # Special handling for daily_hot_cold_screener - group by type
+    if screener_name == 'daily_hot_cold_screener':
+        hot_results = []
+        cold_results = []
+        
+        print(f"DEBUG: Processing {len(results)} results for hot/cold grouping")
+        
+        for result in results:
+            extra = result.get('extra_data', {}) or {}
+            stock_type = extra.get('_category', extra.get('_type', extra.get('type', '')))
+            pct_change = result.get('pct_change', 0) or extra.get('pct_change', 0)
+            
+            print(f"DEBUG: {result.get('stock_code')} - type={stock_type}, pct_change={pct_change}")
+            
+            if stock_type == 'hot' or (not stock_type and pct_change >= 5):
+                hot_results.append(result)
+            elif stock_type == 'cold' or (not stock_type and pct_change <= -5):
+                cold_results.append(result)
+        
+        print(f"DEBUG: Grouped into {len(hot_results)} hot, {len(cold_results)} cold")
+        
+        return safe_jsonify({
+            'screener': screener_name,
+            'date': run_date,
+            'count': len(results),
+            'hot_count': len(hot_results),
+            'cold_count': len(cold_results),
+            'hot': hot_results,
+            'cold': cold_results
+        })
+    
+    return safe_jsonify({
         'screener': screener_name,
         'date': run_date,
         'count': len(results),
@@ -396,6 +514,25 @@ def check_stock():
         # 如果是 sh.600000 格式，提取纯数字部分
         code = code.split('.')[-1]
     
+    # Special handling for shi_pan_xian_screener - use Lite version
+    if screener_name == 'shi_pan_xian_screener':
+        try:
+            from shi_pan_xian_screener_lite import ShiPanXianScreenerLite
+            screener = ShiPanXianScreenerLite()
+            result = screener.check_single_stock(code, date)
+            return jsonify(result)
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            return jsonify({
+                'match': False,
+                'code': code,
+                'name': '',
+                'date': date or '',
+                'reasons': [f'筛选器错误: {str(e)}'],
+                'details': {}
+            })
+    
     try:
         # 导入对应的筛选器
         import sys
@@ -428,12 +565,36 @@ def check_stock():
                 'reasons': ['该筛选器暂不支持单个股票检查功能']
             })
         
+        # Special handling for shi_pan_xian_screener - use sqlite3 directly
+        if screener_name == 'shi_pan_xian_screener':
+            # Direct implementation to avoid SQLAlchemy issues
+            db_path = '/Users/mac/.openclaw/workspace-neo/data/stock_data.db'
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            
+            # Get stock name
+            cursor.execute("SELECT name FROM stocks WHERE code = ?", (code,))
+            row = cursor.fetchone()
+            name = row[0] if row else ''
+            conn.close()
+            
+            # Return mock result for now (shi_pan_xian logic is complex)
+            # TODO: Implement full shi_pan_xian logic with sqlite3
+            return jsonify({
+                'match': False,
+                'code': code,
+                'name': name,
+                'date': date or '',
+                'reasons': ['涨停试盘线筛选器暂时禁用（数据库连接修复中）'],
+                'details': {}
+            })
+        
         module_name, class_name = module_map[screener_name]
         module = __import__(module_name)
         screener_class = getattr(module, class_name)
         
         # 实例化筛选器，使用正确的数据库路径
-        db_path = str(DASHBOARD_DIR.parent / 'data' / 'stock_data.db')
+        db_path = '/Users/mac/.openclaw/workspace-neo/data/stock_data.db'
         if screener_name == 'coffee_cup_screener':
             screener = screener_class(db_path=db_path, check_data_update=False)
         else:
@@ -454,6 +615,215 @@ def check_stock():
             'date': date or '',
             'reasons': [f'检查出错: {str(e)}']
         })
+
+
+# ==================== Monitor API Endpoints ====================
+
+@app.route('/api/monitor/screeners', methods=['GET'])
+def list_monitor_screeners():
+    """List all screeners with pick counts for monitor"""
+    try:
+        # Import the monitor
+        sys.path.insert(0, str(DASHBOARD_DIR.parent / 'scripts'))
+        from screener_monitor import ScreenerMonitor
+        
+        monitor = ScreenerMonitor()
+        
+        # Get all screeners from database
+        screeners = get_all_screeners()
+        
+        # Get pick counts for each screener
+        result = []
+        for screener in screeners:
+            picks = monitor.get_picks_by_screener(screener['name'], limit=1000)
+            result.append({
+                'id': screener['id'],
+                'name': screener['name'],
+                'display_name': screener.get('display_name', screener['name']),
+                'pick_count': len(picks)
+            })
+        
+        # Sort by pick count descending
+        result.sort(key=lambda x: x['pick_count'], reverse=True)
+        
+        return jsonify({'screeners': result})
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/monitor/pipeline', methods=['GET'])
+def get_pipeline_data():
+    """Get pipeline data for a specific screener"""
+    screener_id = request.args.get('screener_id')
+    
+    if not screener_id:
+        return jsonify({'error': 'screener_id is required'}), 400
+    
+    try:
+        # Import the monitor
+        sys.path.insert(0, str(DASHBOARD_DIR.parent / 'scripts'))
+        from screener_monitor import ScreenerMonitor
+        
+        monitor = ScreenerMonitor()
+        
+        # Get all picks for this screener
+        picks = monitor.get_picks_by_screener(screener_id, limit=1000)
+        
+        # Calculate stats
+        stats = {
+            'total': len(picks),
+            'active': sum(1 for p in picks if p.status == 'active'),
+            'graduated': sum(1 for p in picks if p.status == 'graduated'),
+            'failed': sum(1 for p in picks if p.status == 'failed'),
+            'win_rate': 0.0
+        }
+        
+        # Calculate win rate
+        completed = stats['graduated'] + stats['failed']
+        if completed > 0:
+            stats['win_rate'] = round(stats['graduated'] / completed * 100, 1)
+        
+        # Convert picks to dict format and fetch stock names
+        picks_data = []
+        for pick in picks:
+            pick_dict = pick.to_dict()
+            
+            # Fetch stock name from database
+            try:
+                db_path = str(DASHBOARD_DIR.parent.parent.parent / 'data' / 'stock_data.db')
+                print(f"DEBUG: Connecting to {db_path}")
+                conn = sqlite3.connect(db_path)
+                cursor = conn.cursor()
+                cursor.execute(
+                    "SELECT name FROM stocks WHERE code = ?",
+                    (pick.stock_code,)
+                )
+                row = cursor.fetchone()
+                print(f"DEBUG: Query result for {pick.stock_code}: {row}")
+                if row:
+                    pick_dict['stock_name'] = row[0]
+                else:
+                    pick_dict['stock_name'] = '-'
+                conn.close()
+            except Exception as e:
+                print(f"DEBUG: Error fetching stock name: {e}")
+                pick_dict['stock_name'] = '-'
+            
+            picks_data.append(pick_dict)
+        
+        return jsonify({
+            'screener_id': screener_id,
+            'picks': picks_data,
+            'stats': stats
+        })
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/strategy/backtests', methods=['GET'])
+def get_strategy_backtests():
+    """获取策略回测历史记录"""
+    try:
+        db_path = str(DASHBOARD_DIR.parent.parent.parent / 'data' / 'stock_data.db')
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+
+        cursor = conn.execute('''
+            SELECT
+                id,
+                strategy_version,
+                total_return,
+                sharpe_ratio,
+                max_drawdown,
+                win_rate,
+                total_trades,
+                profit_factor,
+                created_at
+            FROM strategy_backtest_results
+            ORDER BY created_at ASC
+        ''')
+
+        backtests = [dict(row) for row in cursor.fetchall()]
+        conn.close()
+
+        return jsonify({
+            'backtests': backtests,
+            'count': len(backtests)
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e), 'backtests': [], 'count': 0}), 500
+
+
+@app.route('/api/strategy/trades/<int:backtest_id>', methods=['GET'])
+def get_strategy_trades(backtest_id):
+    """获取指定回测的交易明细"""
+    try:
+        db_path = str(DASHBOARD_DIR.parent.parent.parent / 'data' / 'stock_data.db')
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+
+        # Get trades with stock names
+        cursor = conn.execute('''
+            SELECT 
+                t.*,
+                s.name as stock_name
+            FROM strategy_trades t
+            LEFT JOIN stocks s ON t.code = s.code
+            WHERE t.backtest_id = ?
+            ORDER BY t.trade_date ASC
+        ''', (backtest_id,))
+
+        trades = [dict(row) for row in cursor.fetchall()]
+
+        # Calculate summary
+        total_profit = sum(t['realized_pnl'] for t in trades if t['realized_pnl'] and t['realized_pnl'] > 0)
+        total_loss = sum(t['realized_pnl'] for t in trades if t['realized_pnl'] and t['realized_pnl'] < 0)
+        win_count = len([t for t in trades if t['realized_pnl'] and t['realized_pnl'] > 0])
+        loss_count = len([t for t in trades if t['realized_pnl'] and t['realized_pnl'] <= 0])
+
+        conn.close()
+
+        return jsonify({
+            'trades': trades,
+            'summary': {
+                'total_trades': len(trades),
+                'win_count': win_count,
+                'loss_count': loss_count,
+                'total_profit': total_profit,
+                'total_loss': total_loss,
+                'net_pnl': total_profit + total_loss,
+                'avg_hold_days': sum(t['hold_days'] or 0 for t in trades) / len(trades) if trades else 0
+            }
+        })
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e), 'trades': [], 'summary': {}}), 500
+
+
+@app.route('/api/stats/access', methods=['GET'])
+def get_access_statistics():
+    """获取访问统计（今日和本月）"""
+    try:
+        stats = get_access_stats()
+        return jsonify({
+            'success': True,
+            'data': stats
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 if __name__ == '__main__':
