@@ -331,5 +331,28 @@ Also fixed database path in models.py:
   - Financial ratios (ROE, debt_ratio): pending iFind
 
 ---
+
+### 2026-03-25 - Cleanup Outdated Cron Jobs
+**Issue:** Multiple cron jobs erroring out due to missing modules (`sina_fetcher`)
+
+**Removed LaunchAgents:**
+- `com.neo.intraday_935.plist` - 9:35 intraday task
+- `com.neo.intraday_945.plist` - 9:45 intraday task  
+- `com.neo.intraday_1000.plist` - 10:00 intraday task
+- `com.neo.intraday_1500.plist` - 15:00 intraday task
+- `com.neo.postmarket_1530.plist` - 15:30 postmarket task
+
+**Reason:** 
+- Old tasks used `akshare` (network issues) and `sina_fetcher` (module not found)
+- Replaced by unified `com.neo.data-download` using iFind/Baostock
+
+**Current Active LaunchAgents:**
+- `com.neo.data-download` - Main data download (iFind + Baostock) ✅
+- `com.neo.trading-dashboard` - Dashboard auto-start ✅
+- `com.neo.ngrok-monitor` - Ngrok tunnel monitoring ✅
+
+**Status:** ✅ Cleaned up - no more error spam in logs
+
+---
 **For current priorities, check CACHE.md**
 **For daily work logs, check memory/YYYY-MM-DD.md**
