@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import '../components/monitor/MonitorV2.css';
 
-const API_BASE = import.meta.env.DEV ? '/api' : 'https://chariest-nancy-nonincidentally.ngrok-free.dev/api';
-const AUTH_HEADER = 'Basic ' + btoa('user:neo123');
+const API_BASE = import.meta.env.DEV ? '/api' : `${window.location.origin}/api`;
+const AUTH_HEADER = 'Basic ' + btoa('user:NeoTrade2025');
 
 interface DailyCheck {
   day: number;
