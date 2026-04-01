@@ -1,0 +1,60 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist-ssr
+*.local
+
+# Backups and database files
+backups/
+*.db.bak
+*.db.backup
+data/*.db
+*.db-shm
+*.db-wal
+scripts/data/*.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.so
+
+# Build artifacts
+dist/
+frontend/dist/
+deploy-render/
+.vite/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Data directories
+data/intraday/
+data/postmarket/
+data/screeners/
+
+# Archive (contains old dashboard and memory files)
+archive/dashboard_v1/
+
+# Environment files
+.env
+config/.env
+
+# Zip files
+*.zip
